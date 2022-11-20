@@ -184,6 +184,24 @@ def display_image(filename):
     return Response(gen(VideoCamera(filename)),
                 mimetype='multipart/x-mixed-replace; boundary=frame')
 
+  
+@app.route("/extract_record")
+def extract_data():
+    try:
+        filename = request.args.get("filename", "")
+        record = VideoProperties.query.filter_by(name = filename).first()
+
+        response = jsonify({"name": record.name, "resolution": record.resolution, 
+                    "frame_rate": record.frame_rate, "distortion_score": record.distortion_score,
+                    "watermark": record.watermark, "aspect_ratio": record.aspect_ratio,
+                    "duration": record.duration})
+        response.status_code = 201
+    except Exception as ex:
+        response = jsonify({"output": "Failure", "error": str(ex)})
+        response.status_code = 500
+
+    return response
+
  
 # if __name__ == "__main__":
 #     app.run()
