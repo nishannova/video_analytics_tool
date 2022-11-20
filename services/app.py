@@ -97,6 +97,12 @@ def persist_audit_result(filename, vid_q, resolution, frame_rate, distortion, as
         aspect_ratio=aspect_ratio,
         duration=duration
         )
+    
+    vid_record = VideoProperties.query.filter_by(name = name).first()
+    if vid_record:
+        db.session.delete(vid_record)
+        logger.info(f"Delete old record for filename: {name}")
+     
     db.session.add(vid_res)
     db.session.commit()
     return True
