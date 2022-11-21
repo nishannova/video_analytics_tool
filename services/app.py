@@ -194,7 +194,7 @@ def display_image(filename):
 @app.route("/extract_record")
 def extract_data():
     try:
-        filename = request.args.get("filename", "")
+        filename = secure_filename(request.args.get("filename", ""))
         record = VideoProperties.query.filter_by(name = filename).first()
 
         response = jsonify({"name": record.name, "resolution": record.resolution, 
