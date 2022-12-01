@@ -17,7 +17,7 @@ def process_detection(filename):
     filtered = list()
 
     sample_image = list()
-    for i in range(0, len(images), 30):
+    for i in range(0, len(images), 60):
         sample_image.append(images[i])
     logger.warning(f"SAMPLE IMAGE: {sample_image}")
 
@@ -25,25 +25,28 @@ def process_detection(filename):
     
     # for frame in sample_image:
     #     text = east_detector(os.path.join(TEMP_FRAMES_DIR, frame))
-    for text in text_list:
-        _ = [texts.append(x) for x in text.split("\n")]
-    for id, txt in enumerate(texts):
-        # logger.debug(f"PROCESSING: {txt} len(x): {len(txt)} Index: {id}")
-        if (not txt) or\
-             (len(txt.strip()) < 6) or\
-                 "(" in txt.strip() or\
-                     ")" in txt.strip()\
-                         or "@" in txt.strip()\
-                            or "\\" in txt.strip()\
-                                or "<" in txt.strip()\
-                                    or "~" in txt.strip()\
-                                        or "«" in txt.strip()\
-                                            or "©" in txt.strip():
-            if not "mx" in txt.lower() or "tak" not in txt.lower():
-                continue
-        else:
-            filtered.append(txt.strip())
-
+    try:
+        if text_list:
+            for text in text_list:
+                _ = [texts.append(x) for x in text.split("\n")]
+            for id, txt in enumerate(texts):
+                # logger.debug(f"PROCESSING: {txt} len(x): {len(txt)} Index: {id}")
+                if (not txt) or\
+                    (len(txt.strip()) < 6) or\
+                        "(" in txt.strip() or\
+                            ")" in txt.strip()\
+                                or "@" in txt.strip()\
+                                    or "\\" in txt.strip()\
+                                        or "<" in txt.strip()\
+                                            or "~" in txt.strip()\
+                                                or "«" in txt.strip()\
+                                                    or "©" in txt.strip():
+                    # if not "mx" in txt.lower() or "tak" not in txt.lower():
+                    continue
+                else:
+                    filtered.append(txt.strip())
+    except Exception as ex:
+        logger.error(f"Failed to process watermark: {ex}")
     logger.warning(f"DETECTED TEXTS: {set(filtered)}")
     return set(filtered)
 

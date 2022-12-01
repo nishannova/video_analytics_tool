@@ -44,7 +44,7 @@ def east_detector(img_path):
 
         for x in range(cols):
 
-            if scoresdata[x] < 0.5:  
+            if scoresdata[x] < 0.75:  
                 continue
             
             offsetx = x * 4.0
@@ -113,14 +113,15 @@ def east_detector(img_path):
 
 
         it=ima_org[final_y:final_h,final_x:final_w]
-        blur = cv2.bilateralFilter(it,5,55,60)
-        cv2.imwrite(os.path.join(WATERMARK_PATH,file_name, str(file_name)+"_smooth.jpg"), blur)
-        gray = cv2.cvtColor(blur,cv2.COLOR_BGR2GRAY)
-        cv2.imwrite(os.path.join(WATERMARK_PATH,file_name,str(file_name)+"_gray.jpg"), gray)
-        thresh = cv2.threshold(gray,220,255,1,cv2.THRESH_OTSU + cv2.THRESH_BINARY_INV)[1]
-        cv2.imwrite(os.path.join(WATERMARK_PATH,file_name,str(file_name)+"_binarized.jpg"), thresh)
-        txt = pytesseract.image_to_string(it,lang='eng',config='--oem 3 --psm 11')
+        if it.any():
+            # blur = cv2.bilateralFilter(it,5,55,60)
+            cv2.imwrite(os.path.join(WATERMARK_PATH,file_name, str(file_name)+"_smooth.jpg"), it)
+            gray = cv2.cvtColor(blur,cv2.COLOR_BGR2GRAY)
+            cv2.imwrite(os.path.join(WATERMARK_PATH,file_name,str(file_name)+"_gray.jpg"), gray)
+            thresh = cv2.threshold(gray,220,255,1,cv2.THRESH_OTSU + cv2.THRESH_BINARY_INV)[1]
+            cv2.imwrite(os.path.join(WATERMARK_PATH,file_name,str(file_name)+"_binarized.jpg"), thresh)
+            txt = pytesseract.image_to_string(it,lang='eng',config='--oem 3 --psm 11')
 
-        return txt.strip()
+            return txt.strip()
     else:
         return ""
