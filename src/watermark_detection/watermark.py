@@ -18,7 +18,7 @@ import cv2
 from imutils.video import VideoStream
 from imutils.video import FPS
 import sys
-sys.path.append("/Users/pdas59/Desktop/Video_Analytics_Tool/src")
+
 
 from config import VIDEO_PATH
 
@@ -185,10 +185,5 @@ def run_watermark(vs=None, cam=False, file_name=""):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    for file in os.listdir("/Users/pdas59/Desktop/Video_Analytics_Tool/data/raw"):
-        if file.endswith("mp4"):
-            vs = cv2.VideoCapture(os.path.join("/Users/pdas59/Desktop/Video_Analytics_Tool/data/raw", file))
-            # file_name = "C045-03[1].mp4"
-            run_watermark(vs, False, file)
-            # break
+    pass
 

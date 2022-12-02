@@ -1,6 +1,6 @@
 from functools import lru_cache
 import sys
-sys.path.append("/Users/sali115/Video_Analytics_Tool_copy/src")
+# sys.path.append("/Users/sali115/Video_Analytics_Tool_copy/src")
 from config import TEMP_FRAMES_DIR
 
 import os

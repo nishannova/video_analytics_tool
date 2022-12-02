@@ -8,8 +8,8 @@ import cv2
 # from imquality import brisque
 import imquality.brisque as brisque
 import sys
-sys.path.append("/Users/sali115/Video_Analytics_Tool_copy/src")
-sys.path.append("..")
+sys.path.append("/home/saintadmin/work/video_analytics_tool/src")
+
 import PIL.Image
 import imageio
 from loguru import logger
@@ -49,22 +49,15 @@ class QualityAnalysis():
         sample_image = random.sample(images, sample_num)
         
         logger.info(f"There are {len(images)} frames to be analyzed")
-
+        # logger.debug(f"sample_image: {sample_image}")
         scores = ray.get([get_score.remote(img, self.filename) for img in sample_image])
-        # count = 0
-        # for img in sample_image:
-        #     im = img_as_float(io.imread(os.path.join(TEMP_FRAMES_DIR, img), as_gray=False))
-        #     scores.append(brisque.score(im))
-        #     if (count % 25) == 0:
-        #         print(f"Analysis done for {count} th frame")
-        #         gc.collect()
-        #     count += 1
+        
         return sum(scores)/len(scores)
 
 
     def resolution_analysis(self, vs):
         success,image = vs.read()
-        logger.debug(f"ANALYSING RESOLUTION, STATUS: {success}")
+        # logger.debug(f"ANALYSING RESOLUTION, STATUS: {success}")
         if success:
             vid_qual = self._get_resolution(*image.shape[:2])
             vid_res = f"{image.shape[0]} x {image.shape[1]} Pixels"
@@ -73,7 +66,7 @@ class QualityAnalysis():
 
     @lru_cache()
     def _get_resolution(self, x, y):
-        logger.debug(f"ANALYSING FRAME WITH Height: {y} Width: {x}")
+        # logger.debug(f"ANALYSING FRAME WITH Height: {y} Width: {x}")
         res_dict = {
             "SD": 640*480,
             "HD": 1280 * 720,
@@ -89,7 +82,7 @@ class QualityAnalysis():
             if min_diff > abs(img_area - val):
                 min_diff = abs(img_area - val)
                 min_key = key
-        logger.debug(f"Identified Resolution: {min_key}")
+        # logger.debug(f"Identified Resolution: {min_key}")
         return min_key
 
     def frame_rate_analysis(self, vs):
@@ -99,7 +92,7 @@ class QualityAnalysis():
     def duration(self, vs):
         fps = vs.get(cv2.CAP_PROP_FPS)
         frame_count = vs.get(cv2.CAP_PROP_FRAME_COUNT)
-        logger.debug(f"Duration {frame_count/fps} seconds")
+        # logger.debug(f"Duration {frame_count/fps} seconds")
         return int(frame_count/fps)
 
     def aspect_ratio_analysis(self, vs):
@@ -129,8 +122,16 @@ class QualityAnalysis():
 
 @ray.remote(scheduling_strategy="SPREAD")
 def get_score(img, filename):
+    score = 0
+    # logger.debug(f"About to get the image")
     im = img_as_float(io.imread(os.path.join(TEMP_FRAMES_DIR, filename, img), as_gray=False))
-    return brisque.score(im)
+    # logger.debug(f"Successfully got the image and about to get the score")
+    try:
+        score = brisque.score(im)
+    except Exception as ex:
+        logger.error(f"Error while brisque: {ex}")
+    return score
+    
 
 if __name__ == "__main__":
     path = "/Users/sali115/Video_Analytics_Tool_copy/data/raw/C045-03[1].mp4"

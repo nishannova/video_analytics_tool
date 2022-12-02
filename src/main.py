@@ -1,3 +1,5 @@
+import sys
+sys.path.append("..")
 from watermark_detection.watermark import run_watermark
 from quality_analysis.quality_analysis import QualityAnalysis
 
@@ -12,9 +14,9 @@ from threading import Thread
 
 from db.db import persist_audit_result
 
-source = '/Users/nishanali/WorkSpace/video_analytics_tool_distributed/data/raw'
-original_path = "/Users/nishanali/WorkSpace/video_analytics_tool_distributed/data/processed/original_video"
-destination = '/Users/nishanali/WorkSpace/video_analytics_tool_distributed/data/in_process'
+source = '/home/saintadmin/work/video_analytics_tool/data/raw'
+original_path = "/home/saintadmin/work/video_analytics_tool/data/processed/original_video"
+destination = '/home/saintadmin/work/video_analytics_tool/data/in_process'
 
 
 class AuditVideo():
@@ -42,17 +44,7 @@ class AuditVideo():
             quality_details["SANITY CHECKS"]["DURATION"] = str(duration) + " Sec"
             quality_details["DETECTED WATERMARKS"]["CONTENTS"] = watermark.split(",")
 
-            # q_obj = QualityAnalysis(cv2.VideoCapture(os.path.join(destination, self.file_name)), self.file_name)
-            # q_obj.split_frames(cv2.VideoCapture(os.path.join(destination, self.file_name)))
-            # logger.warning("FRAME SPLITTING DONE...!!!")
 
-            # quality_details["QUALITY_ANALYSIS"]["RESOLUTION"] = q_obj.resolution_analysis(cv2.VideoCapture(os.path.join(destination, self.file_name)))
-            # quality_details["QUALITY_ANALYSIS"]["FRAME RATE"] = str(int(q_obj.frame_rate_analysis(cv2.VideoCapture(os.path.join(destination, self.file_name)))))+" FPS"
-            # quality_details["QUALITY_ANALYSIS"]["DISTORTION SCORE"] =  str(round(q_obj.distortion_analysys(), 2))+" %"
-            # quality_details["SANITY CHECKS"]["ACCEPTABLE ASPECT RATIO"] = q_obj.aspect_ratio_analysis(cv2.VideoCapture(os.path.join(destination, self.file_name)))
-            # quality_details["SANITY CHECKS"]["DURATION"] = str(q_obj.duration(cv2.VideoCapture(os.path.join(destination, self.file_name))))+" Secs"
-            # watermark = process_detection(self.file_name)
-            # quality_details["DETECTED WATERMARKS"]["CONTENTS"] =  list(watermark) if watermark else ["No Watermarks Found" ]
             logger.info(quality_details)
             
             persist_flag = persist_audit_result(self.file_name, vid_q, resolution, frame_rate, distortion, aspect_ratio, duration, watermark)
@@ -81,9 +73,6 @@ if __name__ == "__main__":
     quality_details["DETECTED WATERMARKS"] = {}
     quality_details["SANITY CHECKS"] = {}
     count = 0
-    
-    
-    destination = '/Users/nishanali/WorkSpace/video_analytics_tool_distributed/data/in_process'
 
     if os.listdir(destination):
         logger.warning(f"FOUND FAILED FILES IN IN-PROCESS. MOVING THEM TO RAW")
@@ -98,7 +87,8 @@ if __name__ == "__main__":
 
         if not raw_files:
             logger.warning(f"NO FILES IN LANDING DIRECTORY CHECKING AFTER A QUICK NAP :)")
-            break
+            ray.shutdown()
+            logger.warning(f"SHUTTING DOWN DISTRIBUTION ENGINE")
             time.sleep(30)
             continue
         logger.info(f"FOUND LISTED FILES IN RAW:\n{raw_files}")
@@ -107,7 +97,7 @@ if __name__ == "__main__":
             shutil.move(os.path.join(source, file), os.path.join(destination, file))
             logger.warning(f"MOVED: {file} FROM RAW TO IN-PROCESS")
             count=count+1
-            if count==6:
+            if count==2:
                 count=0
                 break
 
@@ -116,14 +106,12 @@ if __name__ == "__main__":
         #         continue
         
         objects = [AuditVideo(file_name) for file_name in os.listdir(destination) if not file_name.endswith("png")]
-        # objects = [AuditVideo.remote(file_name) for file_name in os.listdir(destination) if not file_name.endswith("png")]
-        logger.debug(f"OBJECTS: {objects}")
+        logger.info(f"OBJECTS: {objects}")
         threads = [Thread(target=obj.fit) for obj in objects]
-        # _ = ray.get([obj.fit.remote() for obj in objects])
-        # _ = [obj.fit.remote() for obj in objects]
-        logger.debug(f"THREADS: {threads}")
+        logger.info(f"THREADS: {threads}")
         _ = [thread.start() for thread in threads]
         _ = [thread.join() for thread in threads]
-        logger.debug(f"COMPLETED {cycle} CYCLE")
+        logger.info(f"COMPLETED {cycle} CYCLE")
         cycle += 1
+        
     logger.info(f"ENTIRE PROCESSING TOOK: {time.time() - start} Secs")
