@@ -52,7 +52,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 
 
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'mp4'])
+ALLOWED_EXTENSIONS = set(['mp4', 'avi'])
  
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -80,35 +80,6 @@ def gen(camera):
             yield (b'--frame\r\n'
                 b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-# def persist_audit_result(filename, vid_q, resolution, frame_rate, distortion, aspect_ratio, duration, watermark):
-#     name = filename
-#     resolution = resolution
-#     quality = vid_q
-#     frame_rate = int(frame_rate)
-#     distortion_score = distortion
-#     watermark = watermark
-#     aspect_ratio = aspect_ratio
-#     duration = duration
-#     vid_res = VideoProperties(
-#         name=name, 
-#         resolution=resolution,
-#         quality=quality,
-#         frame_rate=frame_rate,
-#         distortion_score=distortion_score,
-#         watermark=watermark,
-#         aspect_ratio=aspect_ratio,
-#         duration=duration
-#         )
-    
-    # vid_record = VideoProperties.query.filter_by(name = name).first()
-    # if vid_record:
-    #     db.session.delete(vid_record)
-    #     logger.info(f"Delete old record for filename: {name}")
-     
-    # db.session.add(vid_res)
-    # db.session.commit()
-    # return True
-
 def remove_artifacts(filename):
     shutil.rmtree(os.path.join(TEMP_FRAMES_DIR,filename))
     os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -119,12 +90,6 @@ def home():
  
 @app.route('/', methods=['POST'])
 def upload_image():
-    quality_details = dict()
-    quality_details = dict()
-    quality_details["QUALITY_ANALYSIS"] = {}
-    quality_details["DETECTED WATERMARKS"] = {}
-    quality_details["SANITY CHECKS"] = {}
-    path = app.config['UPLOAD_FOLDER']
     if 'file' not in request.files:
         flash('No file part')
         return redirect(request.url)
@@ -135,55 +100,33 @@ def upload_image():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        flash('VIDEO FILE UPLOADED...!!!')
+        return redirect(request.url)
+    else:
+        flash('Allowed image types are - mp4, avi')
+        return redirect(request.url)
+
+    return render_template('index.html')
+
+@app.route('/upload', methods=['POST'])
+def upload_video():
+    if 'file' not in request.files:
+        # flash('No file part')
+        return {"Message": "No files present"}
+    file = request.files['file']
+    if file.filename == '':
+        # flash('No image selected for uploading')
+        return {"Message": "No files present"}
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         # flash('VIDEO FILE UPLOADED...!!!')
         # return redirect(request.url)
     else:
-        flash('Allowed image types are - png, jpg, jpeg, gif, mp4')
-        return redirect(request.url)
+        # flash('Allowed image types are - mp4, avi')
+        return {"Message": "Allowed image types are - mp4, avi"}
 
-    if not os.listdir(app.config['UPLOAD_FOLDER']):
-        flash('NO VIDEO FILES TO DETECT')
-        return redirect(request.url)
-
-    # for file_name in os.listdir(path):
-    #     if file_name.endswith("png"):
-    #         continue
-    #     if not file_name in filename:
-    #         logger.warning(f"SKIPPING: {file_name} matched with: {filename}")
-    #         continue
-
-    #     q_obj = QualityAnalysis(cv2.VideoCapture(os.path.join(path, filename)), filename)
-    #     q_obj.split_frames(cv2.VideoCapture(os.path.join(path, file_name)))
-    #     logger.warning("FRAME SPLITTING DONE...!!!")
-        
-    #     vid_q, resolution, frame_rate, distortion, aspect_ratio, duration, watermark = None, None, None, None, None, None, None
-        
-    #     vid_q, resolution = q_obj.resolution_analysis(cv2.VideoCapture(os.path.join(path, file_name)))
-    #     frame_rate = int(q_obj.frame_rate_analysis(cv2.VideoCapture(os.path.join(path, file_name))))
-    #     distortion = round(q_obj.distortion_analysys(), 2)
-    #     aspect_ratio = q_obj.aspect_ratio_analysis(cv2.VideoCapture(os.path.join(path, file_name)))
-    #     duration = q_obj.duration(cv2.VideoCapture(os.path.join(path, file_name)))
-    #     watermark = process_detection(filename)
-    #     watermark = str(watermark) if watermark else "No Watermarks Found"
-    
-        
-    #     quality_details["QUALITY_ANALYSIS"]["RESOLUTION"] = f"Video type: [{vid_q}] and Resolution: {resolution}"
-    #     quality_details["QUALITY_ANALYSIS"]["FRAME RATE"] = str(frame_rate) + " FPS"
-    #     quality_details["QUALITY_ANALYSIS"]["DISTORTION SCORE"] = str(distortion) + " %"
-    #     quality_details["SANITY CHECKS"]["ACCEPTABLE ASPECT RATIO"] = str(aspect_ratio)
-    #     quality_details["SANITY CHECKS"]["DURATION"] = str(duration) + " Sec"
-    #     quality_details["DETECTED WATERMARKS"]["CONTENTS"] = watermark.split(",")
-        
-
-    # logger.info(quality_details)
-    # persist_flag = persist_audit_result(filename, vid_q, resolution, frame_rate, distortion, aspect_ratio, duration, watermark)
-    # if persist_flag:
-    #     logger.info("Successfullt Persisted Records")
-    # remove_artifacts(filename)
-    # logger.info("Successfully removed all the temporary artifacts")
-    # return render_template('index.html', filename=str(filename.split(".")[0])+"_detected.avi", quality_details=quality_details)
-    return render_template('index.html')
-
+    return {"Message": f"File Uploaded: {file.filename}"}
     
 
 

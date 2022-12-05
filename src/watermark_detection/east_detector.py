@@ -11,7 +11,7 @@ import ray
 def east_detector(img_path):
     try:
         file_name = img_path.split("/")[-1].split(".")[0]
-        os.makedirs(os.path.join(WATERMARK_PATH,file_name), exist_ok=True)
+        # os.makedirs(os.path.join(WATERMARK_PATH,file_name), exist_ok=True)
         image1 = cv2.imread(img_path,cv2.IMREAD_COLOR) 
         ima_org = image1.copy()
         (height1, width1) = image1.shape[:2]
@@ -19,9 +19,9 @@ def east_detector(img_path):
         (height2, width2) = (size, size)  
         image2 = cv2.resize(image1, (width2, height2))  
 
-        blur = cv2.bilateralFilter(image2,5,55,60)
+        # blur = cv2.bilateralFilter(image2,5,55,60)
 
-        image2 = blur.copy()
+        # image2 = blur.copy()
         net = cv2.dnn.readNet(EAST_MODEL_PATH)
         blob = cv2.dnn.blobFromImage(image2, 1.0, (width2, height2), (123.68, 116.78, 103.94), swapRB=True, crop=False)
         net.setInput(blob)
@@ -115,14 +115,8 @@ def east_detector(img_path):
 
             it=ima_org[final_y:final_h,final_x:final_w]
             if it.any():
-                # blur = cv2.bilateralFilter(it,5,55,60)
-                cv2.imwrite(os.path.join(WATERMARK_PATH,file_name, str(file_name)+"_smooth.jpg"), it)
-                gray = cv2.cvtColor(blur,cv2.COLOR_BGR2GRAY)
-                cv2.imwrite(os.path.join(WATERMARK_PATH,file_name,str(file_name)+"_gray.jpg"), gray)
-                thresh = cv2.threshold(gray,220,255,1,cv2.THRESH_OTSU + cv2.THRESH_BINARY_INV)[1]
-                cv2.imwrite(os.path.join(WATERMARK_PATH,file_name,str(file_name)+"_binarized.jpg"), thresh)
-                txt = pytesseract.image_to_string(it,lang='eng',config='--oem 3 --psm 11')
-
+                gray = cv2.cvtColor(it,cv2.COLOR_BGR2GRAY)
+                txt = pytesseract.image_to_string(gray,lang='eng',config='--oem 3 --psm 11')
                 return txt.strip()
         else:
             return ""
