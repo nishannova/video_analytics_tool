@@ -116,7 +116,7 @@ if __name__ == "__main__":
             shutil.move(os.path.join(RAW_DIR, file), os.path.join(IN_PROCESS_DIR, file))
             logger.warning(f"MOVED: {file} FROM RAW TO IN-PROCESS")
             count=count+1
-            if count==4:
+            if count==3:
                 count=0
                 break
         
@@ -131,6 +131,7 @@ if __name__ == "__main__":
         cycle += 1
         logger.info(f"ENTIRE PROCESSING CYCLE TOOK: {time.time() - start} Secs")
         failed_files = os.listdir(IN_PROCESS_DIR)
+        ray.shutdown()
         if failed_files:
             for file in failed_files:
                 logger.warning(f"MOVING: {file} to FAILED FILE DIRECTORY")

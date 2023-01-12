@@ -15,11 +15,13 @@ from src.config import TEMP_FRAMES_DIR, VIDEO_PATH
 import cv2
 import shutil
 import time
-from db.db import fetch_records
+from db.db import fetch_records, persist_initial_record
 import json
 
 from flask_sqlalchemy import SQLAlchemy
 
+from flask import Blueprint
+bp = Blueprint('ingest',__name__,url_prefix='/trace')
 
 app = Flask(__name__, static_folder='static')
  
@@ -101,6 +103,8 @@ def upload_image():
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         flash('VIDEO FILE UPLOADED...!!!')
+        if persist_initial_record("", "", "", filename):
+            logger.info(f"Initial record created")
         return redirect(request.url)
     else:
         flash('Allowed image types are - mp4, avi')
@@ -108,22 +112,31 @@ def upload_image():
 
     return render_template('index.html')
 
-@app.route('/upload', methods=['POST'])
+@bp.route('/upload', methods=['POST'])
 def upload_video():
     if 'file' not in request.files:
         # flash('No file part')
         return {"Message": "No files present"}
-    file = request.files['file']
-    if file.filename == '':
-        # flash('No image selected for uploading')
-        return {"Message": "No files present"}
+    
+    video_no = request.form.get('video_no')
+    url = request.form.get('url')
+    type = request.form.get('type')
+
+    if not video_no and url:
+        return {"Message": "video_no or URL is mandatory"}
+    file = request.files.get('file')
+
+    # if file.filename == '':
+    #     return {"Message": "No files present"}
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        # flash('VIDEO FILE UPLOADED...!!!')
-        # return redirect(request.url)
     else:
-        # flash('Allowed image types are - mp4, avi')
+        #Call the API to download file and and create record
+        pass    
+    if persist_initial_record(video_no, url, type, filename):
+        logger.info(f"Initial record created")
+    else:
         return {"Message": "Allowed image types are - mp4, avi"}
 
     return {"Message": f"File Uploaded: {file.filename}"}
@@ -137,19 +150,16 @@ def display_image(filename):
                 mimetype='multipart/x-mixed-replace; boundary=frame')
 
   
-@app.route("/extract_record")
+@bp.route("/extract_record")
 def extract_data():
     try:
-        # filename = secure_filename(request.args.get("filename", ""))
-        filename = request.args.get("filename", "")
-        response = fetch_records(filename)
-        # record = VideoProperties.query.filter_by(name = filename).first()
+        filename = secure_filename(request.args.get("filename", ""))
+        # filename = request.args.get("filename", "")
+        video_no = request.args.get("video_no", "")
+        if not (filename or video_no):
+            return {"MESSAGE": "FILENAME OR VIDEO ID IS MANDATORY TO EXTRACT RECORD"}
+        response = fetch_records(filename, video_no)
 
-        # response = jsonify({"name": record.name, "resolution": record.resolution, 
-        #             "frame_rate": record.frame_rate, "distortion_score": record.distortion_score,
-        #             "watermark": record.watermark, "aspect_ratio": record.aspect_ratio,
-        #             "duration": record.duration})
-        # response.status_code = 201
     except Exception as ex:
         response = json.dumps({"output": "Failure", "error": str(ex)})
         # response.status_code = 500
