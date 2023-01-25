@@ -45,7 +45,7 @@ def east_detector(img_path):
 
             for x in range(cols):
 
-                if scoresdata[x] < 0.75:  
+                if scoresdata[x] < 0.80:  
                     continue
                 
                 offsetx = x * 4.0
@@ -116,7 +116,7 @@ def east_detector(img_path):
             it=ima_org[final_y:final_h,final_x:final_w]
             if it.any():
                 gray = cv2.cvtColor(it,cv2.COLOR_BGR2GRAY)
-                txt = pytesseract.image_to_string(gray,lang='eng',config='--oem 3 --psm 11')
+                txt = pytesseract.image_to_string(gray,lang='eng')
                 return txt.strip()
         else:
             return ""

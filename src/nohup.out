@@ -1,0 +1,4 @@
+  File "main.py", line 40
+    logger.info(f"PROCESING STATUS UPDATED IN DB FOR: {file_name}")
+                                                                 ^
+SyntaxError: invalid syntax

@@ -50,9 +50,17 @@ class QualityAnalysis():
         
         logger.info(f"There are {len(images)} frames to be analyzed")
         # logger.debug(f"sample_image: {sample_image}")
-        scores = ray.get([get_score.remote(img, self.filename) for img in sample_image])
+        batch = 0
+        # for batch_images in TODO
+        for i in range(0, len(sample_image), 10):
+            scores.extend(ray.get([get_score.remote(img, self.filename) for img in sample_image[i:i+10]]))
         
-        return sum(scores)/len(scores)
+        
+        try:
+            return sum(scores)/len(scores)
+        except Exception as ex:
+            logger.error(f"Error in Quality: {ex}")
+            return 0
 
 
     def resolution_analysis(self, vs):
@@ -62,7 +70,9 @@ class QualityAnalysis():
             vid_qual = self._get_resolution(*image.shape[:2])
             vid_res = f"{image.shape[0]} x {image.shape[1]} Pixels"
             # return f"VIDEO QUALITY: [{vid_qual}] VIDEO RESOLUTION: {vid_res}"
-            return (vid_qual, vid_res)
+            return (vid_qual, vid_res, image.shape[0], image.shape[1])
+        else:
+            "N/A", "N/A", 0, 0
 
     @lru_cache()
     def _get_resolution(self, x, y):

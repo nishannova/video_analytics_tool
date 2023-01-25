@@ -1,5 +1,6 @@
 #app.py
 from flask import Flask, flash, request, redirect, url_for, render_template, Response
+
 import urllib.request
 import os
 from requests import session
@@ -24,7 +25,8 @@ from flask import Blueprint
 bp = Blueprint('ingest',__name__,url_prefix='/trace')
 
 app = Flask(__name__, static_folder='static')
- 
+
+
 UPLOAD_FOLDER = '/home/saintadmin/work/video_analytics_tool/data/raw'
 
 app.secret_key = "secret key"
@@ -86,9 +88,9 @@ def remove_artifacts(filename):
     shutil.rmtree(os.path.join(TEMP_FRAMES_DIR,filename))
     os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-@app.route('/')
+@bp.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('build/index.html')
  
 @app.route('/', methods=['POST'])
 def upload_image():
@@ -103,7 +105,7 @@ def upload_image():
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         flash('VIDEO FILE UPLOADED...!!!')
-        if persist_initial_record("", "", "", filename):
+        if persist_initial_record("", "", "", filename, "In Queue"):
             logger.info(f"Initial record created")
         return redirect(request.url)
     else:
@@ -122,24 +124,26 @@ def upload_video():
     url = request.form.get('url')
     type = request.form.get('type')
 
-    if not video_no and url:
-        return {"Message": "video_no or URL is mandatory"}
+    
     file = request.files.get('file')
-
+    
+    if not (video_no or url or file.filename):
+        return {"Message": "[ERROR] video_no or URL is mandatory"}
+        
     # if file.filename == '':
     #     return {"Message": "No files present"}
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
+        if persist_initial_record(video_no, url, type, filename, "In Queue"):
+            logger.info(f"Initial record created")
+        else:
+            return {"Message": "[ERROR] Initial Recorord could not be created"}
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     else:
         #Call the API to download file and and create record
-        pass    
-    if persist_initial_record(video_no, url, type, filename):
-        logger.info(f"Initial record created")
-    else:
-        return {"Message": "Allowed image types are - mp4, avi"}
+        return {"Message": "[ERROR] Allowed image types are - mp4, avi"}
 
-    return {"Message": f"File Uploaded: {file.filename}"}
+    return {"Message": f"[SUCCESS] File Uploaded: {file.filename}"}
     
 
 
@@ -168,4 +172,4 @@ def extract_data():
 
  
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", port="5001", debug=True)
