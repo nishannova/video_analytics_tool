@@ -24,7 +24,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Blueprint
 bp = Blueprint('ingest',__name__,url_prefix='/trace')
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__, static_folder='/static')
 
 
 UPLOAD_FOLDER = '/home/saintadmin/work/video_analytics_tool/data/raw'
@@ -92,27 +92,27 @@ def remove_artifacts(filename):
 def home():
     return render_template('build/index.html')
  
-@app.route('/', methods=['POST'])
-def upload_image():
-    if 'file' not in request.files:
-        flash('No file part')
-        return redirect(request.url)
-    file = request.files['file']
-    if file.filename == '':
-        flash('No image selected for uploading')
-        return redirect(request.url)
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        flash('VIDEO FILE UPLOADED...!!!')
-        if persist_initial_record("", "", "", filename, "In Queue"):
-            logger.info(f"Initial record created")
-        return redirect(request.url)
-    else:
-        flash('Allowed image types are - mp4, avi')
-        return redirect(request.url)
+# @app.route('/', methods=['POST'])
+# def upload_image():
+#     if 'file' not in request.files:
+#         flash('No file part')
+#         return redirect(request.url)
+#     file = request.files['file']
+#     if file.filename == '':
+#         flash('No image selected for uploading')
+#         return redirect(request.url)
+#     if file and allowed_file(file.filename):
+#         filename = secure_filename(file.filename)
+#         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+#         flash('VIDEO FILE UPLOADED...!!!')
+#         if persist_initial_record("", "", "", filename, "In Queue"):
+#             logger.info(f"Initial record created")
+#         return redirect(request.url)
+#     else:
+#         flash('Allowed image types are - mp4, avi')
+#         return redirect(request.url)
 
-    return render_template('index.html')
+#     return render_template('index.html')
 
 @bp.route('/upload', methods=['POST'])
 def upload_video():
@@ -134,11 +134,15 @@ def upload_video():
     #     return {"Message": "No files present"}
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
+        logger.info(f"Trying to Persist Initial Record")
         if persist_initial_record(video_no, url, type, filename, "In Queue"):
             logger.info(f"Initial record created")
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         else:
-            return {"Message": "[ERROR] Initial Recorord could not be created"}
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            logger.warning("Could not persist initial record")
+            # return {"Message": "[ERROR] Initial Recorord could not be created or File is Processed"}
+            pass
+        
     else:
         #Call the API to download file and and create record
         return {"Message": "[ERROR] Allowed image types are - mp4, avi"}

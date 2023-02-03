@@ -45,7 +45,7 @@ class QualityAnalysis():
 
         scores=[]
         images = os.listdir(os.path.join(TEMP_FRAMES_DIR, self.filename))
-        sample_num = min(int(0.05*len(images)), 100)
+        sample_num = min(int(0.05*len(images)), 20)
         sample_image = random.sample(images, sample_num)
         
         logger.info(f"There are {len(images)} frames to be analyzed")

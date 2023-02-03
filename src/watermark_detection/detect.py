@@ -17,11 +17,11 @@ def process_detection(filename):
     filtered = list()
 
     sample_image = list()
-    for i in range(0, len(images), 60):
+    for i in range(0, len(images), 120):
         sample_image.append(images[i])
     logger.warning(f"SAMPLE IMAGE: {sample_image}")
-    for i in range(0, len(sample_image), 10):
-        text_list = ray.get([east_detector.remote(os.path.join(TEMP_FRAMES_DIR,filename, frame)) for frame in sample_image[i:i+10]])
+    for i in range(0, len(sample_image), 100):
+        text_list = ray.get([east_detector.remote(os.path.join(TEMP_FRAMES_DIR,filename, frame)) for frame in sample_image[i:i+100]])
     
     # for frame in sample_image:
     #     text = east_detector(os.path.join(TEMP_FRAMES_DIR, frame))

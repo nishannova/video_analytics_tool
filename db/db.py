@@ -228,14 +228,19 @@ def persist_initial_record(video_no, url, type, filename, status):
             type = type,
             status = status
             )
+
         vid_record = session.query(VideoProperties).filter(VideoProperties.name == filename).first()
         if vid_record:
+            if vid_record.status=="Completed":
+                return False
             session.delete(vid_record)
             logger.info(f"Delete old record for filename: {filename}")
         
         if video_no:
             vid_record_1 = session.query(VideoProperties).filter(VideoProperties.video_no == video_no).first()
             if vid_record_1:
+                # if vid_record_1.status=="Completed":
+                #     return False
                 session.delete(vid_record_1)
                 logger.info(f"Delete old record for video_no: {video_no}")
 
