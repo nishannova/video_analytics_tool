@@ -1,207 +1,287 @@
 import sys
+import os
+import shutil
+import time
+import cv2
+from loguru import logger
+from threading import Thread
+from multiprocessing import Process
+from concurrent.futures import ThreadPoolExecutor
+import ultralytics
+ultralytics.checks()
+from ultralytics import YOLO
+
+
 sys.path.append("..")
+import ray
+import cv2
+import os
+
+from quality_analysis.quality_analysis import QualityAnalysis
+from watermark_detection.detect import process_detection
+from audio_audit.analysis import process_audio
 from watermark_detection.watermark import run_watermark
 from quality_analysis.quality_analysis import QualityAnalysis
 from audio_audit.analysis import process_audio
-import cv2
-import shutil
-import os
-from loguru import logger
 from watermark_detection.detect import process_detection
-import time 
-import ray
-
-from threading import Thread
-from multiprocessing import Process
-
+from video_audit.object_detection import video_audit
 from db.db import persist_audit_result, processing_status_update
+
 from config import (
-    RAW_DIR, 
-    PROCESSED_ORIGINAL_DIR, 
-    IN_PROCESS_DIR, 
+    RAW_DIR,
+    PROCESSED_ORIGINAL_DIR,
+    IN_PROCESS_DIR,
     FAILED_DIR,
-    TEMP_FRAMES_DIR
+    TEMP_FRAMES_DIR,
 )
 
-# RAW_DIR = '/home/saintadmin/work/video_analytics_tool/data/raw'
-# PROCESSED_ORIGINAL_DIR = "/home/saintadmin/work/video_analytics_tool/data/processed/original_video"
-# IN_PROCESS_DIR = '/home/saintadmin/work/video_analytics_tool/data/in_process'
-# FAILED_DIR = "/home/saintadmin/work/video_analytics_tool/data/failed_files"
+from loguru import logger
 
-class AuditVideo():
-    def __init__(self, file_name):
+
+def setup_logger():
+    logger.remove()  # Remove default loguru handler
+    log_format = '<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>'
+    logger.add(sys.stderr, format=log_format, level="INFO", filter=lambda record: record["extra"].get("name") == "ray_logger")
+    return logger.bind(name="ray_logger")
+
+@ray.remote
+def quality_analysis_remote(file_name, file_path):
+    logger = setup_logger()
+    q_obj = QualityAnalysis(cv2.VideoCapture(file_path), file_name)
+    # q_obj.split_frames(cv2.VideoCapture(file_path))
+    vid_q, resolution, height, width = q_obj.resolution_analysis(cv2.VideoCapture(file_path))
+    frame_rate = int(q_obj.frame_rate_analysis(cv2.VideoCapture(file_path)))
+    distortion = round(q_obj.distortion_analysys(), 2)
+    aspect_ratio = q_obj.aspect_ratio_analysis(cv2.VideoCapture(file_path))
+    duration = q_obj.duration(cv2.VideoCapture(file_path))
+
+    return vid_q, resolution, height, width, frame_rate, distortion, aspect_ratio, duration
+
+@ray.remote
+def process_detection_remote(file_name):
+    logger = setup_logger()
+    return process_detection(file_name)
+
+@ray.remote
+def process_audio_remote(file_path):
+    logger = setup_logger()
+    return process_audio(file_path)
+VIDEO_SAVE_PATH = "/home/saintadmin/work/video_analytics_tool/data/processed/object_detection_result"
+MODEL = YOLO('/home/saintadmin/work/video_analytics_tool/data/model/best.pt')
+
+@ray.remote
+def process_video_remote(file_name):
+    logger = setup_logger()
+    video_audit_res = video_audit(os.path.join(IN_PROCESS_DIR,file_name), VIDEO_SAVE_PATH, MODEL)
+    return video_audit_res
+
+class AuditVideo:
+    def __init__(self, file_name: str):
         self.file_name = file_name
-        self.quality_details = dict()
-        self.quality_details["QUALITY_ANALYSIS"] = {}
-        self.quality_details["DETECTED WATERMARKS"] = {}
-        self.quality_details["SANITY CHECKS"] = {}
-        self.quality_details["AUDIO AUDIT"] = {}
-        if processing_status_update(self.file_name, "Processing"):
-            logger.info(f"PROCESING STATUS UPDATED IN DB FOR: {file_name}")
-        
+        self.quality_details = {
+            "QUALITY_ANALYSIS": {},
+            "DETECTED WATERMARKS": {},
+            "SANITY_CHECKS": {},
+            "AUDIO AUDIT": {},
+            "VIDEO_AUDIT": {}
+        }
+        file_path = os.path.join(IN_PROCESS_DIR, self.file_name)
+        # self.q_obj = QualityAnalysis(cv2.VideoCapture(file_path), file_name)
+        # self.q_obj.split_frames(cv2.VideoCapture(file_path))
+
     def fit(self):
-        try:
-            if not self.file_name.endswith("png"):
-                logger.info(f"INITIALIZING AUDIT PROCESS FOR: {self.file_name}")
-                vid_q, resolution, frame_rate, distortion, aspect_ratio, duration, watermark = None, None, None, None, None, None, None
-                height, width = 0, 0
-                em_sadness, em_others, em_fear, em_disgust, em_surprise, em_joy, em_anger = "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A"
-                ht_hateful, ht_targeted, ht_aggressive = "N/A", "N/A", "N/A"
-                #QUALITY OBJECTS
-                q_obj = QualityAnalysis(cv2.VideoCapture(os.path.join(IN_PROCESS_DIR, self.file_name)), self.file_name)
-                q_obj.split_frames(cv2.VideoCapture(os.path.join(IN_PROCESS_DIR, self.file_name)))
-                vid_q, resolution, height, width = q_obj.resolution_analysis(cv2.VideoCapture(os.path.join(IN_PROCESS_DIR, self.file_name)))
-                frame_rate = int(q_obj.frame_rate_analysis(cv2.VideoCapture(os.path.join(IN_PROCESS_DIR, self.file_name))))
-                distortion = round(q_obj.distortion_analysys(), 2)
-                aspect_ratio = q_obj.aspect_ratio_analysis(cv2.VideoCapture(os.path.join(IN_PROCESS_DIR, self.file_name)))
-                duration = q_obj.duration(cv2.VideoCapture(os.path.join(IN_PROCESS_DIR, self.file_name)))
-                #QUALITY OBJECTS
-                
-                #WATERMARK MODULE
-                watermark = process_detection(self.file_name)
-                watermark = str(watermark) if watermark else "No Watermarks Found"
-                #WATERMARK MODULE
+        if not self.file_name.endswith("png"):
+            file_path = os.path.join(IN_PROCESS_DIR, self.file_name)
 
-                #AUDIO MODULE
-                emotion, hate_speech = process_audio(os.path.join(IN_PROCESS_DIR, self.file_name))
-                #AUDIO MODULE
+            # # Create Ray remote tasks
+            # quality_future = quality_analysis_remote.remote(self.file_name, file_path)
+            # watermark_future = process_detection_remote.remote(self.file_name)
+            # audio_future = process_audio_remote.remote(file_path)
 
-                # if emotion:
-                em_sadness = str(emotion.get("sadness", "N/A"))
-                em_others = str(emotion.get("others", "N/A"))
-                em_fear = str(emotion.get("fear", "N/A"))
-                em_disgust = str(emotion.get("disgust", "N/A"))
-                em_surprise = str(emotion.get("surprise", "N/A"))
-                em_joy = str(emotion.get("joy", "N/A"))
-                em_anger = str(emotion.get("anger", "N/A"))
-                # if hate_speech:
-                ht_hateful = str(hate_speech.get("hateful", "N/A"))
-                ht_targeted = str(hate_speech.get("targeted", "N/A"))
-                ht_aggressive = str(hate_speech.get("aggressive", "N/A"))
+            # # Get the results from remote tasks
+            # quality_result = ray.get(quality_future)
+            # watermark = ray.get(watermark_future)
+            # emotion, hate_speech = ray.get(audio_future)
+            # Create Ray remote tasks
+            quality_future = quality_analysis_remote.remote(self.file_name, file_path)
+            watermark_future = process_detection_remote.remote(self.file_name)
+            audio_future = process_audio_remote.remote(file_path)
+            video_future = process_video_remote.remote(self.file_name)
 
-                self.quality_details["QUALITY_ANALYSIS"]["RESOLUTION"] = f"Video type: [{vid_q}] and Resolution: {resolution}"
-                self.quality_details["QUALITY_ANALYSIS"]["FRAME RATE"] = str(frame_rate) + " FPS"
-                self.quality_details["QUALITY_ANALYSIS"]["DISTORTION SCORE"] = str(distortion) + " %"
-                self.quality_details["SANITY CHECKS"]["ACCEPTABLE ASPECT RATIO"] = str(aspect_ratio)
-                self.quality_details["SANITY CHECKS"]["DURATION"] = str(duration) + " Sec"
-                self.quality_details["DETECTED WATERMARKS"]["CONTENTS"] = watermark.split(",")
-                self.quality_details["AUDIO AUDIT"]["EMOTION_DETECTION"] = emotion
-                self.quality_details["AUDIO AUDIT"]["HATE_SPEECH_DETECTION"] = hate_speech
+            # Get the results from remote tasks
+            quality_result = ray.get(quality_future)
+            watermark = ray.get(watermark_future)
+            emotion, hate_speech = ray.get(audio_future)
+            video_details = ray.get(video_future)
 
-                logger.info(self.quality_details)
-                
-                persist_flag = persist_audit_result(
-                                                    self.file_name, 
-                                                    vid_q, 
-                                                    resolution, 
-                                                    frame_rate, 
-                                                    distortion, 
-                                                    aspect_ratio, 
-                                                    duration, 
-                                                    watermark,
-                                                    em_sadness, 
-                                                    em_others, 
-                                                    em_fear, 
-                                                    em_disgust, 
-                                                    em_surprise, 
-                                                    em_joy, 
-                                                    em_anger,
-                                                    ht_hateful, 
-                                                    ht_targeted, 
-                                                    ht_aggressive,
-                                                    height, 
-                                                    width,
-                                                    "Completed"
-                                                        )
-                if persist_flag:
-                    logger.info("Successfullt Persisted Records")
-                
+            self.populate_quality_details(quality_result, watermark, emotion, hate_speech, video_details)
+            self.save_results(quality_result, watermark, emotion, hate_speech)
 
-                # remove_artifacts(self.file_name)
-                # logger.info("Successfully removed all the temporary artifacts: {self.file_name}")
-            try:
-                shutil.move(os.path.join(IN_PROCESS_DIR, self.file_name), os.path.join(PROCESSED_ORIGINAL_DIR, self.file_name))
-                logger.warning(f"MOVED FILE: {self.file_name} TO PROCESSED ORIGINAL")
-                self.remove_artifacts()
-                logger.info(f"Successfully removed all the temporary artifacts: {self.file_name}")
-            except Exception as ex:
-                logger.error(f"ERROR: [ {ex} ] WHILE MOVING FILES TO ORIGINAL")
-        except Exception as ex:
-            logger.error(f"ERROR: {ex} WHILE PROCESSING VIDEO: {self.file_name}")
-            if processing_status_update(self.file_name, "Error"):
-                logger.info(f"PROCESING STATUS UPDATED IN DB FOR: {self.file_name}")
-            try:
-                self.remove_artifacts()
-                logger.info(f"Successfully removed all the temporary artifacts: {self.file_name}")
-            except Exception as ex:
-                logger.error(f"ERROR: [ {ex} ] WHILE MOVING FILES TO ORIGINAL")
+            shutil.move(os.path.join(IN_PROCESS_DIR, self.file_name), os.path.join(PROCESSED_ORIGINAL_DIR, self.file_name))
+            self.remove_artifacts()
+
+        # except Exception as ex:
+        #     logger.error(f"ERROR: {ex} WHILE PROCESSING VIDEO: {self.file_name}")
+
+    def analyze_quality(self, file_path):
+        quality_future = quality_analysis_remote.remote(self.file_name, file_path)
+        return ray.get(quality_future)
+
+    def detect_watermark(self):
+        watermark_future = process_detection_remote.remote(self.file_name)
+        watermark = ray.get(watermark_future)
+        return str(watermark) if watermark else "No Watermarks Found"
+
+    def analyze_audio(self, file_path):
+        audio_future = process_audio_remote.remote(file_path)
+        return ray.get(audio_future)
+
+    def populate_quality_details(self, quality_result, watermark, emotion, hate_speech, video_details):
+        vid_q, resolution, height, width, frame_rate, distortion, aspect_ratio, duration = quality_result
+        self.quality_details["QUALITY_ANALYSIS"]["RESOLUTION"] = f"Video type: [{vid_q}] and Resolution: {resolution}"
+        self.quality_details["QUALITY_ANALYSIS"]["FRAME RATE"] = str(frame_rate) + " FPS"
+        self.quality_details["QUALITY_ANALYSIS"]["DISTORTION SCORE"] = str(distortion) + " %"
+        self.quality_details["SANITY_CHECKS"]["ACCEPTABLE ASPECT RATIO"] = str(aspect_ratio)
+        self.quality_details["SANITY_CHECKS"]["DURATION"] = str(duration) + " Sec"
+        self.quality_details["DETECTED WATERMARKS"]["CONTENTS"] = watermark.split(",")
+        self.quality_details["AUDIO AUDIT"]["EMOTION_DETECTION"] = emotion
+        self.quality_details["AUDIO AUDIT"]["HATE_SPEECH_DETECTION"] = hate_speech
+        self.quality_details["VIDEO_AUDIT"] = video_details
+        import pprint
+        pprint.pprint(self.quality_details)
+    
+    def save_results(self, quality_result, watermark, emotion, hate_speech):
+        vid_q, resolution, height, width, frame_rate, distortion, aspect_ratio, duration = quality_result
+        em_sadness = str(emotion.get("sadness", "N/A"))
+        em_others = str(emotion.get("others", "N/A"))
+        em_fear = str(emotion.get("fear", "N/A"))
+        em_disgust = str(emotion.get("disgust", "N/A"))
+        em_surprise = str(emotion.get("surprise", "N/A"))
+        em_joy = str(emotion.get("joy", "N/A"))
+        em_anger = str(emotion.get("anger", "N/A"))
+
+        ht_hateful = str(hate_speech.get("hateful", "N/A"))
+        ht_targeted = str(hate_speech.get("targeted", "N/A"))
+        ht_aggressive = str(hate_speech.get("aggressive", "N/A"))
+
+        persist_flag = persist_audit_result(
+            self.file_name,
+            vid_q,
+            resolution,
+            frame_rate,
+            distortion,
+            aspect_ratio,
+            duration,
+            watermark,
+            em_sadness,
+            em_others,
+            em_fear,
+            em_disgust,
+            em_surprise,
+            em_joy,
+            em_anger,
+            ht_hateful,
+            ht_targeted,
+            ht_aggressive,
+            height,
+            width,
+            "Completed"
+        )
+        if not persist_flag:
+            logger.error(f"FAILED TO SAVE DATA IN DATABASE")
 
     def remove_artifacts(self):
+        # Implement the method to remove temporary artifacts
         try:
-            shutil.rmtree(os.path.join(TEMP_FRAMES_DIR,self.file_name))
-            os.remove(os.path.join(PROCESSED_ORIGINAL_DIR, self.file_name)) 
+            shutil.rmtree(os.path.join(TEMP_FRAMES_DIR, self.file_name))
+            os.remove(os.path.join(PROCESSED_ORIGINAL_DIR, self.file_name))
+            logger.warning(f"REMOVAL OF ARTIFACTS DONE")
         except Exception as ex:
             logger.error(f"FAILED TO REMOVE ARTIFACTS: {self.file_name} with {ex}")
 
 
-    def detect_watermark(self, cam=False):
-        run_watermark(self.vs, cam)
+    # def detect_watermark(self, cam=False):
+    #     run_watermark(self.vs, cam)
 
     def analyse_video_quality(self):
         pass
 
-if __name__ == "__main__":
-    # quality_details = dict()
-    # quality_details["QUALITY_ANALYSIS"] = {}
-    # quality_details["DETECTED WATERMARKS"] = {}
-    # quality_details["SANITY CHECKS"] = {}
-    count = 0
 
-    if os.listdir(IN_PROCESS_DIR):
-        logger.warning(f"FOUND FAILED FILES IN IN-PROCESS. MOVING THEM TO RAW")
-        for file in os.listdir(IN_PROCESS_DIR):
-            shutil.move(os.path.join(IN_PROCESS_DIR, file), os.path.join(RAW_DIR, file))
-            logger.warning(f"MOVED: {file} FROM IN-PROCESS TO RAW")    
-    cycle = 1 
+from concurrent.futures import ThreadPoolExecutor
+from multiprocessing import Process, Pool
+from multiprocessing import Process, Manager
+
+def split_frames(filename, vs):
+        os.makedirs(os.path.join(TEMP_FRAMES_DIR, filename), exist_ok=True)
+        success,image = vs.read()
+        count =0
+        for file in os.listdir(os.path.join(TEMP_FRAMES_DIR, filename)):
+            os.remove(os.path.join(TEMP_FRAMES_DIR, filename,file))
+        while success:
+            cv2.imwrite(os.path.join(TEMP_FRAMES_DIR, filename, f"frame{count}.jpg"), image)
+            success,image = vs.read()
+            if success:
+                count +=1
+            else:
+                break
+
+
+def process_video_file(file_name):
+    audit_video = AuditVideo(file_name)
+    # try:
+    shutil.move(os.path.join(RAW_DIR, file_name), os.path.join(IN_PROCESS_DIR, file_name))
+    logger.info(f"Moved {file_name} from RAW_DIR to IN_PROCESS_DIR")
+    split_frames(file_name, cv2.VideoCapture(os.path.join(IN_PROCESS_DIR, file_name)))
+
+    audit_video.fit()
+    # except Exception as e:
+    #     logger.error(f"ERROR: {e} WHILE PROCESSING VIDEO: {file_name}")
+
+def process_videos_parallel(videos):
+    processes = []
+
+    for video in videos:
+        # p = Process(target=process_video_file, args=(video,))
+        process_video_file(video)
+    #     processes.append(p)
+    #     p.start()
+
+    # for p in processes:
+    #     p.join()
+
+
+def process_videos(max_parallel=2):
+    cycle = 1
     while True:
         start = time.time()
-        # logger.info(f"*****************ML PIPELINE BEGINING*******************")
-        raw_files = os.listdir(RAW_DIR)
-        path = os.listdir(IN_PROCESS_DIR)
 
-        if not raw_files:
-            # logger.warning(f"NO FILES IN LANDING DIRECTORY CHECKING AFTER A QUICK NAP :)")
-            # ray.shutdown()
-            # logger.warning(f"SHUTTING DOWN DISTRIBUTION ENGINE")
+        if not os.listdir(IN_PROCESS_DIR) and not os.listdir(RAW_DIR):
             time.sleep(3)
             continue
-        logger.info(f"FOUND LISTED FILES IN RAW:\n{raw_files}")
-        
-        for file in raw_files:
-            shutil.move(os.path.join(RAW_DIR, file), os.path.join(IN_PROCESS_DIR, file))
-            logger.warning(f"MOVED: {file} FROM RAW TO IN-PROCESS")
-            count=count+1
-            if count==2:
-                count=0
-                break
-        
-        objects = [AuditVideo(file_name) for file_name in os.listdir(IN_PROCESS_DIR) if not file_name.endswith("png")]
-        logger.info(f"OBJECTS: {objects}")
-        # threads = [Thread(target=obj.fit) for obj in objects]
-        processes = [Process(target=obj.fit) for obj in objects]
-        logger.info(f"PROCESSES: {processes}")
-        _ = [thread.start() for thread in processes]
-        _ = [thread.join() for thread in processes]
-        logger.info(f"COMPLETED {cycle} CYCLE")
+
+        logger.info(f"RAW_DIR: {RAW_DIR}")
+        logger.info(f"IN_PROCESS_DIR: {IN_PROCESS_DIR}")
+
+        raw_files = [file_name for file_name in os.listdir(RAW_DIR) if not file_name.endswith("png")]
+        logger.info(f"Raw files found: {raw_files}")
+
+        # Process videos in chunks of max_parallel
+        for i in range(0, len(raw_files), max_parallel):
+            chunk = raw_files[i:i + max_parallel]
+            process_videos_parallel(chunk)
+
         cycle += 1
         logger.info(f"ENTIRE PROCESSING CYCLE TOOK: {time.time() - start} Secs")
+
         failed_files = os.listdir(IN_PROCESS_DIR)
-        # ray.shutdown()
         if failed_files:
             for file in failed_files:
-                logger.warning(f"MOVING: {file} to FAILED FILE DIRECTORY")
                 try:
                     shutil.move(os.path.join(IN_PROCESS_DIR, file), os.path.join(FAILED_DIR, file))
+                    logger.info(f"Processed {file}, moved to FAILED")
+
                 except Exception as ex:
                     logger.error(f"FAILED TO MOVE: {file} WITH ERROR: {ex}")
-    
+
+if __name__ == "__main__":
+    process_videos()

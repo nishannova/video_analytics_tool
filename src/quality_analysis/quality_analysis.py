@@ -25,9 +25,10 @@ warnings.filterwarnings("ignore")
 class QualityAnalysis():
     def __init__(self, vs, filename):
         self.vs = vs
-        os.makedirs(os.path.join(TEMP_FRAMES_DIR, filename), exist_ok=True)
         self.filename = filename
+        # self.split_frames(self.vs) 
     def split_frames(self, vs):
+        os.makedirs(os.path.join(TEMP_FRAMES_DIR, self.filename), exist_ok=True)
         success,image = vs.read()
         count =0
         for file in os.listdir(os.path.join(TEMP_FRAMES_DIR, self.filename)):
@@ -52,8 +53,8 @@ class QualityAnalysis():
         # logger.debug(f"sample_image: {sample_image}")
         batch = 0
         # for batch_images in TODO
-        for i in range(0, len(sample_image), 100):
-            scores.extend(ray.get([get_score.remote(img, self.filename) for img in sample_image[i:i+100]]))
+        for i in range(0, len(sample_image), 10):
+            scores.extend(ray.get([get_score.remote(img, self.filename) for img in sample_image[i:i+10]]))
         
         
         try:
@@ -132,15 +133,15 @@ class QualityAnalysis():
 
 @ray.remote(scheduling_strategy="SPREAD")
 def get_score(img, filename):
+    import imquality.brisque as brisque
     score = 0
-    # logger.debug(f"About to get the image")
     im = img_as_float(io.imread(os.path.join(TEMP_FRAMES_DIR, filename, img), as_gray=False))
-    # logger.debug(f"Successfully got the image and about to get the score")
     try:
         score = brisque.score(im)
     except Exception as ex:
-        logger.error(f"Error while brisque: {ex}")
+        print(f"Error while brisque: {ex}")
     return score
+
     
 
 if __name__ == "__main__":

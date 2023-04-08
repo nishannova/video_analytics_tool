@@ -22,6 +22,7 @@ def east_detector(img_path):
         # blur = cv2.bilateralFilter(image2,5,55,60)
 
         # image2 = blur.copy()
+        # EAST_MODEL_PATH = "/home/saintadmin/work/video_analytics_tool/data/model/frozen_east_text_detection.pb"
         net = cv2.dnn.readNet(EAST_MODEL_PATH)
         blob = cv2.dnn.blobFromImage(image2, 1.0, (width2, height2), (123.68, 116.78, 103.94), swapRB=True, crop=False)
         net.setInput(blob)
@@ -121,4 +122,4 @@ def east_detector(img_path):
         else:
             return ""
     except Exception as ex:
-        logger.error(f"Error in watermark: {ex}")
+        print(f"Error in watermark: {ex}")

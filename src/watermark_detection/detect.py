@@ -17,18 +17,24 @@ def process_detection(filename):
     filtered = list()
 
     sample_image = list()
-    for i in range(0, len(images), 120):
+    for i in range(0, len(images), 60):
         sample_image.append(images[i])
     logger.warning(f"SAMPLE IMAGE: {sample_image}")
-    for i in range(0, len(sample_image), 100):
-        text_list = ray.get([east_detector.remote(os.path.join(TEMP_FRAMES_DIR,filename, frame)) for frame in sample_image[i:i+100]])
+    for i in range(0, len(sample_image), 10):
+        print("TEMP_FRAMES_DIR:", TEMP_FRAMES_DIR)
+        print(f"FILES: {os.listdir(TEMP_FRAMES_DIR)}")
+        text_list = ray.get([east_detector.remote(os.path.join(TEMP_FRAMES_DIR,filename, frame)) for frame in sample_image[i:i+100] if frame])
+
     
     # for frame in sample_image:
-    #     text = east_detector(os.path.join(TEMP_FRAMES_DIR, frame))
+    #     texts.append(east_detector(os.path.join(TEMP_FRAMES_DIR, filename, frame)))
+    # if texts:
+    #     text_list=texts.copy()
     try:
         if text_list:
             for text in text_list:
-                _ = [texts.append(x) for x in text.split("\n")]
+                if text:
+                    _ = [texts.append(x) for x in text.split("\n")]
             for id, txt in enumerate(texts):
                 # logger.debug(f"PROCESSING: {txt} len(x): {len(txt)} Index: {id}")
                 if (not txt) or\
@@ -53,6 +59,7 @@ def process_detection(filename):
                 logger.warning(f"REMOVAL OF UNWANTED NOISE DONE ON WATERMARK")
     except Exception as ex:
         logger.error(f"Failed to process watermark: {ex}")
+        return "No Watermark Found"
     logger.warning(f"DETECTED TEXTS: {filtered}")
 
     return filtered
