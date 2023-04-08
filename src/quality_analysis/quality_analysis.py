@@ -52,8 +52,8 @@ class QualityAnalysis():
         # logger.debug(f"sample_image: {sample_image}")
         batch = 0
         # for batch_images in TODO
-        for i in range(0, len(sample_image), 10):
-            scores.extend(ray.get([get_score.remote(img, self.filename) for img in sample_image[i:i+10]]))
+        for i in range(0, len(sample_image), 100):
+            scores.extend(ray.get([get_score.remote(img, self.filename) for img in sample_image[i:i+100]]))
         
         
         try:

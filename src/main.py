@@ -196,7 +196,7 @@ if __name__ == "__main__":
         cycle += 1
         logger.info(f"ENTIRE PROCESSING CYCLE TOOK: {time.time() - start} Secs")
         failed_files = os.listdir(IN_PROCESS_DIR)
-        ray.shutdown()
+        # ray.shutdown()
         if failed_files:
             for file in failed_files:
                 logger.warning(f"MOVING: {file} to FAILED FILE DIRECTORY")
