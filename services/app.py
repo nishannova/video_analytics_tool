@@ -28,6 +28,7 @@ app = Flask(__name__, static_folder='/static')
 
 
 UPLOAD_FOLDER = '/home/saintadmin/work/video_analytics_tool/data/raw'
+FINAL_OUTPUT_DIR = '/home/saintadmin/work/video_analytics_tool/data/processed/final_output'
 
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -76,6 +77,26 @@ class VideoCamera(object):
         return None
 
 
+def get_video_info(filename, video_id=None):
+    # Replace this line with the actual path to your JSON file
+    try:
+        json_file_path = os.path.join(FINAL_OUTPUT_DIR, filename)
+
+        with open(json_file_path, "r") as file:
+            video_data = json.load(file)
+
+        # if video_id:
+        #     for video in video_data:
+        #         if video["video_no"] == video_id:
+        #             return video
+        if filename:
+            if video_data:
+                return video_data
+    except Exception as ex:
+        logger.error(f"{ex} WHILE SEARCHING FRO SAVED RECORD")
+        return "NO RECORDS FOUND IN DATABASE"
+
+    
 
 def gen(camera):
     while True:
@@ -135,13 +156,13 @@ def upload_video():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         logger.info(f"Trying to Persist Initial Record")
-        if persist_initial_record(video_no, url, type, filename, "In Queue"):
-            logger.info(f"Initial record created")
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        else:
-            logger.warning("Could not persist initial record")
+        # if persist_initial_record(video_no, url, type, filename, "In Queue"):
+            # logger.info(f"Initial record created")
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        # else:
+            # logger.warning("Could not persist initial record")
             # return {"Message": "[ERROR] Initial Recorord could not be created or File is Processed"}
-            pass
+            # pass
         
     else:
         #Call the API to download file and and create record
@@ -173,6 +194,22 @@ def extract_data():
         # response.status_code = 500
 
     return response
+
+@bp.route("/get_video_info")
+def get_video_info_api():
+    # video_id = request.args.get("video_id", None)
+    filename = request.args.get("filename", None)
+
+    if not (filename):
+        return {"MESSAGE": "FILENAME OR VIDEO ID IS MANDATORY TO RETRIEVE VIDEO INFO"}
+    else:
+        filename = secure_filename(filename)
+    video_info = get_video_info(filename=filename+"_data.json")
+
+    if video_info:
+        return json.dumps(video_info).encode('utf-8')
+    else:
+        return {"MESSAGE": "VIDEO NOT FOUND"}
 
  
 if __name__ == "__main__":

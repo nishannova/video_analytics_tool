@@ -1,0 +1,19 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME RATE": "37 FPS",
+        "DISTORTION SCORE": "33.78 %"
+    },
+    "DETECTED WATERMARKS": {
+        "CONTENTS": "etha subramanian er bree lee TL arate cuee Es IX Takalak Swetha Subramanian   MX Tiakalak Install MX TakaTak to earn up to 1 000: i MX Talkalak TakaTak ID: swetha.su MX Takalak mA Se ea oe TakaTak ID: swetha.subramanian SS A   Install MX TakaTak to earn up to  1 000:"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE ASPECT RATIO": "True",
+        "DURATION": "16 Sec"
+    },
+    "AUDIO AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": []
+    },
+    "VIDEO_AUDIT": {}
+}

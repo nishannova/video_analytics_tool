@@ -1,0 +1,19 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME RATE": "30 FPS",
+        "DISTORTION SCORE": "35.88 %"
+    },
+    "DETECTED WATERMARKS": {
+        "CONTENTS": []
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE ASPECT RATIO": "True",
+        "DURATION": "14 Sec"
+    },
+    "AUDIO AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": []
+    },
+    "VIDEO_AUDIT": {}
+}

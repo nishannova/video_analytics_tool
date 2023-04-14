@@ -27,15 +27,15 @@ class QualityAnalysis():
         self.vs = vs
         self.filename = filename
         # self.split_frames(self.vs) 
-    def split_frames(self, vs):
+    def split_frames(self):
         os.makedirs(os.path.join(TEMP_FRAMES_DIR, self.filename), exist_ok=True)
-        success,image = vs.read()
+        success,image = self.vs.read()
         count =0
         for file in os.listdir(os.path.join(TEMP_FRAMES_DIR, self.filename)):
             os.remove(os.path.join(TEMP_FRAMES_DIR, self.filename,file))
         while success:
             cv2.imwrite(os.path.join(TEMP_FRAMES_DIR, self.filename, f"frame{count}.jpg"), image)
-            success,image = vs.read()
+            success,image = self.vs.read()
             if success:
                 count +=1
             else:
@@ -53,8 +53,8 @@ class QualityAnalysis():
         # logger.debug(f"sample_image: {sample_image}")
         batch = 0
         # for batch_images in TODO
-        for i in range(0, len(sample_image), 10):
-            scores.extend(ray.get([get_score.remote(img, self.filename) for img in sample_image[i:i+10]]))
+        for i in range(0, len(sample_image), 20):
+            scores.extend(ray.get([get_score.remote(img, self.filename) for img in sample_image[i:i+20]]))
         
         
         try:
@@ -64,8 +64,8 @@ class QualityAnalysis():
             return 0
 
 
-    def resolution_analysis(self, vs):
-        success,image = vs.read()
+    def resolution_analysis(self):
+        success,image = self.vs.read()
         # logger.debug(f"ANALYSING RESOLUTION, STATUS: {success}")
         if success:
             vid_qual = self._get_resolution(*image.shape[:2])
@@ -96,18 +96,22 @@ class QualityAnalysis():
         # logger.debug(f"Identified Resolution: {min_key}")
         return min_key
 
-    def frame_rate_analysis(self, vs):
-        fps = vs.get(cv2.CAP_PROP_FPS)
+    def frame_rate_analysis(self):
+        fps = self.vs.get(cv2.CAP_PROP_FPS)
         return fps
 
-    def duration(self, vs):
-        fps = vs.get(cv2.CAP_PROP_FPS)
-        frame_count = vs.get(cv2.CAP_PROP_FRAME_COUNT)
+    def duration(self):
+        fps = self.vs.get(cv2.CAP_PROP_FPS)
+        frame_count = self.vs.get(cv2.CAP_PROP_FRAME_COUNT)
         # logger.debug(f"Duration {frame_count/fps} seconds")
-        return int(frame_count/fps)
+        try:
+            return int(frame_count/fps)
+        except Exception as ex:
+            print("ERROR: {ex} in duration")
+            return 0.0
 
-    def aspect_ratio_analysis(self, vs):
-        success,image = vs.read()
+    def aspect_ratio_analysis(self):
+        success,image = self.vs.read()
         count =0
         while success:
             cv2.imwrite(os.path.join(TEMP_FRAMES_DIR, self.filename, f"frame{count}.jpg"), image)

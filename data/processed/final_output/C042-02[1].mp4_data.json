@@ -1,0 +1,213 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME RATE": "30 FPS",
+        "DISTORTION SCORE": "26.99 %"
+    },
+    "DETECTED WATERMARKS": {
+        "CONTENTS": "TakaTak ID: makeover  Nancy Jennifer TakaTak ID: makeoverbyjennifer MX Takalak TakaT ak ID: makeoverbyjennifer"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE ASPECT RATIO": "True",
+        "DURATION": "18 Sec"
+    },
+    "AUDIO AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                0,
+                {
+                    "others": 0.9661487936973572
+                },
+                [
+                    [
+                        "to",
+                        1.61
+                    ],
+                    [
+                        "på",
+                        2.56
+                    ],
+                    [
+                        "det",
+                        2.8
+                    ],
+                    [
+                        "passer",
+                        3.0
+                    ]
+                ]
+            ],
+            [
+                5,
+                {
+                    "others": 0.9726449847221375
+                },
+                [
+                    [
+                        "Er",
+                        5.33
+                    ],
+                    [
+                        "Du",
+                        5.62
+                    ],
+                    [
+                        "i",
+                        6.07
+                    ],
+                    [
+                        "en",
+                        6.23
+                    ],
+                    [
+                        "anden",
+                        6.39
+                    ],
+                    [
+                        "kilde",
+                        7.19
+                    ],
+                    [
+                        "Tandlægen",
+                        9.85
+                    ]
+                ]
+            ],
+            [
+                10,
+                {
+                    "others": 0.9750584363937378
+                },
+                [
+                    [
+                        "Pladerne",
+                        10.42
+                    ],
+                    [
+                        "Grace",
+                        12.22
+                    ],
+                    [
+                        "Den",
+                        13.85
+                    ],
+                    [
+                        "Ene",
+                        14.08
+                    ],
+                    [
+                        "der",
+                        14.16
+                    ],
+                    [
+                        "heller",
+                        14.28
+                    ],
+                    [
+                        "ikke",
+                        14.43
+                    ]
+                ]
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [
+            [
+                0,
+                {},
+                [
+                    [
+                        "to",
+                        1.61
+                    ],
+                    [
+                        "på",
+                        2.56
+                    ],
+                    [
+                        "det",
+                        2.8
+                    ],
+                    [
+                        "passer",
+                        3.0
+                    ]
+                ]
+            ],
+            [
+                5,
+                {},
+                [
+                    [
+                        "Er",
+                        5.33
+                    ],
+                    [
+                        "Du",
+                        5.62
+                    ],
+                    [
+                        "i",
+                        6.07
+                    ],
+                    [
+                        "en",
+                        6.23
+                    ],
+                    [
+                        "anden",
+                        6.39
+                    ],
+                    [
+                        "kilde",
+                        7.19
+                    ],
+                    [
+                        "Tandlægen",
+                        9.85
+                    ]
+                ]
+            ],
+            [
+                10,
+                {},
+                [
+                    [
+                        "Pladerne",
+                        10.42
+                    ],
+                    [
+                        "Grace",
+                        12.22
+                    ],
+                    [
+                        "Den",
+                        13.85
+                    ],
+                    [
+                        "Ene",
+                        14.08
+                    ],
+                    [
+                        "der",
+                        14.16
+                    ],
+                    [
+                        "heller",
+                        14.28
+                    ],
+                    [
+                        "ikke",
+                        14.43
+                    ]
+                ]
+            ]
+        ]
+    },
+    "VIDEO_AUDIT": {
+        "Knife": {
+            "Timestamp": [
+                15.999839999999999
+            ]
+        }
+    }
+}
