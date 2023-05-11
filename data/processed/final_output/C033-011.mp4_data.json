@@ -1,19 +1,28 @@
 {
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
-        "FRAME RATE": "37 FPS",
-        "DISTORTION SCORE": "33.78 %"
+        "FRAME_RATE": "37 FPS",
+        "DISTORTION_SCORE": "39.31 %"
     },
-    "DETECTED WATERMARKS": {
-        "CONTENTS": "etha subramanian er bree lee TL arate cuee Es IX Takalak Swetha Subramanian   MX Tiakalak Install MX TakaTak to earn up to 1 000: i MX Talkalak TakaTak ID: swetha.su MX Takalak mA Se ea oe TakaTak ID: swetha.subramanian SS A   Install MX TakaTak to earn up to  1 000:"
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "SS A   IX Takalak   MX Tiakalak TakaTak ID: swetha.su er bree lee TL i MX Talkalak etha subramanian arate cuee Es mA Se ea oe Install MX TakaTak to earn up to 1 000: Install MX TakaTak to earn up to  1 000: Swetha Subramanian TakaTak ID: swetha.subramanian MX Takalak"
     },
     "SANITY_CHECKS": {
-        "ACCEPTABLE ASPECT RATIO": "True",
+        "ACCEPTABLE_ASPECT_RATIO": "True",
         "DURATION": "16 Sec"
     },
-    "AUDIO AUDIT": {
+    "AUDIO_AUDIT": {
         "EMOTION_DETECTION": [],
-        "HATE_SPEECH_DETECTION": []
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "",
+        "LANGUAGE_CODE": "",
+        "TRANSLATION": "",
+        "SEGMENT_DURATION": 2
     },
-    "VIDEO_AUDIT": {}
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [],
+    "PERSON_DETECTED": "Rajasthan"
 }

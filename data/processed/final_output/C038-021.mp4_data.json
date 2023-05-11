@@ -1,0 +1,63 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "59 FPS",
+        "DISTORTION_SCORE": "58.82 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "MII cl LD ae Aras Lip ee aa 1 ee J ap a Gee eR pe bs    Oe wend SF ZB a iy q SS a IPR CRE Sg PL ea oe ri   oe he  ae I eo Ror ee ey CT ag y eh el 4 oN ey Ke ao .   2 Pe EOL EY TakaTak ID: shruthi selv  tT   4 Ee a aie TT ag LT Se egy deat wy   . sam BD ower ins v"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "25 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                9,
+                "anger",
+                "அந்த சிற்ப நிறுத்தி"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [
+            "anger"
+        ],
+        "TRANSCRIPTION": "அக்கா கண் நாளத்தின் நடந்து போவே துறையாகும். அந்த சிற்ப நிறுத்தி ஏன் அய்யா ச்சே ஏன் காலம் பார்த்து",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": " Aka eye canal walking Poway is the department Stop that sculpture why Sir Why period? looking at",
+        "SEGMENT_DURATION": 3
+    },
+    "VIDEO_AUDIT": {
+        "Knife": {
+            "Timestamp": [
+                24.406779661016948,
+                14.23728813559322
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Knife"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 9,
+            "DETAILS": "anger",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 24.406779661016948,
+            "DETAILS": "Knife",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 14.23728813559322,
+            "DETAILS": "Knife",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "-"
+}

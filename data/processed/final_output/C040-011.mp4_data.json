@@ -1,0 +1,56 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "23 FPS",
+        "DISTORTION_SCORE": "19.26 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "ae kannay MX Takallak Aishwarya kannan oP SSI CTE S  TakaTak ID: kanfian alshw TakaTak ID: kannan aishwarya"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "18 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                12,
+                "joy",
+                "என்ன மாயம்"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [
+            "joy"
+        ],
+        "TRANSCRIPTION": "எங்கேயோ பார்க்க மயக்கம் எப்போதான் நெருக்கம்? விதையின் பேச நாளை ஓரமும் பருப்புக்கு என்ன மாயம் மாயம்?",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": " Look somewhere Dizzy when Intimacy is the seed Talk tomorrow Oramum for lentils What magic magic",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "Beer": {
+            "Timestamp": [
+                15.245909491525422
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Beer"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 12,
+            "DETAILS": "joy",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 15.245909491525422,
+            "DETAILS": "Beer",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Agra"
+}

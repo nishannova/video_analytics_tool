@@ -1,0 +1,68 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "25 FPS",
+        "DISTORTION_SCORE": "49.81 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "MX Takalak TakaTak ID: vjshafiofficial VJ Shafi Official"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "24 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                3,
+                "disgust anger",
+                "வாங்கடா இது ஸ்டாழ் கே தமிழ்நாடே"
+            ],
+            [
+                6,
+                "sadness",
+                "தண்ணீரில் தத்தளித்து பார்த்திருப்போம் ஆனால் கண்ணீரை"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [
+            "disgust anger",
+            "sadness"
+        ],
+        "TRANSCRIPTION": "இன்றைக்கு நாம் பார்க்கப்போவது ஹலோ நடக்காமல் வாங்கடா. இது ஸ்டாழ் கே. தமிழ்நாடே தண்ணீரில் தத்தளித்து பார்த்திருப்போம். ஆனால் கண்ணீரை தத்தளித்து பார்த்திருக்கிறீர்களா? நிறைய நிறைய.",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": " What we are going to see today is Hello Come on, this is Tamil Nadu We would have seen him wading in the water but tears Have you seen a lot?",
+        "SEGMENT_DURATION": 3
+    },
+    "VIDEO_AUDIT": {
+        "Knife": {
+            "Timestamp": [
+                24.0
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Knife"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 3,
+            "DETAILS": "disgust anger",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "EMOTION",
+            "TIME": 6,
+            "DETAILS": "sadness",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 24.0,
+            "DETAILS": "Knife",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Jaipur"
+}

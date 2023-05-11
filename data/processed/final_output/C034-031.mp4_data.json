@@ -1,19 +1,28 @@
 {
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
-        "FRAME RATE": "27 FPS",
-        "DISTORTION SCORE": "21.86 %"
+        "FRAME_RATE": "27 FPS",
+        "DISTORTION_SCORE": "31.86 %"
     },
-    "DETECTED WATERMARKS": {
-        "CONTENTS": "MX Takalak      MX Takalak MX lakalak   a am Been   MX Takatak MX Takalak TakaTak ID: dhivya v MX   akalak   NS TakaTak ID: dhivya veeramani KANNAMMA/     ce MX Takalak TakaTak ID: dhivya veeramani Install MX T. k to earn up to  1 000 ho ee MX Takalak"
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "KANNAMMA/     Install MX T. k to earn up to  1 000 MX lakalak   Del ei MX   akalak   MX Takatak ce MX Takalak ho ee MX Takalak TakaTak ID: dhivya v   MX Takalak MX Takalak    A  Des Ta   NS TakaTak ID: dhivya veeramani MX Takalak TakaTak ID: dhivya veeramani a am Been"
     },
     "SANITY_CHECKS": {
-        "ACCEPTABLE ASPECT RATIO": "True",
+        "ACCEPTABLE_ASPECT_RATIO": "True",
         "DURATION": "26 Sec"
     },
-    "AUDIO AUDIT": {
+    "AUDIO_AUDIT": {
         "EMOTION_DETECTION": [],
-        "HATE_SPEECH_DETECTION": []
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "",
+        "LANGUAGE_CODE": "",
+        "TRANSLATION": "",
+        "SEGMENT_DURATION": ""
     },
-    "VIDEO_AUDIT": {}
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [],
+    "PERSON_DETECTED": "Satya Nadella"
 }

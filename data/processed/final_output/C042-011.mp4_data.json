@@ -1,0 +1,54 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "30 FPS",
+        "DISTORTION_SCORE": "43.74 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "ADEE   Ge Px   Lo Ps  Cel Bs  4 were  makeoverbyjenniifer TakaTak ID: makeoverbyjennifer   mxTakatak eee ae Sue Install MX TakaTak to earn up to 1 000: Nancy Jennifer MX Tal   MX Takalak Tigo  "
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "20 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "",
+        "LANGUAGE_CODE": "",
+        "TRANSLATION": "",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "Beer": {
+            "Timestamp": [
+                15.999839999999999
+            ]
+        },
+        "Knife": {
+            "Timestamp": [
+                19.9998
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Beer",
+            "Knife"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 15.999839999999999,
+            "DETAILS": "Beer",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 19.9998,
+            "DETAILS": "Knife",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Mumbai"
+}

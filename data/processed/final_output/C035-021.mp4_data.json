@@ -1,0 +1,28 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "24 FPS",
+        "DISTORTION_SCORE": "47.69 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "MAMaliga..a IMDS aKa alc"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "17 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "",
+        "LANGUAGE_CODE": "",
+        "TRANSLATION": "",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [],
+    "PERSON_DETECTED": "Kolkata"
+}

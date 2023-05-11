@@ -1,0 +1,42 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [SD] and Resolution: 640 x 352 Pixels",
+        "FRAME_RATE": "30 FPS",
+        "DISTORTION_SCORE": "19.04 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "ee Scr   Mx Takalak Rea PCO aaa O mxTakatak"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "17 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "",
+        "LANGUAGE_CODE": "",
+        "TRANSLATION": "",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "Beer": {
+            "Timestamp": [
+                16.0
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Beer"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 16.0,
+            "DETAILS": "Beer",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "-"
+}

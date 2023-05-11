@@ -1,0 +1,55 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "30 FPS",
+        "DISTORTION_SCORE": "29.65 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "Install MX TakaTak to earn up to  1 000 Install MX T. k to earn up to  1 000 Nancy Jennifer   mxTakalak ae pom ae TakaTak ID: makeoverbyjennifer   mxTakatak"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "17 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                12,
+                "joy",
+                "Var blæst"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [
+            [
+                6,
+                "hateful targeted",
+                "Hun igen"
+            ]
+        ],
+        "KEY_EMOTIONS": [
+            "joy"
+        ],
+        "TRANSCRIPTION": "rigtig meget udstod er der venter Var. Hun igen Over. Hvad Okay? Var, blæst",
+        "LANGUAGE_CODE": "da-DK",
+        "TRANSLATION": " a lot endured is there waiting Var She again Over what Okay Was blown away",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 12,
+            "DETAILS": "joy",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "HATE SPEECH",
+            "TIME": 6,
+            "DETAILS": "hateful targeted",
+            "KEY": "SENTIMENT_EMOTION"
+        }
+    ],
+    "PERSON_DETECTED": "Mumbai"
+}

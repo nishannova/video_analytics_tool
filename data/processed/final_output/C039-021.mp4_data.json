@@ -1,0 +1,68 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "25 FPS",
+        "DISTORTION_SCORE": "62.41 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "VJ Shafi Official   mx Takatak MX Taka TakaTak ID: vjshafiofficial   mxTakatak Install MX TakaTak to earn up to 1 000:"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "14 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                4,
+                "joy",
+                "ஹெழஒவன் சிரிக்கிற சிரிப்பு எல்லாம் சிரிச்சிட்டு இருக்காங்க"
+            ],
+            [
+                10,
+                "joy",
+                "நல்லா இருக்கும் உங்க சந்தோஷம்"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [
+            "joy",
+            "joy"
+        ],
+        "TRANSCRIPTION": "என்ன? இவங்க அந்த காலத்து ஹெழஒவன் சிரிக்கிற சிரிப்பு எல்லாம் சிரிச்சிட்டு இருக்காங்க. இதுக்கு பேருதான் சந்தோஷமா நல்லா இருக்கும் உங்க சந்தோஷம்.",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": "  What are these people of that time Heha Ovan is smiling all the smiles for this Is the name happy? Your happiness is good",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "Knife": {
+            "Timestamp": [
+                14.4
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Knife"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 4,
+            "DETAILS": "joy",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "EMOTION",
+            "TIME": 10,
+            "DETAILS": "joy",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 14.4,
+            "DETAILS": "Knife",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Virat Kohli"
+}

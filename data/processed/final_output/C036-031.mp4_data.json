@@ -1,0 +1,28 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "29 FPS",
+        "DISTORTION_SCORE": "48.92 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": []
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "14 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "ఎక్కడ నుంచి పక్కకి వస్తే పట్టా, ఆవిడకు మందం వెళ్ళాం పట్టేస్తే.",
+        "LANGUAGE_CODE": "te-IN",
+        "TRANSLATION": " from where to the side If it comes Degree to her thickness Let's go if we can",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [],
+    "PERSON_DETECTED": "Rajasthan"
+}

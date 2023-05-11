@@ -1,0 +1,55 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "23 FPS",
+        "DISTORTION_SCORE": "36.97 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "fe DUET 3 1 Swetha Subramanian TakaTak ID: swetha.subramanian TakaTak ID: swetha.subramanian MX Takalak"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "17 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                4,
+                "anger",
+                "போதும் போதும் இப்போலாம் அப்படி கிடையாது"
+            ],
+            [
+                12,
+                "joy",
+                "அழகா இருக்கு"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [
+            "anger",
+            "joy"
+        ],
+        "TRANSCRIPTION": "யாராவது பார்த்துட்டாங்கன்னா பார்த்துட்டு போறாங்க. அதுக்கெல்லாம் அஞ்சு ரூபாய் இல்ல. நீ போதும் போதும். இப்போலாம் அப்படி கிடையாது. ம் பார்த்தாலே தெரியுது. என்ன தெரியுது உனக்கு? இப்ப நீ ரொம்ப அழகா இருக்கு.",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": " If someone sees it, they will see it You don't have five rupees for all that Enough is enough, that is not the case now You can see it What do you know? Now you are very It is beautiful",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 4,
+            "DETAILS": "anger",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "EMOTION",
+            "TIME": 12,
+            "DETAILS": "joy",
+            "KEY": "SENTIMENT_EMOTION"
+        }
+    ],
+    "PERSON_DETECTED": "Jaipur"
+}

@@ -1,0 +1,43 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "25 FPS",
+        "DISTORTION_SCORE": "46.59 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "MX Biel  eli JPR iite Berra Ba a se rm Vee rn Takat ak ID: vjshafiofficial MX Takalak MX Takalak.  "
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "27 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                3,
+                "joy",
+                "வருஷம் வந்து எனக்கு ரொம்ப ரொம்ப ஸ்பெஶல் அடிஶன் ஆமா ஏன்னா அண்ணனை"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [
+            "joy"
+        ],
+        "TRANSCRIPTION": "எவ்வளவோ நிகழ்ச்சிகள வந்து இந்த விஜய் டி- வரலாற்று ஹொவ்ஸ்ட். இருந்தாலும் இந்த வருஷம் வந்து எனக்கு ரொம்ப ரொம்ப ஸ்பெஶல் அடிஶன். ஆமா ஏன்னா அண்ணனை இதுவரைக்கும் காமடி பண்ணி தானே பாத்துருக்கோம் பாத்துருக்கீங்களா. அங்க வந்து நாலு சோகமா இருக்குறாங்க. சரி, பார்த்திருக்கிறோமே வைத்துக்கொள்வோம். ஆனால் இப்போது அண்ணனா வேற ஒரு பரிணாமத்தில் பார்க்கப்போகிறோம். அதாவது இந்த மாதிரி நிறைய",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": " No matter how many programs have come, this Vijay D- is a historical host It's been a year and I have a very special addition Have you ever made a comedy and watched it yourself? Come there All four are sad Let's assume we've seen it but now it's a brother or something Let's look at an evolution ie this model A lot",
+        "SEGMENT_DURATION": 3
+    },
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 3,
+            "DETAILS": "joy",
+            "KEY": "SENTIMENT_EMOTION"
+        }
+    ],
+    "PERSON_DETECTED": "Kolkata"
+}

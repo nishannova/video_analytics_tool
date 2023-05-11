@@ -1,0 +1,68 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "30 FPS",
+        "DISTORTION_SCORE": "41.87 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "TakaT ak ID: makeoverbyjennifer TakaTak ID: makeover  MX Takalak Nancy Jennifer TakaTak ID: makeoverbyjennifer"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "18 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                12,
+                "joy",
+                "Grace Den"
+            ],
+            [
+                14,
+                "disgust",
+                "Ene der heller ikke"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [
+            "joy",
+            "disgust"
+        ],
+        "TRANSCRIPTION": "to på det passer Er. Du i en anden kilde Tandlægen? Pladerne, Grace, Den. Ene der, heller ikke",
+        "LANGUAGE_CODE": "da-DK",
+        "TRANSLATION": " to on it fits Are you in another source The dentist The plates Grace Day Not one there either",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "Knife": {
+            "Timestamp": [
+                15.999839999999999
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Knife"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 12,
+            "DETAILS": "joy",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "EMOTION",
+            "TIME": 14,
+            "DETAILS": "disgust",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 15.999839999999999,
+            "DETAILS": "Knife",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Rajasthan"
+}

@@ -1,0 +1,34 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "25 FPS",
+        "DISTORTION_SCORE": "64.91 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "  mx Takatak Install MX TakaTak to earn up to 1 000: VJ Shafi Official MX Taka TakaTak ID: vjshafiofficial   mxTakatak"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "14 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                10,
+                "joy",
+                "நல்லா இருக்கும் உங்க சந்தோஷம்"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [],
+        "TRANSCRIPTION": "என்ன? இவங்க அந்த காலத்து ஹெழஒவன் சிரிக்கிற சிரிப்பு எல்லாம் சிரிச்சிட்டு இருக்காங்க. இதுக்கு பேருதான் சந்தோஷமா நல்லா இருக்கும் உங்க சந்தோஷம்.",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": " What are these people, they are laughing all the laughs that Hela Ovan used to laugh at that time? Your happiness is good"
+    },
+    "VIDEO_AUDIT": {
+        "Knife": {
+            "Timestamp": [
+                14.4
+            ]
+        }
+    }
+}

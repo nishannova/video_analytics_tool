@@ -15,7 +15,7 @@ def process_detection(filename):
     images = os.listdir(os.path.join(TEMP_FRAMES_DIR,filename))
     texts = list()
     filtered = list()
-
+    text_list = []
     sample_image = list()
     for i in range(0, len(images), 60):
         sample_image.append(images[i])

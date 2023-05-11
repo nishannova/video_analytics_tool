@@ -1,0 +1,55 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "30 FPS",
+        "DISTORTION_SCORE": "28.18 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": []
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "14 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                0,
+                "fear",
+                "தொறக்கவே"
+            ],
+            [
+                6,
+                "joy",
+                "அழகா வேலை செய்யும்"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [
+            "fear",
+            "joy"
+        ],
+        "TRANSCRIPTION": "தொறக்கவே மாட்டேன்னு அந்த முழுசா தருவேன்னு. மலைக்கு அழகா வேலை செய்யும் காப்பு இல்ல, கொல் பண்ணினால் பஞ்சம் என்ன ஒன்னு சரி!",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": " Just to touch I won't, that's all I will give it to the mountain Works beautifully If shelter is killed, famine will result What a thing ok",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 0,
+            "DETAILS": "fear",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "EMOTION",
+            "TIME": 6,
+            "DETAILS": "joy",
+            "KEY": "SENTIMENT_EMOTION"
+        }
+    ],
+    "PERSON_DETECTED": "Satya Nadella"
+}

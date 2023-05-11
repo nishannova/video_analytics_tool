@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Video Details</title>
+</head>
+<body>
+  <h1>Video Details</h1>
+  <div id="videoDetails"></div>
+  <script src="/static/scripts.js"></script>
+  <script>
+    const filename = window.location.pathname.split('/').pop();
+    fetchVideoDetails(filename);
+  </script>
+</body>
+</html>
+

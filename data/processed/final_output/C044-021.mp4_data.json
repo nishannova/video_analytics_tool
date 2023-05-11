@@ -1,0 +1,42 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "30 FPS",
+        "DISTORTION_SCORE": "60.02 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "val  CE WORLE MX Takalak TakaTak ID: mr.saiyan Install MX T: k to earn up to  1 000"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "18 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "",
+        "LANGUAGE_CODE": "",
+        "TRANSLATION": "",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "Wine": {
+            "Timestamp": [
+                4.0
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Wine"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 4.0,
+            "DETAILS": "Wine",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Satya Nadella"
+}

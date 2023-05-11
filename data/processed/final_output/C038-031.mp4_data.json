@@ -1,0 +1,42 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "31 FPS",
+        "DISTORTION_SCORE": "52.91 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "TakaTak ID: Cine aalker  .MXTa Install MX TakaTak to earn up to 1 000: me ns oe TakaTak ID: shruthi selvam TakaTak ID: shruthi. NATE i Le lls soles fw DPD Lie as en ny MX Takalak Install MX T: k to earn up to  1 000"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "17 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "",
+        "LANGUAGE_CODE": "",
+        "TRANSLATION": "",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "Knife": {
+            "Timestamp": [
+                15.483870967741936
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Knife"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 15.483870967741936,
+            "DETAILS": "Knife",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Jaipur"
+}

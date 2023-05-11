@@ -1,143 +1,28 @@
 {
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
-        "FRAME RATE": "29 FPS",
-        "DISTORTION SCORE": "19.77 %"
+        "FRAME_RATE": "29 FPS",
+        "DISTORTION_SCORE": "28.71 %"
     },
-    "DETECTED WATERMARKS": {
-        "CONTENTS": "  mx Takalak akaTak ID: Pe Taka: bindugatyan PALE a a nner Install MX T. k to earn up to  1 000   MxXTakalak Install MX TakaTak to earn up to  1 000 Bindusathyan LDS lie   MX Takalak TakaTak ID: bindusatyan"
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "Taka: bindugatyan   mx Takalak PALE a a nner   MX Takalak Install MX TakaTak to earn up to  1 000 LDS lie Bindusathyan Install MX T. k to earn up to  1 000 akaTak ID: Pe TakaTak ID: bindusatyan   MxXTakalak"
     },
     "SANITY_CHECKS": {
-        "ACCEPTABLE ASPECT RATIO": "True",
+        "ACCEPTABLE_ASPECT_RATIO": "True",
         "DURATION": "18 Sec"
     },
-    "AUDIO AUDIT": {
-        "EMOTION_DETECTION": [
-            [
-                0,
-                {
-                    "others": 0.8688755631446838
-                },
-                [
-                    [
-                        "ம்ம்",
-                        0.83
-                    ],
-                    [
-                        "நினைத்தார்",
-                        2.08
-                    ],
-                    [
-                        "ம்ம்",
-                        3.25
-                    ],
-                    [
-                        "ம்ம்",
-                        4.86
-                    ]
-                ]
-            ],
-            [
-                5,
-                {
-                    "others": 0.9745070338249207
-                },
-                [
-                    [
-                        "நீங்க",
-                        5.93
-                    ],
-                    [
-                        "கேளுங்க",
-                        6.75
-                    ],
-                    [
-                        "என்ன",
-                        8.87
-                    ],
-                    [
-                        "அரசுன்னு",
-                        9.02
-                    ],
-                    [
-                        "வந்துட்டு",
-                        9.6
-                    ]
-                ]
-            ],
-            [
-                10,
-                {
-                    "others": 0.7353631854057312
-                },
-                [
-                    [
-                        "வந்துட்டு",
-                        10.01
-                    ]
-                ]
-            ]
-        ],
-        "HATE_SPEECH_DETECTION": [
-            [
-                0,
-                {},
-                [
-                    [
-                        "ம்ம்",
-                        0.83
-                    ],
-                    [
-                        "நினைத்தார்",
-                        2.08
-                    ],
-                    [
-                        "ம்ம்",
-                        3.25
-                    ],
-                    [
-                        "ம்ம்",
-                        4.86
-                    ]
-                ]
-            ],
-            [
-                5,
-                {},
-                [
-                    [
-                        "நீங்க",
-                        5.93
-                    ],
-                    [
-                        "கேளுங்க",
-                        6.75
-                    ],
-                    [
-                        "என்ன",
-                        8.87
-                    ],
-                    [
-                        "அரசுன்னு",
-                        9.02
-                    ],
-                    [
-                        "வந்துட்டு",
-                        9.6
-                    ]
-                ]
-            ],
-            [
-                10,
-                {},
-                [
-                    [
-                        "வந்துட்டு",
-                        10.01
-                    ]
-                ]
-            ]
-        ]
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "ம்ம். நினைத்தார். ம்ம் ம்ம் நீங்க கேளுங்க. என்ன அரசுன்னு வந்துட்டு வந்துட்டு!",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": " Hmm Hmm thought Hmm you listen What is the government? come",
+        "SEGMENT_DURATION": 2
     },
-    "VIDEO_AUDIT": {}
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [],
+    "PERSON_DETECTED": "-"
 }

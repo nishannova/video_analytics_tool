@@ -10,6 +10,7 @@ from loguru import logger
 import json
 import time
 from .upload import upload_video_for_transcribe
+import math
 
 transcribe_client = boto3.client('transcribe')
 emotion_analyzer = create_analyzer(task="emotion", lang="en")                          
@@ -153,8 +154,9 @@ def get_word_timestamps(transcript):
 
 
 
-def process_audio(file_path, segment_duration=5):
+def process_audio(file_path, duration):
     try:
+        segment_duration = math.ceil(duration / 10)
         if upload_video_for_transcribe(file_path):
             logger.info(f"FILE UPLOADED SUCCESSFULLY, PROCESSING WITH TRANSCRIPTION")
         file_uri = f's3://traceaudit/{str(os.path.basename(file_path))}'
@@ -163,6 +165,7 @@ def process_audio(file_path, segment_duration=5):
         transcript = transcribe_file(f'my_joq_{time.time()}', file_uri, transcribe_client)
         if transcript:
             l = transcript['results']['transcripts'][0]['transcript']
+            language_code = transcript['results']['language_code']
             logger.info(f"TRANSCRIPTION: {l}")
 
             # Extract word-level timestamps
@@ -186,25 +189,28 @@ def process_audio(file_path, segment_duration=5):
             # Analyze emotions and hate speech for each segment
             emotion_data = []
             hate_speech_data = []
+            translation = str()
             for start_time, segment in segments:
                 segment_text = ' '.join([word for word, _ in segment])
                 translated_segment = GoogleTranslator(source='auto', target='en').translate(segment_text)
-
+                translation +=  " " + translated_segment
                 e = emotion_analyzer.predict(translated_segment).probas
                 h = hate_speech_analyzer.predict(translated_segment).probas
-                e = {k: v for k, v in sorted(e.items(), key=lambda item:- item[1]) if v > 0.3}
+                print(f"RAW HATE: {h}")
+                e = {k: v for k, v in sorted(e.items(), key=lambda item:- item[1]) if v > 0.3 and k != "others"}
                 h = {k: v for k, v in sorted(h.items(), key=lambda item:- item[1]) if v > 0.3}
-
-                emotion_data.append((start_time, e, segment))
-                hate_speech_data.append((start_time, h, segment))
+                if e:
+                    emotion_data.append((start_time, " ".join(list(e.keys())), " ".join([word[0] for word in segment])))
+                if h:
+                    hate_speech_data.append((start_time, " ".join(list(h.keys())), " ".join([word[0] for word in segment])))
 
             logger.info(f"EMOTION DATA WITH TIMESTAMPS:{emotion_data}")
             logger.info(f"HATE SPEECH DATA WITH TIMESTAMPS:{hate_speech_data}")
 
-            return emotion_data, hate_speech_data
+            return emotion_data, hate_speech_data, l, translation, language_code, segment_duration
         else:
             logger.error(f"NO AUDIO FOUND")
-            return [], []
+            return [], [], "", "", "", segment_duration
     except Exception as ex:
         logger.error(f"FAILED TO GET THE AUDIO TRANSCRIPTION: {ex}")
-        return [], []
+        return [], [], "", "", "", segment_duration

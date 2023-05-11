@@ -1,0 +1,56 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "30 FPS",
+        "DISTORTION_SCORE": "31.74 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": []
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "14 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                0,
+                "joy",
+                "han nød at se"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [
+            "joy"
+        ],
+        "TRANSCRIPTION": "han nød at se himlen jeg hedder gå imod andre varer",
+        "LANGUAGE_CODE": "da-DK",
+        "TRANSLATION": " he enjoyed watching heaven I called go against other goods",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "Shotgun": {
+            "Timestamp": [
+                0.0
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Shotgun"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 0,
+            "DETAILS": "joy",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 0.0,
+            "DETAILS": "Shotgun",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "-"
+}

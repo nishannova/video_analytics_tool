@@ -1,0 +1,49 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "60 FPS",
+        "DISTORTION_SCORE": "54.27 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "appmess Happine Happine: Aappine"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "34 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "de que ustedes se quieta, Vicky.",
+        "LANGUAGE_CODE": "es-US",
+        "TRANSLATION": " that you stay still Vicky",
+        "SEGMENT_DURATION": 4
+    },
+    "VIDEO_AUDIT": {
+        "Beer": {
+            "Timestamp": [
+                0.0,
+                30.0
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Beer"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 0.0,
+            "DETAILS": "Beer",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 30.0,
+            "DETAILS": "Beer",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "-"
+}

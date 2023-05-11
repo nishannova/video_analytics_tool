@@ -1,0 +1,54 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1088 x 608 Pixels",
+        "FRAME_RATE": "58 FPS",
+        "DISTORTION_SCORE": "47.1 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "On ase tint Rosh Gupta Taka Tek 1D: roshquaal Install MX TakaTak to earn uj 1 000: MX Takalak .  USSU Le Se Install MX TakaTak to earn up to  1 000  MX Takalak TakaTak ID: roshgupta  Be evel aac ts  1 Pura Pet Cm Oe ase ty Ease get ee"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "12 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "",
+        "LANGUAGE_CODE": "",
+        "TRANSLATION": "",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "Wine": {
+            "Timestamp": [
+                6.206896551724138
+            ]
+        },
+        "Knife": {
+            "Timestamp": [
+                12.413793103448276
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Wine",
+            "Knife"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 6.206896551724138,
+            "DETAILS": "Wine",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 12.413793103448276,
+            "DETAILS": "Knife",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Sundar Pichai"
+}

@@ -12,6 +12,7 @@ sys.path.append("..")
 
 from src.quality_analysis.quality_analysis import QualityAnalysis
 from src.watermark_detection.detect import process_detection
+from src.format_output import combine_results
 from src.config import TEMP_FRAMES_DIR, VIDEO_PATH
 import cv2
 import shutil
@@ -111,7 +112,7 @@ def remove_artifacts(filename):
 
 @bp.route('/')
 def home():
-    return render_template('build/index.html')
+    return render_template('index.html')
  
 # @app.route('/', methods=['POST'])
 # def upload_image():
@@ -211,6 +212,22 @@ def get_video_info_api():
     else:
         return {"MESSAGE": "VIDEO NOT FOUND"}
 
+@bp.route("/get_table_of_contents")
+def get_table_of_contents_api():
+    print("HELLO")
+    data = combine_results()
+    if data:
+        return data
+    else:
+        return {"MESSAGE": "NO DATA EXISTS"}
  
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="5001", debug=True)
+@bp.route('/video_details/<filename>')
+def video_details(filename):
+    print(f"FILE: {filename}")
+    return render_template('video_details.html', filename=filename)
+
+# @bp.route('/video_details')
+# def video_details():
+#     return render_template('video_details.html')
+
+

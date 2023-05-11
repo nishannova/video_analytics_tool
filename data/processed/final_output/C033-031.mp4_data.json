@@ -1,0 +1,79 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "30 FPS",
+        "DISTORTION_SCORE": "25.1 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "TakaTak ID: swetha.subramanian Swetha Subramanian"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "15 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                0,
+                "disgust",
+                "உங்க மனசுல அதனால கொஞ்சம்"
+            ],
+            [
+                4,
+                "surprise",
+                "பைத்தியமாதிரி பேசாத"
+            ],
+            [
+                8,
+                "joy",
+                "உன்ன மட்டும் தான் லவ் பண்றேன்"
+            ],
+            [
+                10,
+                "disgust",
+                "போதும் போதும்"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [
+            "disgust",
+            "surprise",
+            "joy",
+            "disgust"
+        ],
+        "TRANSCRIPTION": "உங்க மனசுல அதனால கொஞ்சம் நல்லா இல்ல பைத்தியமாதிரி பேசாத ஏன் சொன்னியே, நான் உன்ன மட்டும் தான் லவ் பண்றேன் போதும் போதும்.",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": " So little in your mind Not good Insanely speechless Why did I say that? I love you only Enough is enough",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 0,
+            "DETAILS": "disgust",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "EMOTION",
+            "TIME": 4,
+            "DETAILS": "surprise",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "EMOTION",
+            "TIME": 8,
+            "DETAILS": "joy",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "EMOTION",
+            "TIME": 10,
+            "DETAILS": "disgust",
+            "KEY": "SENTIMENT_EMOTION"
+        }
+    ],
+    "PERSON_DETECTED": "-"
+}

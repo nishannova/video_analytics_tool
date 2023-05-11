@@ -1,0 +1,28 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "20 FPS",
+        "DISTORTION_SCORE": "56.78 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": []
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "20 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "உங்க தமிழன் நான் டெஸ்ட் பண்றேன் ஒரு கேள்வி கேக்கட்டுமா வேணாமா நோக்கிலும் எறும்பு வாயை விட சின்னது. அது என்னது நம்ம எரும்புல எறும்பு அன்ட் அன்ட். அதோட வாயை விட சின்னது அது என்னது அது என்னது அது தின்னது? எறும்பு வாயை விட சின்னது அது தின்னது?",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": " I am your Tamil test Can I ask you a question? Ant towards Venama It is smaller than the mouth An ant in our ant and ant It is smaller than its mouth My it my it An ant ate It is smaller than the mouth ate",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [],
+    "PERSON_DETECTED": "-"
+}

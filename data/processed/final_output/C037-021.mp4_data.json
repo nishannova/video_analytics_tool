@@ -1,0 +1,49 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "43 FPS",
+        "DISTORTION_SCORE": "8.14 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "Pas SUSI MX Takalak aTak ID: iam real.sanu Fae ID: iam  7S eeu FakaT ak ID:iam real sanu. TakaTak ID: iam real sanu B  1a 18  CIE aah aN hole el   MX Takalak Install MX TakaTak to earn up to 1 000:"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "26 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "",
+        "LANGUAGE_CODE": "",
+        "TRANSLATION": "",
+        "SEGMENT_DURATION": 3
+    },
+    "VIDEO_AUDIT": {
+        "Knife": {
+            "Timestamp": [
+                16.74418604651163,
+                25.11627906976744
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Knife"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 16.74418604651163,
+            "DETAILS": "Knife",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 25.11627906976744,
+            "DETAILS": "Knife",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Hyderabad"
+}

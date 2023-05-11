@@ -1,0 +1,42 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "43 FPS",
+        "DISTORTION_SCORE": "42.28 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "Takalak TakaTak ID: iam real  sanu Install MX TakaTak to earn up to  1 000 MX Takalak TakaTak ID: iam real sanu LD  Gils a MX Jiakalal 1D: iam real sanu"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "18 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "que me acuse a mí.",
+        "LANGUAGE_CODE": "es-US",
+        "TRANSLATION": "  what me acknowledge a my",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "Knife": {
+            "Timestamp": [
+                16.74418604651163
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Knife"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 16.74418604651163,
+            "DETAILS": "Knife",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "-"
+}

@@ -1,19 +1,28 @@
 {
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
-        "FRAME RATE": "30 FPS",
-        "DISTORTION SCORE": "35.88 %"
+        "FRAME_RATE": "30 FPS",
+        "DISTORTION_SCORE": "36.34 %"
     },
-    "DETECTED WATERMARKS": {
+    "DETECTED_WATERMARKS": {
         "CONTENTS": []
     },
     "SANITY_CHECKS": {
-        "ACCEPTABLE ASPECT RATIO": "True",
+        "ACCEPTABLE_ASPECT_RATIO": "True",
         "DURATION": "14 Sec"
     },
-    "AUDIO AUDIT": {
+    "AUDIO_AUDIT": {
         "EMOTION_DETECTION": [],
-        "HATE_SPEECH_DETECTION": []
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "",
+        "LANGUAGE_CODE": "",
+        "TRANSLATION": "",
+        "SEGMENT_DURATION": ""
     },
-    "VIDEO_AUDIT": {}
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [],
+    "PERSON_DETECTED": "Rajasthan"
 }

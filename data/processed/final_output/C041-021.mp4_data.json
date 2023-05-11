@@ -1,0 +1,55 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "30 FPS",
+        "DISTORTION_SCORE": "34.37 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "i iy A"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "14 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [
+            [
+                6,
+                "disgust",
+                "அப்படி சொல்ல முடியாது"
+            ],
+            [
+                10,
+                "disgust",
+                "எதை ப்லெய்ஸ் மேல மறுக்கிறார்கள்"
+            ]
+        ],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [
+            "disgust",
+            "disgust"
+        ],
+        "TRANSCRIPTION": "ஜஸ்ட் வன் வட் யு ஸெய்வ்ட். ஏன்னா உங்களுக்கு அவ்ளோ பிடிக்குமா? அப்படி சொல்ல முடியாது. அப்படி என்றால் இந்த சுத்தமா பிடிக்காதா? ஏய் எதை ப்லெய்ஸ் மேல மறுக்கிறார்கள்?",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": " Just One What You Saved Why is that for you? Do you like it? Can't say that If so, don't you like this cleanliness? Which Blaise denies",
+        "SEGMENT_DURATION": 2
+    },
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 6,
+            "DETAILS": "disgust",
+            "KEY": "SENTIMENT_EMOTION"
+        },
+        {
+            "TYPE": "EMOTION",
+            "TIME": 10,
+            "DETAILS": "disgust",
+            "KEY": "SENTIMENT_EMOTION"
+        }
+    ],
+    "PERSON_DETECTED": "Rajasthan"
+}

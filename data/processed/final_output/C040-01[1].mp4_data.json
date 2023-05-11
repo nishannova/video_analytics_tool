@@ -1,0 +1,28 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "23 FPS",
+        "DISTORTION_SCORE": "19.26 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "oP SSI CTE S  TakaTak ID: kannan aishwarya MX Takallak Aishwarya kannan ae kannay TakaTak ID: kanfian alshw"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "18 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "TRANSCRIPTION": "எங்கேயோ பார்க்க மயக்கம் எப்போதான் நெருக்கம்? விதையின் பேச நாளை ஓரமும் பருப்புக்கு என்ன மாயம் மாயம்?",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": " Somewhere faint to see, when the seed of closeness will speak tomorrow What is the magic of the oram and the dal"
+    },
+    "VIDEO_AUDIT": {
+        "Beer": {
+            "Timestamp": [
+                15.245909491525422
+            ]
+        }
+    }
+}

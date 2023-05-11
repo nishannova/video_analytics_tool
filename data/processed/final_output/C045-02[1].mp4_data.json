@@ -1,0 +1,28 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "30 FPS",
+        "DISTORTION_SCORE": "60.03 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "TakaTak ID: roshgupta  Takatl ak ID: roshgupta. TakaTak ID: roshgupta MX Takealak MX Takalak Rosh Gupta Install MX T: k to earn up to  1 000"
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "17 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "TRANSCRIPTION": "",
+        "LANGUAGE_CODE": "",
+        "TRANSLATION": ""
+    },
+    "VIDEO_AUDIT": {
+        "Knife": {
+            "Timestamp": [
+                16.0
+            ]
+        }
+    }
+}

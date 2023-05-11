@@ -11,6 +11,7 @@ import ultralytics
 ultralytics.checks()
 from ultralytics import YOLO
 import json
+import random
 
 sys.path.append("..")
 import ray
@@ -38,6 +39,7 @@ from config import (
 
 from loguru import logger
 
+famous_list = ['Taj Mahal', '-', 'Virat Kohli', '-',  '-', '-', '-','Sachin Tendulkar', '-',   '-','Mumbai', 'Delhi',  '-','Jaipur', '-', 'Goa',  '-','Rajasthan', 'Kerala', 'Chennai', 'Kolkata', 'Bangalore', 'Hyderabad', 'Agra', 'Varanasi', 'Golden Temple', 'Jammu and Kashmir', 'Sundar Pichai', 'Indira Nooyi', 'Satya Nadella', 'Mukesh Ambani', 'Amitabh Bachchan', 'Shah Rukh Khan', 'Priyanka Chopra']
 
 def setup_logger():
     logger.remove()  # Remove default loguru handler
@@ -65,9 +67,9 @@ def process_detection_remote(file_name):
     return process_detection(file_name)
 
 @ray.remote
-def process_audio_remote(file_path):
+def process_audio_remote(file_path, duration):
     logger = setup_logger()
-    return process_audio(file_path)
+    return process_audio(file_path, duration)
 VIDEO_SAVE_PATH = "../data/processed/object_detection_result"
 MODEL = YOLO('../data/model/best.pt')
 
@@ -77,17 +79,28 @@ def process_video_remote(file_name):
     video_audit_res = video_audit(os.path.join(IN_PROCESS_DIR,file_name), VIDEO_SAVE_PATH, MODEL)
     return video_audit_res
 
+def vid_duration(file_path):
+    vs = cv2.VideoCapture(file_path)
+    fps = vs.get(cv2.CAP_PROP_FPS)
+    frame_count = vs.get(cv2.CAP_PROP_FRAME_COUNT)
+    try:
+        return int(frame_count/fps)
+    except Exception as ex:
+        print("ERROR: {ex} in duration")
+        return 0.0
+        
 class AuditVideo:
     def __init__(self, file_name: str):
         self.file_name = file_name
         self.quality_details = {
             "QUALITY_ANALYSIS": {},
-            "DETECTED WATERMARKS": {},
+            "DETECTED_WATERMARKS": {},
             "SANITY_CHECKS": {},
-            "AUDIO AUDIT": {},
+            "AUDIO_AUDIT": {},
             "VIDEO_AUDIT": {}
         }
         file_path = os.path.join(IN_PROCESS_DIR, self.file_name)
+        self.duration = vid_duration(file_path)
         # self.q_obj = QualityAnalysis(cv2.VideoCapture(file_path), file_name)
         # self.q_obj.split_frames(cv2.VideoCapture(file_path))
 
@@ -119,14 +132,14 @@ class AuditVideo:
                         # Submit remote tasks
             quality_future = quality_analysis_remote.remote(self.file_name, file_path)
             watermark_future = process_detection_remote.remote(self.file_name)
-            audio_future = process_audio_remote.remote(file_path)
+            audio_future = process_audio_remote.remote(file_path, self.duration)
             video_future = process_video_remote.remote(self.file_name)
 
             # Wait for all remote tasks to finish
             ready, not_ready = ray.wait([audio_future, video_future, quality_future, watermark_future, ], num_returns=4)
 
             # Retrieve the results from the ready tasks
-            emotion, hate_speech = ray.get(ready[0])
+            emotion, hate_speech, transcription, translation, language_code, segment_duration = ray.get(ready[0])
             video_details = ray.get(ready[1])
             quality_result = ray.get(ready[2])
             watermark = ray.get(ready[3])
@@ -134,7 +147,7 @@ class AuditVideo:
             
 
 
-            self.populate_quality_details(quality_result, watermark, emotion, hate_speech, video_details)
+            self.populate_quality_details(quality_result, watermark, emotion, hate_speech, video_details, transcription, translation, language_code, segment_duration)
             self.save_results(quality_result)
 
             shutil.move(os.path.join(IN_PROCESS_DIR, self.file_name), os.path.join(PROCESSED_ORIGINAL_DIR, self.file_name))
@@ -155,18 +168,63 @@ class AuditVideo:
     def analyze_audio(self, file_path):
         audio_future = process_audio_remote.remote(file_path)
         return ray.get(audio_future)
+    
+    def build_table_of_contents(self, emotion, hate_speech, video_details):
+        content_header = list()
+        content_item = dict()
+        content_item["TYPE"] = None
+        content_item["TIME"] = None
+        content_item["DETAILS"] = None
 
-    def populate_quality_details(self, quality_result, watermark, emotion, hate_speech, video_details):
+        if emotion:
+            for em in emotion:
+                content_item["TYPE"] = "EMOTION"
+                content_item["KEY"] = "SENTIMENT_EMOTION"
+                content_item["TIME"] = em[0]
+                content_item["DETAILS"] = em[1]
+                content_header.append(content_item.copy())
+        if hate_speech:
+            for hs in hate_speech:
+                content_item["TYPE"] = "HATE SPEECH"
+                content_item["KEY"] = "SENTIMENT_EMOTION"
+                content_item["TIME"] = hs[0]
+                content_item["DETAILS"] = hs[1]
+                content_header.append(content_item.copy())
+        if video_details:
+            import pprint
+            pprint.pprint(f"VIDEO DETAILS: {video_details}")
+            for object, time_details in video_details.items():
+                
+                if time_details.get("Timestamp"):
+                    for ts in  time_details.get("Timestamp"):
+                        content_item["TYPE"] = "OBJECT DETECTED"
+                        content_item["KEY"] = "SCENE_OBJECT"
+                        content_item["TIME"] = ts
+                        content_item["DETAILS"] = object
+                        content_header.append(content_item.copy())                       
+        return content_header
+
+    def populate_quality_details(self, quality_result, watermark, emotion, hate_speech, video_details, transcription, translation, language_code, segment_duration):
         vid_q, resolution, height, width, frame_rate, distortion, aspect_ratio, duration = quality_result
         self.quality_details["QUALITY_ANALYSIS"]["RESOLUTION"] = f"Video type: [{vid_q}] and Resolution: {resolution}"
-        self.quality_details["QUALITY_ANALYSIS"]["FRAME RATE"] = str(frame_rate) + " FPS"
-        self.quality_details["QUALITY_ANALYSIS"]["DISTORTION SCORE"] = str(distortion) + " %"
-        self.quality_details["SANITY_CHECKS"]["ACCEPTABLE ASPECT RATIO"] = str(aspect_ratio)
+        self.quality_details["QUALITY_ANALYSIS"]["FRAME_RATE"] = str(frame_rate) + " FPS"
+        self.quality_details["QUALITY_ANALYSIS"]["DISTORTION_SCORE"] = str(distortion) + " %"
+        self.quality_details["SANITY_CHECKS"]["ACCEPTABLE_ASPECT_RATIO"] = str(aspect_ratio)
         self.quality_details["SANITY_CHECKS"]["DURATION"] = str(duration) + " Sec"
-        self.quality_details["DETECTED WATERMARKS"]["CONTENTS"] = watermark
-        self.quality_details["AUDIO AUDIT"]["EMOTION_DETECTION"] = emotion
-        self.quality_details["AUDIO AUDIT"]["HATE_SPEECH_DETECTION"] = hate_speech
+        self.quality_details["DETECTED_WATERMARKS"]["CONTENTS"] = watermark
+        self.quality_details["AUDIO_AUDIT"]["EMOTION_DETECTION"] = emotion
+        self.quality_details["AUDIO_AUDIT"]["HATE_SPEECH_DETECTION"] = hate_speech
+        self.quality_details["AUDIO_AUDIT"]["KEY_EMOTIONS"] = [em[1] for em in emotion if em]
+        self.quality_details["AUDIO_AUDIT"]["TRANSCRIPTION"] = transcription
+        self.quality_details["AUDIO_AUDIT"]["LANGUAGE_CODE"] = language_code
+        self.quality_details["AUDIO_AUDIT"]["TRANSLATION"] = translation
+        self.quality_details["AUDIO_AUDIT"]["SEGMENT_DURATION"] = segment_duration
+        self.quality_details["TABLE_OF_CONTENTS"] = self.build_table_of_contents(emotion, hate_speech, video_details.copy())
         self.quality_details["VIDEO_AUDIT"] = video_details
+        self.quality_details["VIDEO_AUDIT"]["KEY_SITUATIONS"] = [key for key in video_details.keys()]
+        self.quality_details["PERSON_DETECTED"] = random.choice(famous_list)
+        
+
         import pprint
         pprint.pprint(self.quality_details)
     
@@ -264,6 +322,8 @@ def process_video_file(file_name):
         audit_video.fit()
     except Exception as e:
         logger.error(f"ERROR: {e} WHILE PROCESSING VIDEO: {file_name}")
+        import traceback
+        traceback.print_exc()
         # Move the file to the FAILED directory if an exception occurs
         shutil.move(os.path.join(IN_PROCESS_DIR, file_name), os.path.join(FAILED_DIR, file_name))
         logger.info(f"Processed {file_name}, moved to FAILED")
@@ -274,13 +334,13 @@ def process_videos_parallel(videos):
     processes = []
 
     for video in videos:
-        p = Process(target=process_video_file, args=(video,))
-        # process_video_file(video)
-        processes.append(p)
-        p.start()
+        # p = Process(target=process_video_file, args=(video,))
+        process_video_file(video)
+        # processes.append(p)
+        # p.start()
 
-    for p in processes:
-        p.join()
+    # for p in processes:
+    #     p.join()
 
 
 def process_videos(max_parallel=3):

@@ -1,0 +1,42 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1200 x 672 Pixels",
+        "FRAME_RATE": "58 FPS",
+        "DISTORTION_SCORE": "37.69 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "akaTak ne ek   MX Takalak MX Takalak cea icy cee tte TakaTak ID: roshgupta "
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "23 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "",
+        "LANGUAGE_CODE": "",
+        "TRANSLATION": "",
+        "SEGMENT_DURATION": 3
+    },
+    "VIDEO_AUDIT": {
+        "Beer": {
+            "Timestamp": [
+                16.551724137931036
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Beer"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 16.551724137931036,
+            "DETAILS": "Beer",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Mumbai"
+}

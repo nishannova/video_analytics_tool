@@ -1,101 +1,22 @@
 {
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
-        "FRAME RATE": "43 FPS",
-        "DISTORTION SCORE": "47.93 %"
+        "FRAME_RATE": "43 FPS",
+        "DISTORTION_SCORE": "42.28 %"
     },
-    "DETECTED WATERMARKS": {
-        "CONTENTS": "LD  Gils a Takalak 1D: iam real sanu MX Jiakalal MX Takalak TakaTak ID: iam real  sanu Install MX TakaTak to earn up to  1 000 TakaTak ID: iam real sanu"
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "MX Jiakalal Takalak 1D: iam real sanu LD  Gils a TakaTak ID: iam real  sanu TakaTak ID: iam real sanu MX Takalak Install MX TakaTak to earn up to  1 000"
     },
     "SANITY_CHECKS": {
-        "ACCEPTABLE ASPECT RATIO": "True",
+        "ACCEPTABLE_ASPECT_RATIO": "True",
         "DURATION": "18 Sec"
     },
-    "AUDIO AUDIT": {
-        "EMOTION_DETECTION": [
-            [
-                0,
-                {
-                    "others": 0.4898259937763214
-                },
-                []
-            ],
-            [
-                5,
-                {
-                    "others": 0.7560698390007019
-                },
-                [
-                    [
-                        "que",
-                        13.11
-                    ]
-                ]
-            ],
-            [
-                10,
-                {
-                    "others": 0.8612051010131836
-                },
-                [
-                    [
-                        "me",
-                        13.5
-                    ],
-                    [
-                        "acuse",
-                        13.63
-                    ],
-                    [
-                        "a",
-                        14.48
-                    ],
-                    [
-                        "mí",
-                        14.54
-                    ]
-                ]
-            ]
-        ],
-        "HATE_SPEECH_DETECTION": [
-            [
-                0,
-                {},
-                []
-            ],
-            [
-                5,
-                {},
-                [
-                    [
-                        "que",
-                        13.11
-                    ]
-                ]
-            ],
-            [
-                10,
-                {},
-                [
-                    [
-                        "me",
-                        13.5
-                    ],
-                    [
-                        "acuse",
-                        13.63
-                    ],
-                    [
-                        "a",
-                        14.48
-                    ],
-                    [
-                        "mí",
-                        14.54
-                    ]
-                ]
-            ]
-        ]
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "TRANSCRIPTION": "que me acuse a mí.",
+        "LANGUAGE_CODE": "es-US",
+        "TRANSLATION": "  to accuse me"
     },
     "VIDEO_AUDIT": {
         "Knife": {

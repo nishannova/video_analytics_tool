@@ -1,0 +1,49 @@
+{
+    "QUALITY_ANALYSIS": {
+        "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
+        "FRAME_RATE": "58 FPS",
+        "DISTORTION_SCORE": "42.57 %"
+    },
+    "DETECTED_WATERMARKS": {
+        "CONTENTS": "  MxTakatak wy DPD Install MX T: k to earn up to  1 000 TakaTak ID: shruthi selvam Install MX TakaTak to earn up to  1 000 "
+    },
+    "SANITY_CHECKS": {
+        "ACCEPTABLE_ASPECT_RATIO": "True",
+        "DURATION": "25 Sec"
+    },
+    "AUDIO_AUDIT": {
+        "EMOTION_DETECTION": [],
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "ఎవరైనా ఆశ్రమానికి జరిగింది. ఫలితం మనం చెప్పారు.",
+        "LANGUAGE_CODE": "te-IN",
+        "TRANSLATION": " Anyone to Ashram happened We have said the result",
+        "SEGMENT_DURATION": 3
+    },
+    "VIDEO_AUDIT": {
+        "Shotgun": {
+            "Timestamp": [
+                8.275862068965518,
+                4.137931034482759
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Shotgun"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 8.275862068965518,
+            "DETAILS": "Shotgun",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 4.137931034482759,
+            "DETAILS": "Shotgun",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Kolkata"
+}

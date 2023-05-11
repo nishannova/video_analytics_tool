@@ -1,223 +1,43 @@
 {
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
-        "FRAME RATE": "21 FPS",
-        "DISTORTION SCORE": "59.9 %"
+        "FRAME_RATE": "21 FPS",
+        "DISTORTION_SCORE": "55.31 %"
     },
-    "DETECTED WATERMARKS": {
+    "DETECTED_WATERMARKS": {
         "CONTENTS": []
     },
     "SANITY_CHECKS": {
-        "ACCEPTABLE ASPECT RATIO": "True",
+        "ACCEPTABLE_ASPECT_RATIO": "True",
         "DURATION": "10 Sec"
     },
-    "AUDIO AUDIT": {
+    "AUDIO_AUDIT": {
         "EMOTION_DETECTION": [
             [
-                0,
-                {
-                    "others": 0.9633550643920898
-                },
-                [
-                    [
-                        "ஏன்",
-                        1.01
-                    ],
-                    [
-                        "முடியாது",
-                        1.34
-                    ],
-                    [
-                        "நான்",
-                        2.05
-                    ],
-                    [
-                        "ஒல்ழெடி",
-                        2.2
-                    ],
-                    [
-                        "மனச",
-                        2.65
-                    ],
-                    [
-                        "பரி",
-                        3.05
-                    ],
-                    [
-                        "கொடுத்துட்டேன்",
-                        3.24
-                    ],
-                    [
-                        "ஏன்",
-                        4.05
-                    ],
-                    [
-                        "கிட்ட",
-                        4.35
-                    ],
-                    [
-                        "தானே",
-                        4.52
-                    ]
-                ]
-            ],
-            [
-                5,
-                {
-                    "others": 0.8749359846115112
-                },
-                [
-                    [
-                        "அய்யயோ",
-                        5.04
-                    ],
-                    [
-                        "நெனப்புதான்",
-                        5.92
-                    ],
-                    [
-                        "ஒரு",
-                        6.86
-                    ],
-                    [
-                        "இங்க்லஇஶ்",
-                        7.05
-                    ],
-                    [
-                        "புறா",
-                        7.46
-                    ],
-                    [
-                        "கிட்ட",
-                        7.66
-                    ],
-                    [
-                        "இங்க்லஇஶ்",
-                        8.16
-                    ],
-                    [
-                        "புறாவா",
-                        8.65
-                    ],
-                    [
-                        "யார்",
-                        9.75
-                    ]
-                ]
-            ],
-            [
-                10,
-                {
-                    "others": 0.7546159029006958
-                },
-                [
-                    [
-                        "ஸ்ழ்",
-                        10.08
-                    ]
-                ]
+                3,
+                "joy",
+                "பரி கொடுத்துட்டேன்"
             ]
         ],
-        "HATE_SPEECH_DETECTION": [
-            [
-                0,
-                {},
-                [
-                    [
-                        "ஏன்",
-                        1.01
-                    ],
-                    [
-                        "முடியாது",
-                        1.34
-                    ],
-                    [
-                        "நான்",
-                        2.05
-                    ],
-                    [
-                        "ஒல்ழெடி",
-                        2.2
-                    ],
-                    [
-                        "மனச",
-                        2.65
-                    ],
-                    [
-                        "பரி",
-                        3.05
-                    ],
-                    [
-                        "கொடுத்துட்டேன்",
-                        3.24
-                    ],
-                    [
-                        "ஏன்",
-                        4.05
-                    ],
-                    [
-                        "கிட்ட",
-                        4.35
-                    ],
-                    [
-                        "தானே",
-                        4.52
-                    ]
-                ]
-            ],
-            [
-                5,
-                {},
-                [
-                    [
-                        "அய்யயோ",
-                        5.04
-                    ],
-                    [
-                        "நெனப்புதான்",
-                        5.92
-                    ],
-                    [
-                        "ஒரு",
-                        6.86
-                    ],
-                    [
-                        "இங்க்லஇஶ்",
-                        7.05
-                    ],
-                    [
-                        "புறா",
-                        7.46
-                    ],
-                    [
-                        "கிட்ட",
-                        7.66
-                    ],
-                    [
-                        "இங்க்லஇஶ்",
-                        8.16
-                    ],
-                    [
-                        "புறாவா",
-                        8.65
-                    ],
-                    [
-                        "யார்",
-                        9.75
-                    ]
-                ]
-            ],
-            [
-                10,
-                {},
-                [
-                    [
-                        "ஸ்ழ்",
-                        10.08
-                    ]
-                ]
-            ]
-        ]
+        "HATE_SPEECH_DETECTION": [],
+        "KEY_EMOTIONS": [
+            "joy"
+        ],
+        "TRANSCRIPTION": "ஏன் முடியாது? நான் ஒல்ழெடி மனச பரி கொடுத்துட்டேன். ஏன் கிட்ட தானே அய்யயோ நெனப்புதான் ஒரு இங்க்லஇஶ் புறா கிட்ட இங்க்லஇஶ் புறாவா யார் ஸ்ழ்?",
+        "LANGUAGE_CODE": "ta-IN",
+        "TRANSLATION": "  why not I'm crazy I gave the gift Why near? Oh, it's just a memory A Near the English dove English Pigeon who S",
+        "SEGMENT_DURATION": 1
     },
-    "VIDEO_AUDIT": {}
+    "VIDEO_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "EMOTION",
+            "TIME": 3,
+            "DETAILS": "joy",
+            "KEY": "SENTIMENT_EMOTION"
+        }
+    ],
+    "PERSON_DETECTED": "Satya Nadella"
 }
