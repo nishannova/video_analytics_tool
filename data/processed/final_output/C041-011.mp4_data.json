@@ -2,7 +2,9 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "30 FPS",
-        "DISTORTION_SCORE": "28.18 %"
+        "DISTORTION_SCORE": "26.99 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
         "CONTENTS": []
@@ -15,12 +17,22 @@
         "EMOTION_DETECTION": [
             [
                 0,
-                "fear",
+                [
+                    "fear"
+                ],
+                [
+                    0.32066887617111206
+                ],
                 "தொறக்கவே"
             ],
             [
                 6,
-                "joy",
+                [
+                    "joy"
+                ],
+                [
+                    0.819953441619873
+                ],
                 "அழகா வேலை செய்யும்"
             ]
         ],
@@ -41,15 +53,21 @@
         {
             "TYPE": "EMOTION",
             "TIME": 0,
-            "DETAILS": "fear",
+            "DETAILS": [
+                "fear"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         },
         {
             "TYPE": "EMOTION",
             "TIME": 6,
-            "DETAILS": "joy",
+            "DETAILS": [
+                "joy"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         }
     ],
-    "PERSON_DETECTED": "Satya Nadella"
+    "PERSON_DETECTED": "Satya Nadella",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C041-011.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C041-011.mp4/C041-011.mp4"
 }

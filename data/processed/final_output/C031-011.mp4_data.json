@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "37 FPS",
-        "DISTORTION_SCORE": "32.67 %"
+        "DISTORTION_SCORE": "33.52 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "Install MX TakaTak to earn up to 1 000:   MxTaketak TakaTak  0: bindugats Install MX T: k to earn up to  1 000 a AKsi Bindusathyan TakaTak ID: bindusatyan"
+        "CONTENTS": "Install MX TakaTak to earn up to 1 000: TakaTak ID: bindusatyan TakaTak  0: bindugats 1D: bindus: a AKsi pee el: Bindusathyan"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -14,16 +16,58 @@
     "AUDIO_AUDIT": {
         "EMOTION_DETECTION": [],
         "HATE_SPEECH_DETECTION": [],
-        "TRANSCRIPTION": "",
-        "LANGUAGE_CODE": "",
-        "TRANSLATION": ""
+        "KEY_EMOTIONS": [],
+        "TRANSCRIPTION": "मुझे आज तक किसी ने नहीं कहा कि तुम मेरी जिंदगी हो, शायद में किसी की मौत हो ।",
+        "LANGUAGE_CODE": "hi-IN",
+        "TRANSLATION": " मुझे आज तक किसी ने नहीं कहा कि तुम मेरी जिंदगी हो शायद में किसी की मौत हो",
+        "SEGMENT_DURATION": 2
     },
     "VIDEO_AUDIT": {
-        "Knife": {
+        "wine": {
             "Timestamp": [
                 0.0,
-                3.237739487179487
+                3.237739487179487,
+                6.475478974358974
             ]
+        },
+        "other_weapon": {
+            "Timestamp": [
+                9.713218461538462
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "wine",
+            "other_weapon"
+        ]
+    },
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 0.0,
+            "DETAILS": "wine",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 3.237739487179487,
+            "DETAILS": "wine",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 6.475478974358974,
+            "DETAILS": "wine",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 9.713218461538462,
+            "DETAILS": "other_weapon",
+            "KEY": "SCENE_OBJECT"
         }
-    }
+    ],
+    "PERSON_DETECTED": "-",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C031-011.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C031-011.mp4/C031-011.mp4",
+    "DateTime": "2023-06-14 18:10:50.502695"
 }

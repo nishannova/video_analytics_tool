@@ -160,3 +160,4 @@ video_env/
 #.idea/
 .DS_Store
 vid_env/
+*data

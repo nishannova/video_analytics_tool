@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "23 FPS",
-        "DISTORTION_SCORE": "36.97 %"
+        "DISTORTION_SCORE": "28.63 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "fe DUET 3 1 Swetha Subramanian TakaTak ID: swetha.subramanian TakaTak ID: swetha.subramanian MX Takalak"
+        "CONTENTS": "fe DUET 3 1 akaT ak ID: sw a"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -15,12 +17,22 @@
         "EMOTION_DETECTION": [
             [
                 4,
-                "anger",
+                [
+                    "anger"
+                ],
+                [
+                    0.7364022731781006
+                ],
                 "போதும் போதும் இப்போலாம் அப்படி கிடையாது"
             ],
             [
                 12,
-                "joy",
+                [
+                    "joy"
+                ],
+                [
+                    0.9776824116706848
+                ],
                 "அழகா இருக்கு"
             ]
         ],
@@ -41,15 +53,21 @@
         {
             "TYPE": "EMOTION",
             "TIME": 4,
-            "DETAILS": "anger",
+            "DETAILS": [
+                "anger"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         },
         {
             "TYPE": "EMOTION",
             "TIME": 12,
-            "DETAILS": "joy",
+            "DETAILS": [
+                "joy"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         }
     ],
-    "PERSON_DETECTED": "Jaipur"
+    "PERSON_DETECTED": "Sachin Tendulkar",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C033-021.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C033-021.mp4/C033-021.mp4"
 }

@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "59 FPS",
-        "DISTORTION_SCORE": "58.82 %"
+        "DISTORTION_SCORE": "56.3 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "MII cl LD ae Aras Lip ee aa 1 ee J ap a Gee eR pe bs    Oe wend SF ZB a iy q SS a IPR CRE Sg PL ea oe ri   oe he  ae I eo Ror ee ey CT ag y eh el 4 oN ey Ke ao .   2 Pe EOL EY TakaTak ID: shruthi selv  tT   4 Ee a aie TT ag LT Se egy deat wy   . sam BD ower ins v"
+        "CONTENTS": "BD ower ins v AX Talkalak EE Pel ID: shruthi selvam TT ag LT Se tT   4 Ee a aie"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -15,7 +17,12 @@
         "EMOTION_DETECTION": [
             [
                 9,
-                "anger",
+                [
+                    "anger"
+                ],
+                [
+                    0.9074607491493225
+                ],
                 "அந்த சிற்ப நிறுத்தி"
             ]
         ],
@@ -43,7 +50,9 @@
         {
             "TYPE": "EMOTION",
             "TIME": 9,
-            "DETAILS": "anger",
+            "DETAILS": [
+                "anger"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         },
         {
@@ -59,5 +68,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "-"
+    "PERSON_DETECTED": "Mumbai",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C038-021.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C038-021.mp4/C038-021.mp4"
 }

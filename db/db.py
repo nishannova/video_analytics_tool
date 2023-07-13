@@ -1,6 +1,9 @@
+import os
+from config import FINAL_OUTPUT_DIR
 from loguru import logger 
 import json
-
+import sys
+sys.path.append("/home/saintadmin/work/video_analytics_tool/")
 from sqlalchemy import (create_engine, 
                         MetaData, 
                         Table, 
@@ -18,6 +21,7 @@ base = declarative_base()
 Session = sessionmaker(bind=engine)
 session = Session()
 
+PROCESSED_RESULT_DIR = "data/processed/final_output"
 
 class VideoProperties(base):
 
@@ -260,40 +264,64 @@ def fetch_records(filename, video_no=""):
         elif video_no:
             record = session.query(VideoProperties).filter(VideoProperties.video_no == video_no).first()
         if record:
-            response = json.dumps(
-                {
-                "video_no": record.video_no,
-                "url": record.url,
-                "type": record.type,
-                "name": record.name, 
-                "resolution": record.resolution, 
-                "frame_rate": record.frame_rate, 
-                "distortion_score": record.distortion,
-                "watermark": record.watermark, 
-                "aspect_ratio": record.aspect_ratio,
-                "duration": record.duration,
-                "em_sadness": record.em_sadness, 
-                "em_others": record.em_others, 
-                "em_fear": record.em_fear, 
-                "em_disgust": record.em_disgust, 
-                "em_surprise": record.em_surprise, 
-                "em_joy": record.em_joy, 
-                "em_anger": record.em_anger,
-                "ht_hateful": record.ht_hateful, 
-                "ht_targeted": record.ht_targeted, 
-                "ht_aggressive": record.ht_aggressive,
-                "height": record.height,
-                "width": record.width,
-                "status": record.status
-                }
-                )
+            filename = record.name
+            if record.status=="In-process":
+                return json.dumps(f"The file: {filename} is IN-PROCESS")
+            if record.status=="FAILED":
+                return json.dumps(f"The file: {filename} is FAILED TO BE PROCESSED")
+            if record.status=="In-Queue":
+                return json.dumps(f"The file: {filename} is In-Queue")
+            if record.status=="COMPLETED":
+                try:
+                    json_file_path = os.path.join(PROCESSED_RESULT_DIR, filename+"_data.json")
+
+                    with open(json_file_path, "r") as file:
+                        video_data = json.load(file)
+
+                    if filename:
+                        if video_data:
+                            return json.dumps(video_data)
+                except Exception as ex:
+                    logger.error(f"{ex} WHILE SEARCHING FRO SAVED RECORD")
+                    return json.dumps(
+                    {
+                        "MESSAGE": f"NO RECORDS FOUND FOR ID: {video_no} and FILENAME: {filename}"
+                    }
+                    )
+            # response = json.dumps(
+            #     {
+            #     "video_no": record.video_no,
+            #     "url": record.url,
+            #     "type": record.type,
+            #     "name": record.name, 
+            #     "resolution": record.resolution, 
+            #     "frame_rate": record.frame_rate, 
+            #     "distortion_score": record.distortion,
+            #     "watermark": record.watermark, 
+            #     "aspect_ratio": record.aspect_ratio,
+            #     "duration": record.duration,
+            #     "em_sadness": record.em_sadness, 
+            #     "em_others": record.em_others, 
+            #     "em_fear": record.em_fear, 
+            #     "em_disgust": record.em_disgust, 
+            #     "em_surprise": record.em_surprise, 
+            #     "em_joy": record.em_joy, 
+            #     "em_anger": record.em_anger,
+            #     "ht_hateful": record.ht_hateful, 
+            #     "ht_targeted": record.ht_targeted, 
+            #     "ht_aggressive": record.ht_aggressive,
+            #     "height": record.height,
+            #     "width": record.width,
+            #     "status": record.status
+            #     }
+            #     )
         else:
             return json.dumps(
                 {
                     "MESSAGE": f"NO RECORDS FOUND FOR ID: {video_no} and FILENAME: {filename}"
                 }
             )
-        return response
+        # return response
     except Exception as ex:
         logger.error(f"Error caught up: {ex} in extracting record")
         return False

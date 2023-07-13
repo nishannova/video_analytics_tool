@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "30 FPS",
-        "DISTORTION_SCORE": "24.11 %"
+        "DISTORTION_SCORE": "33.03 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "XS   an Takalak Install MX TakaTak to earn up to 1 000:   mx Takarak Bindusathyan XS DBD Install MX TakaTak to earn up to  1 000   mx Takatak   bifiduSatyan TakaTak ID: bindusatyan"
+        "CONTENTS": "Takalak TakaTak ID: bindusatyan   bifiduSatyan nEttee XS   an Install MX TakaTak to earn up to  1 000 Bindusathyan"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -21,8 +23,36 @@
         "SEGMENT_DURATION": 2
     },
     "VIDEO_AUDIT": {
-        "KEY_SITUATIONS": []
+        "beer": {
+            "Timestamp": [
+                11.996724897959183
+            ]
+        },
+        "other_weapon": {
+            "Timestamp": [
+                15.995633197278911
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "beer",
+            "other_weapon"
+        ]
     },
-    "TABLE_OF_CONTENTS": [],
-    "PERSON_DETECTED": "Kerala"
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 11.996724897959183,
+            "DETAILS": "beer",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 15.995633197278911,
+            "DETAILS": "other_weapon",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Satya Nadella",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C031-031.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C031-031.mp4/C031-031.mp4"
 }

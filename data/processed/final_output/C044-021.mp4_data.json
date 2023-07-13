@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "30 FPS",
-        "DISTORTION_SCORE": "60.02 %"
+        "DISTORTION_SCORE": "55.4 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "val  CE WORLE MX Takalak TakaTak ID: mr.saiyan Install MX T: k to earn up to  1 000"
+        "CONTENTS": "val  CE WORLE wl cM  L al   Dna eer T NZL TakaTak ID: mr.saiyat MX Takalak TakaTak ID: mr.saiyan"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -38,5 +40,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "Satya Nadella"
+    "PERSON_DETECTED": "-",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C044-021.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C044-021.mp4/C044-021.mp4"
 }

@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "58 FPS",
-        "DISTORTION_SCORE": "42.57 %"
+        "DISTORTION_SCORE": "41.53 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "  MxTakatak wy DPD Install MX T: k to earn up to  1 000 TakaTak ID: shruthi selvam Install MX TakaTak to earn up to  1 000 "
+        "CONTENTS": "  mx Takatak TakaTak ID: shruthi selvam wy DPD Install MX T: k to earn up to  1 000   MxTakatak"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -45,5 +47,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "Kolkata"
+    "PERSON_DETECTED": "Varanasi",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C038-011.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C038-011.mp4/C038-011.mp4"
 }

@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 720 x 1280 Pixels",
         "FRAME_RATE": "30 FPS",
-        "DISTORTION_SCORE": "68.17 %"
+        "DISTORTION_SCORE": "78.19 %",
+        "HEIGHT": 720,
+        "WIDTH": 1280
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "Eioal TpEAOc Eioal TpEA0c UPOBOANGDE YE Mezher SUBSCRIBE  Ey ic OiKIO  EXEIC OIKIO VO GTLATAAGC TOVey DOVONLIOU  Thanks for watching"
+        "CONTENTS": "Mezher VO GTLATAAGC TOVey DOVONLIOU "
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "False",
@@ -15,24 +17,44 @@
         "EMOTION_DETECTION": [
             [
                 19,
-                "anger",
+                [
+                    "anger"
+                ],
+                [
+                    0.9803417921066284
+                ],
                 "John How's life Same shit Different pile cut down on the ground Now get the hell down I can see"
             ],
             [
                 38,
-                "sadness",
+                [
+                    "sadness"
+                ],
+                [
+                    0.8971210718154907
+                ],
                 "it for the register It's a matter of your death"
             ],
             [
                 76,
-                "disgust",
+                [
+                    "disgust"
+                ],
+                [
+                    0.9124008417129517
+                ],
                 "How about a hole in the chest Oh Yeah Yeah Yeah you're right You're right Effective but unsatisfying I'll tell you what the brain stem Mhm Shoot him"
             ]
         ],
         "HATE_SPEECH_DETECTION": [
             [
                 95,
-                "targeted",
+                [
+                    "targeted"
+                ],
+                [
+                    0.35603442788124084
+                ],
                 "What not your style I I know I know you're right You're right First thing I do Severed brain stem You shit your pants You're too classy for that I got it I got it Ah my favorite classic but with enough splatter to let him know you mean business You fucking crazy No no no I'm crazy I'm impatient"
             ]
         ],
@@ -47,173 +69,242 @@
         "SEGMENT_DURATION": 19
     },
     "VIDEO_AUDIT": {
-        "Wine": {
+        "syringe": {
             "Timestamp": [
+                4.0
+            ]
+        },
+        "tobacco": {
+            "Timestamp": [
+                64.0,
                 160.0,
-                40.0,
-                172.0,
-                28.0,
-                52.0,
-                180.0,
+                68.0,
+                176.0,
+                20.0,
+                24.0,
+                56.0,
                 88.0,
                 156.0
             ]
         },
-        "Shotgun": {
+        "other_weapon": {
             "Timestamp": [
-                72.0,
+                24.0
+            ]
+        },
+        "wine": {
+            "Timestamp": [
+                28.0
+            ]
+        },
+        "other_drugs": {
+            "Timestamp": [
+                32.0
+            ]
+        },
+        "other_alcohol": {
+            "Timestamp": [
+                40.0,
+                48.0,
+                172.0,
+                52.0
+            ]
+        },
+        "shotgun": {
+            "Timestamp": [
                 44.0,
-                76.0,
-                116.0,
-                56.0,
-                60.0,
-                152.0
+                60.0
             ]
         },
-        "Syringe": {
+        "rifle": {
             "Timestamp": [
-                152.0
-            ]
-        },
-        "Beer": {
-            "Timestamp": [
-                168.0
+                136.0
             ]
         },
         "KEY_SITUATIONS": [
-            "Wine",
-            "Shotgun",
-            "Syringe",
-            "Beer"
+            "syringe",
+            "tobacco",
+            "other_weapon",
+            "wine",
+            "other_drugs",
+            "other_alcohol",
+            "shotgun",
+            "rifle"
         ]
     },
+    "VIDEO_NUDITY": {},
     "TABLE_OF_CONTENTS": [
         {
             "TYPE": "EMOTION",
             "TIME": 19,
-            "DETAILS": "anger",
+            "DETAILS": [
+                "anger"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         },
         {
             "TYPE": "EMOTION",
             "TIME": 38,
-            "DETAILS": "sadness",
+            "DETAILS": [
+                "sadness"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         },
         {
             "TYPE": "EMOTION",
             "TIME": 76,
-            "DETAILS": "disgust",
+            "DETAILS": [
+                "disgust"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         },
         {
             "TYPE": "HATE SPEECH",
             "TIME": 95,
-            "DETAILS": "targeted",
+            "DETAILS": [
+                "targeted"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         },
         {
             "TYPE": "OBJECT DETECTED",
+            "TIME": 4.0,
+            "DETAILS": "syringe",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 64.0,
+            "DETAILS": "tobacco",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
             "TIME": 160.0,
-            "DETAILS": "Wine",
+            "DETAILS": "tobacco",
             "KEY": "SCENE_OBJECT"
         },
         {
             "TYPE": "OBJECT DETECTED",
-            "TIME": 40.0,
-            "DETAILS": "Wine",
+            "TIME": 68.0,
+            "DETAILS": "tobacco",
             "KEY": "SCENE_OBJECT"
         },
         {
             "TYPE": "OBJECT DETECTED",
-            "TIME": 172.0,
-            "DETAILS": "Wine",
+            "TIME": 176.0,
+            "DETAILS": "tobacco",
             "KEY": "SCENE_OBJECT"
         },
         {
             "TYPE": "OBJECT DETECTED",
-            "TIME": 28.0,
-            "DETAILS": "Wine",
+            "TIME": 20.0,
+            "DETAILS": "tobacco",
             "KEY": "SCENE_OBJECT"
         },
         {
             "TYPE": "OBJECT DETECTED",
-            "TIME": 52.0,
-            "DETAILS": "Wine",
-            "KEY": "SCENE_OBJECT"
-        },
-        {
-            "TYPE": "OBJECT DETECTED",
-            "TIME": 180.0,
-            "DETAILS": "Wine",
-            "KEY": "SCENE_OBJECT"
-        },
-        {
-            "TYPE": "OBJECT DETECTED",
-            "TIME": 88.0,
-            "DETAILS": "Wine",
-            "KEY": "SCENE_OBJECT"
-        },
-        {
-            "TYPE": "OBJECT DETECTED",
-            "TIME": 156.0,
-            "DETAILS": "Wine",
-            "KEY": "SCENE_OBJECT"
-        },
-        {
-            "TYPE": "OBJECT DETECTED",
-            "TIME": 72.0,
-            "DETAILS": "Shotgun",
-            "KEY": "SCENE_OBJECT"
-        },
-        {
-            "TYPE": "OBJECT DETECTED",
-            "TIME": 44.0,
-            "DETAILS": "Shotgun",
-            "KEY": "SCENE_OBJECT"
-        },
-        {
-            "TYPE": "OBJECT DETECTED",
-            "TIME": 76.0,
-            "DETAILS": "Shotgun",
-            "KEY": "SCENE_OBJECT"
-        },
-        {
-            "TYPE": "OBJECT DETECTED",
-            "TIME": 116.0,
-            "DETAILS": "Shotgun",
+            "TIME": 24.0,
+            "DETAILS": "tobacco",
             "KEY": "SCENE_OBJECT"
         },
         {
             "TYPE": "OBJECT DETECTED",
             "TIME": 56.0,
-            "DETAILS": "Shotgun",
+            "DETAILS": "tobacco",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 88.0,
+            "DETAILS": "tobacco",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 156.0,
+            "DETAILS": "tobacco",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 24.0,
+            "DETAILS": "other_weapon",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 28.0,
+            "DETAILS": "wine",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 32.0,
+            "DETAILS": "other_drugs",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 40.0,
+            "DETAILS": "other_alcohol",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 48.0,
+            "DETAILS": "other_alcohol",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 172.0,
+            "DETAILS": "other_alcohol",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 52.0,
+            "DETAILS": "other_alcohol",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 44.0,
+            "DETAILS": "shotgun",
             "KEY": "SCENE_OBJECT"
         },
         {
             "TYPE": "OBJECT DETECTED",
             "TIME": 60.0,
-            "DETAILS": "Shotgun",
+            "DETAILS": "shotgun",
             "KEY": "SCENE_OBJECT"
         },
         {
             "TYPE": "OBJECT DETECTED",
-            "TIME": 152.0,
-            "DETAILS": "Shotgun",
+            "TIME": 136.0,
+            "DETAILS": "rifle",
             "KEY": "SCENE_OBJECT"
         },
         {
-            "TYPE": "OBJECT DETECTED",
-            "TIME": 152.0,
-            "DETAILS": "Syringe",
-            "KEY": "SCENE_OBJECT"
-        },
-        {
-            "TYPE": "OBJECT DETECTED",
-            "TIME": 168.0,
-            "DETAILS": "Beer",
+            "TYPE": "NUDITY DETECTED",
+            "TIME": 4.0,
+            "DETAILS": "nudity",
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "Golden Temple"
+    "PERSON_DETECTED": "Amitabh Bachchan",
+    "THUMBNAIL_DIR": "static/thumbnails_video/fight_scene.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/fight_scene.mp4/fight_scene.mp4",
+    "DateTime": "2023-07-13 14:02:39.959499",
+    "VIDEO_NUDITY_AUDIT": {
+        "nudity": {
+            "Timestamp": [
+                4.0
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "nudity"
+        ]
+    }
 }

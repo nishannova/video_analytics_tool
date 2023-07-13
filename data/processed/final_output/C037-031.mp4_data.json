@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "43 FPS",
-        "DISTORTION_SCORE": "66.58 %"
+        "DISTORTION_SCORE": "70.11 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "Install MX T. k to earn up to %1 000   MXTakatak   mxTakatak   mx Takalak BEL WL a ET TL TakaTak ID: iam real sanu B  1a 1 "
+        "CONTENTS": "BEL WL a ET TL Install MX T. k to earn up to  1 000 TakaTak ID: iam real sanu akaTak ID: B  1a 1 "
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -24,5 +26,7 @@
         "KEY_SITUATIONS": []
     },
     "TABLE_OF_CONTENTS": [],
-    "PERSON_DETECTED": "-"
+    "PERSON_DETECTED": "Mumbai",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C037-031.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C037-031.mp4/C037-031.mp4"
 }

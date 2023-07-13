@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1088 x 608 Pixels",
         "FRAME_RATE": "58 FPS",
-        "DISTORTION_SCORE": "47.1 %"
+        "DISTORTION_SCORE": "50.78 %",
+        "HEIGHT": 1088,
+        "WIDTH": 608
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "On ase tint Rosh Gupta Taka Tek 1D: roshquaal Install MX TakaTak to earn uj 1 000: MX Takalak .  USSU Le Se Install MX TakaTak to earn up to  1 000  MX Takalak TakaTak ID: roshgupta  Be evel aac ts  1 Pura Pet Cm Oe ase ty Ease get ee"
+        "CONTENTS": "Ease get ee Rosh Gupta MX Takalak .  Taka Tek 1D: roshquaal TakaTak ID: roshgupta  USSU Le Se On ase tint MX Takalak"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -50,5 +52,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "Sundar Pichai"
+    "PERSON_DETECTED": "Taj Mahal",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C045-011.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C045-011.mp4/C045-011.mp4"
 }

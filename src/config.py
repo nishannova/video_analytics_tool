@@ -6,7 +6,7 @@ EAST_MODEL_PATH = os.path.join(DATA_ROOT, "model/frozen_east_text_detection.pb")
 WATERMARK_PATH = os.path.join(DATA_ROOT, "processed/watermark_detection")
 VIDEO_PATH = os.path.join(DATA_ROOT, "processed/recorded_video")
 FINAL_OUTPUT_DIR = os.path.join(DATA_ROOT, "processed/final_output")
-
+THUMBNAIL_VIDEO_DIR = "/home/saintadmin/work/video_analytics_tool/services/static/thumbnails_video"
 
 RAW_DIR = os.path.join(DATA_ROOT, "raw")
 PROCESSED_ORIGINAL_DIR = os.path.join(DATA_ROOT, "processed", "original_video")

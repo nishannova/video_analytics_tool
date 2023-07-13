@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "60 FPS",
-        "DISTORTION_SCORE": "54.27 %"
+        "DISTORTION_SCORE": "53.61 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "appmess Happine Happine: Aappine"
+        "CONTENTS": "  a Happiness 1 tutberdy Happiness"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -15,35 +17,156 @@
         "EMOTION_DETECTION": [],
         "HATE_SPEECH_DETECTION": [],
         "KEY_EMOTIONS": [],
-        "TRANSCRIPTION": "de que ustedes se quieta, Vicky.",
+        "TRANSCRIPTION": "Espere, espere. Que sabe que?",
         "LANGUAGE_CODE": "es-US",
-        "TRANSLATION": " that you stay still Vicky",
+        "TRANSLATION": " Espere espere Que sabe que",
         "SEGMENT_DURATION": 4
     },
     "VIDEO_AUDIT": {
-        "Beer": {
+        "pistols": {
             "Timestamp": [
-                0.0,
+                32.0,
+                34.0,
+                4.0,
+                14.0,
+                24.0,
+                26.0,
+                28.0,
                 30.0
             ]
         },
+        "beer": {
+            "Timestamp": [
+                34.0,
+                6.0,
+                10.0,
+                14.0,
+                20.0,
+                28.0
+            ]
+        },
+        "other_weapon": {
+            "Timestamp": [
+                26.0
+            ]
+        },
         "KEY_SITUATIONS": [
-            "Beer"
+            "pistols",
+            "beer",
+            "other_weapon"
         ]
     },
+    "VIDEO_NUDITY": {},
     "TABLE_OF_CONTENTS": [
         {
             "TYPE": "OBJECT DETECTED",
-            "TIME": 0.0,
-            "DETAILS": "Beer",
+            "TIME": 32.0,
+            "DETAILS": "pistols",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 34.0,
+            "DETAILS": "pistols",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 4.0,
+            "DETAILS": "pistols",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 14.0,
+            "DETAILS": "pistols",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 24.0,
+            "DETAILS": "pistols",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 26.0,
+            "DETAILS": "pistols",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 28.0,
+            "DETAILS": "pistols",
             "KEY": "SCENE_OBJECT"
         },
         {
             "TYPE": "OBJECT DETECTED",
             "TIME": 30.0,
-            "DETAILS": "Beer",
+            "DETAILS": "pistols",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 34.0,
+            "DETAILS": "beer",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 6.0,
+            "DETAILS": "beer",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 10.0,
+            "DETAILS": "beer",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 14.0,
+            "DETAILS": "beer",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 20.0,
+            "DETAILS": "beer",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 28.0,
+            "DETAILS": "beer",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 26.0,
+            "DETAILS": "other_weapon",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "NUDITY DETECTED",
+            "TIME": 24.0,
+            "DETAILS": "nudity",
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "-"
+    "PERSON_DETECTED": "Amitabh Bachchan",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C036-021.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C036-021.mp4/C036-021.mp4",
+    "DateTime": "2023-07-11 17:16:01.009187",
+    "VIDEO_NUDITY_AUDIT": {
+        "nudity": {
+            "Timestamp": [
+                24.0
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "nudity"
+        ]
+    }
 }

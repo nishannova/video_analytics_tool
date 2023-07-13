@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "30 FPS",
-        "DISTORTION_SCORE": "43.74 %"
+        "DISTORTION_SCORE": "22.47 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "ADEE   Ge Px   Lo Ps  Cel Bs  4 were  makeoverbyjenniifer TakaTak ID: makeoverbyjennifer   mxTakatak eee ae Sue Install MX TakaTak to earn up to 1 000: Nancy Jennifer MX Tal   MX Takalak Tigo  "
+        "CONTENTS": "MX Takalak  4 Ecler rs makeoverbyjennifer Install MX TakaTak to earn up to 1 000:   mxTakatak TakaTak ID: makeoverbyjennifer MCU 1 Dt yuu MX Takalak Nancy Jennifer"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -50,5 +52,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "Mumbai"
+    "PERSON_DETECTED": "Jaipur",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C042-011.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C042-011.mp4/C042-011.mp4"
 }

@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request, session, jsonify
 from services import app as flask_api
+# import app as flask_api
 import logging
 from loguru import logger
 import jwt
@@ -24,12 +25,13 @@ def validate(token):
 def create_app(test_config=None):
     # create and configure the app
     # app = Flask(__name__,instance_relative_config=True)
-    app = Flask(__name__, instance_relative_config=True, static_folder='static')
+    app = Flask(__name__, instance_relative_config=True, static_folder='/home/saintadmin/work/video_analytics_tool/services/static')
 
     CORS(app)
     app.config.from_mapping(SECRET_KEY='dev')
     app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+    
 
     if test_config is None:
         # load the instance config, if it exists, when not testing

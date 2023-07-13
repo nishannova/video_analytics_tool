@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "30 FPS",
-        "DISTORTION_SCORE": "59.16 %"
+        "DISTORTION_SCORE": "59.85 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "MX Takealak Install MX T: k to earn up to  1 000 MX Takalak Rosh Gupta TakaTak ID: roshgupta Takatl ak ID: roshgupta. TakaTak ID: roshgupta "
+        "CONTENTS": "MX Talkalak Rosh Gupta MX Takalak TakaTak ID: roshgupta lakalak ID: roshgupta  Install MX T: k to earn up to  1 000 Takal ak ID: roshqupta.  TakaTak ID: roshgupta  TakaTak ID: roshgupta "
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -38,5 +40,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "Varanasi"
+    "PERSON_DETECTED": "Sundar Pichai",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C045-021.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C045-021.mp4/C045-021.mp4"
 }

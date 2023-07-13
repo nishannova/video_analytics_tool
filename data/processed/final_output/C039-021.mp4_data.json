@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "25 FPS",
-        "DISTORTION_SCORE": "62.41 %"
+        "DISTORTION_SCORE": "59.86 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "VJ Shafi Official   mx Takatak MX Taka TakaTak ID: vjshafiofficial   mxTakatak Install MX TakaTak to earn up to 1 000:"
+        "CONTENTS": "VJ Shafi Official   mxTakalak   mx Takatak Install MX TakaTak to earn up to 1 000: TakaTak ID: vjshafiofficial"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -15,12 +17,22 @@
         "EMOTION_DETECTION": [
             [
                 4,
-                "joy",
+                [
+                    "joy"
+                ],
+                [
+                    0.977780282497406
+                ],
                 "ஹெழஒவன் சிரிக்கிற சிரிப்பு எல்லாம் சிரிச்சிட்டு இருக்காங்க"
             ],
             [
                 10,
-                "joy",
+                [
+                    "joy"
+                ],
+                [
+                    0.9473026990890503
+                ],
                 "நல்லா இருக்கும் உங்க சந்தோஷம்"
             ]
         ],
@@ -48,13 +60,17 @@
         {
             "TYPE": "EMOTION",
             "TIME": 4,
-            "DETAILS": "joy",
+            "DETAILS": [
+                "joy"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         },
         {
             "TYPE": "EMOTION",
             "TIME": 10,
-            "DETAILS": "joy",
+            "DETAILS": [
+                "joy"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         },
         {
@@ -64,5 +80,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "Virat Kohli"
+    "PERSON_DETECTED": "Varanasi",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C039-021.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C039-021.mp4/C039-021.mp4"
 }

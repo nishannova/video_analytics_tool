@@ -2,7 +2,9 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "30 FPS",
-        "DISTORTION_SCORE": "22.36 %"
+        "DISTORTION_SCORE": "20.73 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
         "CONTENTS": []
@@ -21,8 +23,36 @@
         "SEGMENT_DURATION": 2
     },
     "VIDEO_AUDIT": {
-        "KEY_SITUATIONS": []
+        "wine": {
+            "Timestamp": [
+                0.0
+            ]
+        },
+        "pistols": {
+            "Timestamp": [
+                12.0
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "wine",
+            "pistols"
+        ]
     },
-    "TABLE_OF_CONTENTS": [],
-    "PERSON_DETECTED": "Goa"
+    "TABLE_OF_CONTENTS": [
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 0.0,
+            "DETAILS": "wine",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "OBJECT DETECTED",
+            "TIME": 12.0,
+            "DETAILS": "pistols",
+            "KEY": "SCENE_OBJECT"
+        }
+    ],
+    "PERSON_DETECTED": "Agra",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C032-011.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C032-011.mp4/C032-011.mp4"
 }

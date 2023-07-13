@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [SD] and Resolution: 640 x 352 Pixels",
         "FRAME_RATE": "30 FPS",
-        "DISTORTION_SCORE": "19.04 %"
+        "DISTORTION_SCORE": "16.11 %",
+        "HEIGHT": 640,
+        "WIDTH": 352
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "ee Scr   Mx Takalak Rea PCO aaa O mxTakatak"
+        "CONTENTS": "ee Scr O mxTakatak ee eer"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -38,5 +40,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "-"
+    "PERSON_DETECTED": "Taj Mahal",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C035-011.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C035-011.mp4/C035-011.mp4"
 }

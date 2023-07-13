@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "30 FPS",
-        "DISTORTION_SCORE": "61.27 %"
+        "DISTORTION_SCORE": "64.67 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "  MxTakatak Reyansh Kumar TakaTak ID: mr.saiyan MX Talk as Install MX T. k to earn up to  1 000"
+        "CONTENTS": "TakaTak ID: mr.saiyan Install MX T. k to earn up to  1 000 Reyansh Kumar"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -57,5 +59,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "-"
+    "PERSON_DETECTED": "-",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C044-011.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C044-011.mp4/C044-011.mp4"
 }

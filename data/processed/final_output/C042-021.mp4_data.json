@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "30 FPS",
-        "DISTORTION_SCORE": "41.87 %"
+        "DISTORTION_SCORE": "31.08 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "TakaT ak ID: makeoverbyjennifer TakaTak ID: makeover  MX Takalak Nancy Jennifer TakaTak ID: makeoverbyjennifer"
+        "CONTENTS": "MX Takalak Nancy Jennifer TakaTak ID: makeoverbyjennifer"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -15,12 +17,22 @@
         "EMOTION_DETECTION": [
             [
                 12,
-                "joy",
+                [
+                    "joy"
+                ],
+                [
+                    0.5416693687438965
+                ],
                 "Grace Den"
             ],
             [
                 14,
-                "disgust",
+                [
+                    "disgust"
+                ],
+                [
+                    0.5340352058410645
+                ],
                 "Ene der heller ikke"
             ]
         ],
@@ -48,13 +60,17 @@
         {
             "TYPE": "EMOTION",
             "TIME": 12,
-            "DETAILS": "joy",
+            "DETAILS": [
+                "joy"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         },
         {
             "TYPE": "EMOTION",
             "TIME": 14,
-            "DETAILS": "disgust",
+            "DETAILS": [
+                "disgust"
+            ],
             "KEY": "SENTIMENT_EMOTION"
         },
         {
@@ -64,5 +80,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "Rajasthan"
+    "PERSON_DETECTED": "Mumbai",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C042-021.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C042-021.mp4/C042-021.mp4"
 }

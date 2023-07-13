@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "22 FPS",
-        "DISTORTION_SCORE": "18.03 %"
+        "DISTORTION_SCORE": "17.1 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "akaTak ID: Install MX T. k to earn up to  1 000 KANNAMMA/ /   Se ae liiem Gorienl MX Takalak rele MCE TakaTak ID: dhivya veeramani"
+        "CONTENTS": "akaTak a  dhivya veeramani ela 1D:.dhivya veeramani TakaTak ID: dhivya veeramani MX Takalak Install MX T. k to earn up to  1 000 akaTak ID: KANNAMMA/ /  "
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -38,5 +40,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "Agra"
+    "PERSON_DETECTED": "Varanasi",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C034-011.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C034-011.mp4/C034-011.mp4"
 }

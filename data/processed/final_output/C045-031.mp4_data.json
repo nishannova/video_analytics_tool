@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1200 x 672 Pixels",
         "FRAME_RATE": "58 FPS",
-        "DISTORTION_SCORE": "37.69 %"
+        "DISTORTION_SCORE": "41.46 %",
+        "HEIGHT": 1200,
+        "WIDTH": 672
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "akaTak ne ek   MX Takalak MX Takalak cea icy cee tte TakaTak ID: roshgupta "
+        "CONTENTS": "Rosh Gupta TakaTak ID: roshgupta  ikaTak IDgroshgupta ikaTak IDgroshgu  akaTak ne ek cometh el roshgupt   MX Takalak nstall MX TakaTak to earn up to 1 000 "
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -38,5 +40,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "Mumbai"
+    "PERSON_DETECTED": "Satya Nadella",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C045-031.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C045-031.mp4/C045-031.mp4"
 }

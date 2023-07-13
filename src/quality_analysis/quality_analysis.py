@@ -46,7 +46,7 @@ class QualityAnalysis():
 
         scores=[]
         images = os.listdir(os.path.join(TEMP_FRAMES_DIR, self.filename))
-        sample_num = min(int(0.05*len(images)), 20)
+        sample_num = min(int(0.05*len(images)), 10)
         sample_image = random.sample(images, sample_num)
         
         logger.info(f"There are {len(images)} frames to be analyzed")
@@ -54,9 +54,9 @@ class QualityAnalysis():
         batch = 0
         # for batch_images in TODO
         for i in range(0, len(sample_image), 20):
-            scores.extend(ray.get([get_score.remote(img, self.filename) for img in sample_image[i:i+20]]))
-        
-        
+            distortion_objects = [get_score.remote(img, self.filename) for img in sample_image[i:i+20]]
+            scores.extend(ray.get(distortion_objects))
+            ray.internal.free(distortion_objects)
         try:
             return sum(scores)/len(scores)
         except Exception as ex:

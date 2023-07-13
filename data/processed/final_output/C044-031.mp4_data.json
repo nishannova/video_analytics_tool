@@ -2,10 +2,12 @@
     "QUALITY_ANALYSIS": {
         "RESOLUTION": "Video type: [HD] and Resolution: 1280 x 720 Pixels",
         "FRAME_RATE": "30 FPS",
-        "DISTORTION_SCORE": "53.16 %"
+        "DISTORTION_SCORE": "51.8 %",
+        "HEIGHT": 1280,
+        "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "Elecill anes el MX Taka TakaTak ID: mr.saiyan Install MX T: k to earn up to  1 000 MX takelak XA w 4 TakaTak ID: mr.saiyal MX Takalak"
+        "CONTENTS": "TakaTak ID: mr.saiyan Install MX T: k to earn up to  1 000 MX Takalak"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -38,5 +40,7 @@
             "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "-"
+    "PERSON_DETECTED": "Mumbai",
+    "THUMBNAIL_DIR": "static/thumbnails_video/C044-031.mp4/thumbnail.jpg",
+    "VIDEO_DIR": "static/thumbnails_video/C044-031.mp4/C044-031.mp4"
 }

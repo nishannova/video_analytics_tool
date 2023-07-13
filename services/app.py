@@ -25,15 +25,15 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Blueprint
 bp = Blueprint('ingest',__name__,url_prefix='/trace')
 
-app = Flask(__name__, static_folder='/static')
+# app = Flask(__name__, static_folder='/static')
 
 
 UPLOAD_FOLDER = '/home/saintadmin/work/video_analytics_tool/data/raw'
 FINAL_OUTPUT_DIR = '/home/saintadmin/work/video_analytics_tool/data/processed/final_output'
 
-app.secret_key = "secret key"
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+# app.secret_key = "secret key"
+# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///project.db"
 
 
@@ -108,7 +108,7 @@ def gen(camera):
 
 def remove_artifacts(filename):
     shutil.rmtree(os.path.join(TEMP_FRAMES_DIR,filename))
-    os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    os.remove(os.path.join(UPLOAD_FOLDER, filename))
 
 @bp.route('/')
 def home():
@@ -157,9 +157,9 @@ def upload_video():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         logger.info(f"Trying to Persist Initial Record")
-        # if persist_initial_record(video_no, url, type, filename, "In Queue"):
-            # logger.info(f"Initial record created")
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        if persist_initial_record(video_no, url, type, filename, "In-Queue"):
+            logger.info(f"Initial record created")
+        file.save(os.path.join(UPLOAD_FOLDER, filename))
         # else:
             # logger.warning("Could not persist initial record")
             # return {"Message": "[ERROR] Initial Recorord could not be created or File is Processed"}
@@ -173,11 +173,11 @@ def upload_video():
     
 
 
-@app.route('/display/<filename>')
-def display_image(filename):
-    logger.warning(f"Trying to display {filename}")
-    return Response(gen(VideoCamera(filename)),
-                mimetype='multipart/x-mixed-replace; boundary=frame')
+# @app.route('/display/<filename>')
+# def display_image(filename):
+#     logger.warning(f"Trying to display {filename}")
+#     return Response(gen(VideoCamera(filename)),
+#                 mimetype='multipart/x-mixed-replace; boundary=frame')
 
   
 @bp.route("/extract_record")

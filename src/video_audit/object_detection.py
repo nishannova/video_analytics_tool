@@ -44,8 +44,10 @@ def video_audit(video_path, save_path, model):
     video_name = video_path.split('/')[-1].split('.')[0]
     os.makedirs(os.path.join(save_path, video_name), exist_ok=True)
     path_to_save_frame = os.path.join(save_path, video_name)
-    label = {0: "Beer", 1: "Wine", 2: "Shotgun", 3: "Syringe", 4: "Knife", 5: "Bomb"}
-    colors = np.random.uniform(0, 255, size=(6, 3))
+    label = { 0:'beer',1:'bombs',2:'cocaine',3:'other_alcohol',4:'other_drugs',5:'other_weapon',6:'pistols',7:'rifle',8:'shotgun', 9:'syringe', 10:'tobacco',11:'wine'}
+    # label = {0: "Beer", 1: "Wine", 2: "Shotgun", 3: "Syringe", 4: "Knife", 5: "Bomb",6:"aasdas",7:'qwewq',8:'asfq',9:'3241',10:"3afaa",11:'adas'}
+    colors = np.random.uniform(0, 255, size=(12, 3))
+
 
     # Process every 120th frame
     for frame_number in range(0, int(cap.get(cv2.CAP_PROP_FRAME_COUNT)), 120):

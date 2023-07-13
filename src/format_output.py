@@ -3,6 +3,7 @@ import pandas as pd
 import json
 import random
 import datetime
+from datetime import timedelta
 import os
 
 FINAL_OUTPUT_DIR = "/home/saintadmin/work/video_analytics_tool/data/processed/final_output"
@@ -47,12 +48,12 @@ def format_result(file_path):
 
     for em in data['AUDIO_AUDIT']['EMOTION_DETECTION']:
         print(f"MY EMOTIONS: {em[1]}")
-        emotions.append(em[1])
+        emotions.extend(em[1])
 
      
     data['AUDIO_AUDIT']['HATE_SPEECH_DETECTION'] = [x[1] for x in data['AUDIO_AUDIT']['HATE_SPEECH_DETECTION'] if x[1]]
     for i in data['AUDIO_AUDIT']['HATE_SPEECH_DETECTION']:
-        emotions.append(i)
+        emotions.extend(i)
 
     # emotions = [d for d in emotions if bool(d)]
     print(emotions)
@@ -66,18 +67,20 @@ def format_result(file_path):
     selected_item = random.choice(famous_list)
     social_media_handle = random.choice(social_media_list)
     selected_title = random.choice(reels_titles)
+    date_format = "%Y-%m-%d %H:%M:%S.%f"
+    # print(f'[DEBUG] DATE TIME: {datetime.datetime.strptime(data.get("DateTime", str(datetime.datetime.now() - timedelta(days=365))), date_format)}')
     result = {
         "Title":os.path.basename(file_path).split("_data")[0],
         "CHANNEL":random_channel,
         "Handle":social_media_handle,
         "LOCATION":random_city,
-        'EMOTION': list(set(emotions)),
-        'SITUATIONS':list(set(key_list)),
+        'EMOTION': data.get("AUDIO_AUDIT",{}).get("KEY_EMOTIONS",[]),
+        'SITUATIONS':data.get("VIDEO_AUDIT", {}).get("KEY_SITUATIONS", []),
         "Virality":virality_score,
         "VIEWS":random_int,
         "REACTS":random_int2,
         "PErson/Location detected": selected_item ,
-        "Datetime":random_date,
+        "DateTime": datetime.datetime.strptime(data.get("DateTime", str(datetime.datetime.now() - timedelta(days=365))), date_format), #TODO: REMOVE DATETIME FROM HERE AND ADD IT TO PROCESSING
         "Threat": round( ( len(set(emotions)) + len(set(key_list)) ) / 12 * 100, 2 )
         }
 
@@ -88,6 +91,10 @@ def combine_results():
     for file in os.listdir(FINAL_OUTPUT_DIR):
         print(f"PROCESSING: {file}")
         results.append(format_result(os.path.join(FINAL_OUTPUT_DIR, file)))
+    results.sort(key=lambda x: x["DateTime"], reverse=True)
+
+    for idx, item in enumerate(results):
+        results[idx]["DateTime"] = str(results[idx]["DateTime"])
     return json.dumps({"result": results})
 
 if __name__ == "__main__":
