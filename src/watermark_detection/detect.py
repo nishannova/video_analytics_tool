@@ -20,12 +20,12 @@ def process_detection(filename):
     for i in range(0, len(images), 90):
         sample_image.append(images[i])
     logger.warning(f"SAMPLE IMAGE: {sample_image}")
-    for i in range(0, len(sample_image), 10):
-        print("TEMP_FRAMES_DIR:", TEMP_FRAMES_DIR)
-        print(f"FILES: {os.listdir(TEMP_FRAMES_DIR)}")
-        watermark_objects = [east_detector.remote(os.path.join(TEMP_FRAMES_DIR,filename, frame)) for frame in sample_image[i:i+10] if frame]
-        text_list = ray.get(watermark_objects)
-        ray.internal.free(watermark_objects)
+    # for i in range(0, len(sample_image), 10):
+        # print("TEMP_FRAMES_DIR:", TEMP_FRAMES_DIR)
+        # print(f"FILES: {os.listdir(TEMP_FRAMES_DIR)}")
+    watermark_objects = [east_detector.remote(os.path.join(TEMP_FRAMES_DIR,filename, frame)) for frame in sample_image if frame]
+    text_list = ray.get(watermark_objects)
+    ray.internal.free(watermark_objects)
         # text_list = ray.get([east_detector.remote(os.path.join(TEMP_FRAMES_DIR,filename, frame)) for frame in sample_image[i:i+10] if frame])
 
     

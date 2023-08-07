@@ -51,7 +51,7 @@ def video_audit_nudity(video_path, save_path, model):
     video_name = video_path.split('/')[-1].split('.')[0]
     os.makedirs(os.path.join(save_path, video_name), exist_ok=True)
     path_to_save_frame = os.path.join(save_path, video_name)
-    threshold = 0.8
+    threshold = 0.87
 
     # Process every 12th frame
     for frame_number in range(0, int(cap.get(cv2.CAP_PROP_FRAME_COUNT)), 120):
@@ -85,14 +85,3 @@ def video_audit_nudity(video_path, save_path, model):
 
     return pred_frame
 
-
-
-# Set the video path
-# video_path = r'E:\python_codes\NudeNet\Michelle Borth sex scenes in Tell Me You Love Me.mp4'
-
-
-
-# Perform video audit for nudity detection
-# nudity_frames = video_audit_nudity(video_path, save_path, model)
-
-# print("Nudity frames:", nudity_frames)

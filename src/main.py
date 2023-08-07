@@ -15,7 +15,7 @@ from ultralytics import YOLO
 import json
 import random
 from datetime import datetime
-
+import faiss
 sys.path.append("..")
 import ray
 import cv2
@@ -31,7 +31,9 @@ from watermark_detection.detect import process_detection
 from video_audit.object_detection import video_audit
 from video_audit.nudity import video_audit_nudity
 from video_audit.violence import video_audit_violence
+from video_audit.celebrity_rekognition import find_closest_celebrities_cosine, create_faiss_index_cosine
 from db.db import persist_audit_result, processing_status_update
+
 
 from config import (
     RAW_DIR,
@@ -88,14 +90,20 @@ MODEL = YOLO('../data/model/best_yolo_05_06.pt')
 
 # Set the save path for frames with nudity
 NUDITY_SAVE_PATH = '../data/processed/nudity_result'
-
 # Load the GANtman NSFW detector model
 NUDITY_MODEL = tf.keras.models.load_model('../data/model/nsfw_mobilenet2.224x224.h5', compile = False)
 
+# VIOLENCE
 VIOLENCE_SAVE_PATH = '../data/processed/violence_result'
-
-
 VIOLENCE_MODEL = tf.keras.models.load_model('../data/model/violence_model.hdfs', compile = False)
+
+# CELEBRITY
+# video_path = '/content/drive/MyDrive/Videos Collection/Politics/Politics1.mp4'
+EMBEDDINGS_CSV = '../data/model/embeddings_24_07.csv'
+CELEBRITY_SAVE_PATH ='../data/processed/celebrity_result'
+FAISS_INDEX = create_faiss_index_cosine(EMBEDDINGS_CSV)
+# loaded_index = faiss.read_index(FAISS_INDEX)
+# faiss_index = create_faiss_index_cosine(csv_file_path)
 
 @ray.remote
 def process_video_remote(file_name):
@@ -133,6 +141,15 @@ def process_violence_remote(file_name):
     video_audit_violence_res = video_audit_violence(os.path.join(IN_PROCESS_DIR,file_name), VIOLENCE_SAVE_PATH, VIOLENCE_MODEL)
     return video_audit_violence_res
 
+@ray.remote
+def process_celebrity_remote(file_name):
+    # import keras
+    logger = setup_logger()
+    video_audit_celebrity_res = find_closest_celebrities_cosine(os.path.join(IN_PROCESS_DIR,file_name), EMBEDDINGS_CSV,CELEBRITY_SAVE_PATH,FAISS_INDEX,threshold=0.78, save_frames=True)
+    return video_audit_celebrity_res
+
+
+
  
 class AuditVideo:
     def __init__(self, file_name: str):
@@ -145,7 +162,8 @@ class AuditVideo:
             "AUDIO_AUDIT": {},
             "VIDEO_AUDIT": {},
             "VIDEO_NUDITY": {},
-            "VIDEO_VIOLENCE": {}
+            "VIDEO_VIOLENCE": {},
+            "VIDEO_CELEBRITY": {}
         }
         file_path = os.path.join(IN_PROCESS_DIR, self.file_name)
         self.duration = vid_duration(file_path)
@@ -187,19 +205,32 @@ class AuditVideo:
                 video_future = process_video_remote.remote(self.file_name)
                 video_nudity_future = process_nudity_remote.remote(self.file_name)
                 video_violence_future = process_violence_remote.remote(self.file_name)
-
+                video_celebrity_future = process_celebrity_remote.remote(self.file_name)
+                
+                
                 # Wait for all remote tasks to finish
-                ready, not_ready = ray.wait([audio_future, video_future, quality_future, watermark_future,video_nudity_future,video_violence_future], num_returns=6)
+                ready, not_ready = ray.wait([audio_future, video_future, quality_future, watermark_future], num_returns=4)
 
                 # Retrieve the results from the ready tasks
                 emotion, hate_speech, transcription, translation, language_code, segment_duration = ray.get(ready[0])
                 video_details = ray.get(ready[1])
                 quality_result = ray.get(ready[2])
                 watermark = ray.get(ready[3])
-                nudity_details = ray.get(ready[4])
-                violence_details = ray.get(ready[5])
+                
+                ray.internal.free([audio_future, video_future, quality_future, watermark_future])
 
-                ray.internal.free([audio_future, video_future, quality_future, watermark_future,video_nudity_future,video_violence_future])
+                # video_celebrity_future = ray.put(video_celebrity_future)
+                # video_nudity_future = ray.put(video_nudity_future)
+                # video_violence_future= ray.put(video_violence_future)
+                ready, not_ready = ray.wait([video_nudity_future,video_violence_future,video_celebrity_future], num_returns=3)
+                
+                
+                
+                nudity_details = ray.get(ready[0])
+                violence_details = ray.get(ready[1])
+                celebrity_details = ray.get(ready[2])
+
+                # ray.internal.free([video_nudity_future,video_violence_future,celebrity_details])
                 thumbnail_path, video_path = self.create_thumbnails_video()
                 self.populate_quality_details(
                     quality_result, 
@@ -214,7 +245,8 @@ class AuditVideo:
                     thumbnail_path, 
                     video_path,
                     nudity_details,
-                    violence_details
+                    violence_details,
+                    celebrity_details
                     )
                 
                 self.save_results(quality_result)
@@ -270,7 +302,7 @@ class AuditVideo:
         audio_future = process_audio_remote.remote(file_path)
         return ray.get(audio_future)
     
-    def build_table_of_contents(self, emotion, hate_speech, video_details,nudity_details,violence_details):
+    def build_table_of_contents(self, emotion, hate_speech, video_details,nudity_details,violence_details,celebrity_details):
         content_header = list()
         content_item = dict()
         content_item["TYPE"] = None
@@ -331,6 +363,20 @@ class AuditVideo:
                         content_item["DETAILS"] = 'violence'
                         content_header.append(content_item.copy()) 
                         
+        if celebrity_details:
+            import pprint
+            pprint.pprint(f"VIDEO CELEBRITY DETAILS: {celebrity_details}")
+            for celeb, time_details in celebrity_details.items():
+                
+                if time_details.get("Timestamp"):
+                    for ts in  time_details.get("Timestamp"):
+                        content_item["TYPE"] = "CELEBRITY DETECTED"
+                        content_item["KEY"] = "SCENE_OBJECT"
+                        content_item["TIME"] = ts
+                        content_item["DETAILS"] = celeb
+                        content_header.append(content_item.copy())               
+                        
+                        
         return content_header
 
     def populate_quality_details(
@@ -347,7 +393,8 @@ class AuditVideo:
             thumbnail_path, 
             video_path,
             nudity_details,
-            violence_details
+            violence_details,
+            celebrity_details
             ):
         
         vid_q, resolution, height, width, frame_rate, distortion, aspect_ratio, duration = quality_result
@@ -366,7 +413,7 @@ class AuditVideo:
         self.quality_details["AUDIO_AUDIT"]["LANGUAGE_CODE"] = language_code
         self.quality_details["AUDIO_AUDIT"]["TRANSLATION"] = translation
         self.quality_details["AUDIO_AUDIT"]["SEGMENT_DURATION"] = segment_duration
-        self.quality_details["TABLE_OF_CONTENTS"] = self.build_table_of_contents(emotion, hate_speech, video_details.copy(),nudity_details.copy(),violence_details.copy())
+        self.quality_details["TABLE_OF_CONTENTS"] = self.build_table_of_contents(emotion, hate_speech, video_details.copy(),nudity_details.copy(),violence_details.copy(),celebrity_details.copy())
         self.quality_details["VIDEO_AUDIT"] = video_details
         self.quality_details["VIDEO_AUDIT"]["KEY_SITUATIONS"] = [key for key in video_details.keys()]
         self.quality_details["PERSON_DETECTED"] = random.choice(famous_list)
@@ -377,6 +424,8 @@ class AuditVideo:
         self.quality_details["VIDEO_NUDITY_AUDIT"]["KEY_SITUATIONS"] = [key for key in nudity_details.keys()]
         self.quality_details["VIDEO_VIOLENCE_AUDIT"] = violence_details
         self.quality_details["VIDEO_VIOLENCE_AUDIT"]["KEY_SITUATIONS"] = [key for key in violence_details.keys()]
+        self.quality_details["VIDEO_CELEBRITY_AUDIT"] = celebrity_details
+        self.quality_details["VIDEO_CELEBRITY_AUDIT"]["KEY_SITUATIONS"] = [key for key,value in celebrity_details.items()]
 
         
 

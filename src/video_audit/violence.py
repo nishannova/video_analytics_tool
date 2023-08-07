@@ -5,7 +5,7 @@ from skimage.transform import resize
 import cv2
 import os
 
-def pred_fight(model,video,acuracy=0.9):
+def pred_fight(model,video,acuracy=0.85):
     pred_test = model.predict(video, verbose=0)
     if pred_test[0][1] >=acuracy:
         return True , pred_test[0][1]
@@ -15,8 +15,9 @@ def pred_fight(model,video,acuracy=0.9):
 def video_audit_violence(video_path, save_path, model_violence):
     pred_frame = {}
     cap = cv2.VideoCapture(video_path)
-    video_name = os.path.splitext(os.path.basename(video_path))[0]
-    os.makedirs(os.path.join(save_path, video_name, 'violence'), exist_ok=True)
+    video_name = video_path.split('/')[-1].split('.')[0]
+    path_to_save_frame = os.path.join(save_path, video_name)
+    os.makedirs(os.path.join(save_path, video_name), exist_ok=True)
     threshold = 0.9
 
     for frame_number in range(0, int(cap.get(cv2.CAP_PROP_FRAME_COUNT)), 120):
@@ -42,6 +43,8 @@ def video_audit_violence(video_path, save_path, model_violence):
                 pred_frame['violence'] = {"Timestamp": []}
             pred_frame['violence']["Timestamp"].append(timestamp)
 
+            
+            os.makedirs(os.path.join(path_to_save_frame, 'violence'), exist_ok=True)
             cv2.imwrite(os.path.join(save_path, video_name, f'frame_{str(frame_number).zfill(4)}.png'), frame)
 
     cap.release()

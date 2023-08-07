@@ -2,3 +2,583 @@
     logger.info(f"PROCESING STATUS UPDATED IN DB FOR: {file_name}")
                                                                  ^
 SyntaxError: invalid syntax
+2023-08-02 19:19:47.533366: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+2023-08-02 19:19:47.600082: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+2023-08-02 19:19:48.663640: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Ultralytics YOLOv8.0.113 🚀 Python-3.9.15 torch-2.0.0+cu117 CPU
+Setup complete ✅ (32 CPUs, 62.9 GB RAM, 120.1/431.1 GB disk)
+loading configuration file config.json from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/config.json
+Model config RobertaConfig {
+  "_name_or_path": "pysentimiento/bertweet-hate-speech",
+  "architectures": [
+    "RobertaForSequenceClassification"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "hateful",
+    "1": "targeted",
+    "2": "aggressive"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "aggressive": 2,
+    "hateful": 0,
+    "targeted": 1
+  },
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 130,
+  "model_type": "roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "problem_type": "multi_label_classification",
+  "tokenizer_class": "BertweetTokenizer",
+  "torch_dtype": "float32",
+  "transformers_version": "4.25.1",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 64001
+}
+
+loading weights file pytorch_model.bin from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/pytorch_model.bin
+All model checkpoint weights were used when initializing RobertaForSequenceClassification.
+
+All the weights of RobertaForSequenceClassification were initialized from the model checkpoint at pysentimiento/bertweet-hate-speech.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use RobertaForSequenceClassification for predictions without further training.
+loading file vocab.txt from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/vocab.txt
+loading file bpe.codes from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/bpe.codes
+loading file added_tokens.json from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/added_tokens.json
+loading file special_tokens_map.json from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/special_tokens_map.json
+loading file tokenizer_config.json from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/tokenizer_config.json
+Adding <mask> to the vocabulary
+PyTorch: setting up devices
+The default value for the training argument `--report_to` will change in v5 (from all installed integrations to none). In v5, you will need to use `--report_to all` to get the same behavior as now. You should start updating your code and make this info disappear :-).
+2023-08-02 19:20:05,128 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2023-08-02 19:20:05,128 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("videoproperties")
+2023-08-02 19:20:05,128 INFO sqlalchemy.engine.Engine [raw sql] ()
+2023-08-02 19:20:05,129 INFO sqlalchemy.engine.Engine COMMIT
+2023-08-04 16:27:06.952 | INFO     | __main__:process_videos:574 - RAW_DIR: ../data/raw
+2023-08-04 16:27:06.953 | INFO     | __main__:process_videos:575 - IN_PROCESS_DIR: ../data/in_process
+2023-08-04 16:27:06.954 | INFO     | __main__:process_videos:578 - Raw files found: ['Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4']
+2023-08-04 16:27:06.954 | INFO     | __main__:process_video_file:521 - Moved Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4 from RAW_DIR to IN_PROCESS_DIR
+2023-08-04 16:27:22.487 | INFO     | __main__:process_video_file:523 - FRAMES SPLITTED FOR VIDEO: ../data/in_process/Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4
+2023-08-04 16:27:22,514 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2023-08-04 16:27:22,525 INFO sqlalchemy.engine.Engine SELECT videoproperties.name AS videoproperties_name, videoproperties.video_no AS videoproperties_video_no, videoproperties.url AS videoproperties_url, videoproperties.type AS videoproperties_type, videoproperties.resolution AS videoproperties_resolution, videoproperties.quality AS videoproperties_quality, videoproperties.frame_rate AS videoproperties_frame_rate, videoproperties.distortion AS videoproperties_distortion, videoproperties.watermark AS videoproperties_watermark, videoproperties.aspect_ratio AS videoproperties_aspect_ratio, videoproperties.duration AS videoproperties_duration, videoproperties.em_sadness AS videoproperties_em_sadness, videoproperties.em_others AS videoproperties_em_others, videoproperties.em_fear AS videoproperties_em_fear, videoproperties.em_disgust AS videoproperties_em_disgust, videoproperties.em_surprise AS videoproperties_em_surprise, videoproperties.em_joy AS videoproperties_em_joy, videoproperties.em_anger AS videoproperties_em_anger, videoproperties.ht_hateful AS videoproperties_ht_hateful, videoproperties.ht_targeted AS videoproperties_ht_targeted, videoproperties.ht_aggressive AS videoproperties_ht_aggressive, videoproperties.height AS videoproperties_height, videoproperties.width AS videoproperties_width, videoproperties.status AS videoproperties_status 
+FROM videoproperties 
+WHERE videoproperties.name = ?
+ LIMIT ? OFFSET ?
+2023-08-04 16:27:22,525 INFO sqlalchemy.engine.Engine [generated in 0.00028s] ('Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4', 1, 0)
+2023-08-04 16:27:22,528 INFO sqlalchemy.engine.Engine UPDATE videoproperties SET status=? WHERE videoproperties.name = ?
+2023-08-04 16:27:22,528 INFO sqlalchemy.engine.Engine [generated in 0.00016s] ('In-process', 'Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4')
+2023-08-04 16:27:22,529 INFO sqlalchemy.engine.Engine COMMIT
+2023-08-04 16:27:22.539 | INFO     | __main__:__init__:173 - PROCESING STATUS UPDATED IN DB FOR: Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4
+2023-08-04 16:27:27,843	INFO worker.py:1625 -- Started a local Ray instance.
+[2m[36m(process_detection_remote pid=25670)[0m 2023-08-04 16:27:31.856 | WARNING  | watermark_detection.detect:process_detection:22 - SAMPLE IMAGE: ['frame349.jpg', 'frame50.jpg', 'frame607.jpg', 'frame1378.jpg', 'frame942.jpg', 'frame332.jpg', 'frame1351.jpg', 'frame476.jpg', 'frame70.jpg', 'frame1366.jpg', 'frame1450.jpg', 'frame351.jpg', 'frame1634.jpg', 'frame272.jpg', 'frame452.jpg', 'frame1440.jpg', 'frame664.jpg', 'frame426.jpg', 'frame449.jpg', 'frame85.jpg']
+2023-08-04 16:27:32,682	WARNING worker.py:1986 -- Warning: The remote function __main__.process_video_remote is very large (29 MiB). Check that its definition is not implicitly capturing a large array or other object in scope. Tip: use ray.put() to put large objects in the Ray object store.
+2023-08-04 16:27:36,812	WARNING worker.py:1986 -- Warning: The remote function __main__.process_nudity_remote is very large (10 MiB). Check that its definition is not implicitly capturing a large array or other object in scope. Tip: use ray.put() to put large objects in the Ray object store.
+2023-08-04 16:27:37,198	WARNING worker.py:1986 -- Warning: The remote function __main__.process_violence_remote is very large (82 MiB). Check that its definition is not implicitly capturing a large array or other object in scope. Tip: use ray.put() to put large objects in the Ray object store.
+[2m[36m(quality_analysis_remote pid=25662)[0m 2023-08-04 16:27:32.880 | INFO     | quality_analysis.quality_analysis:distortion_analysys:51 - There are 1719 frames to be analyzed
+[2m[36m(get_score pid=25687)[0m /home/saintadmin/work/video_analytics_tool/vid_env/lib/python3.9/site-packages/imquality/brisque.py:45: FutureWarning: The behavior of rgb2gray will change in scikit-image 0.19. Currently, rgb2gray allows 2D grayscale image to be passed as inputs and leaves them unmodified as outputs. Starting from version 0.19, 2D arrays will be treated as 1D images with 3 channels.
+[2m[36m(get_score pid=25687)[0m   self.image = skimage.color.rgb2gray(self.image)
+[2m[36m(get_score pid=27159)[0m /home/saintadmin/work/video_analytics_tool/vid_env/lib/python3.9/site-packages/imquality/brisque.py:45: FutureWarning: The behavior of rgb2gray will change in scikit-image 0.19. Currently, rgb2gray allows 2D grayscale image to be passed as inputs and leaves them unmodified as outputs. Starting from version 0.19, 2D arrays will be treated as 1D images with 3 channels.[32m [repeated 7x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/ray-logging.html#log-deduplication for more options.)[0m
+[2m[36m(get_score pid=27159)[0m   self.image = skimage.color.rgb2gray(self.image)[32m [repeated 7x across cluster][0m
+[2m[36m(process_video_remote pid=25682)[0m 
+[2m[36m(get_score pid=27153)[0m /home/saintadmin/work/video_analytics_tool/vid_env/lib/python3.9/site-packages/imquality/brisque.py:45: FutureWarning: The behavior of rgb2gray will change in scikit-image 0.19. Currently, rgb2gray allows 2D grayscale image to be passed as inputs and leaves them unmodified as outputs. Starting from version 0.19, 2D arrays will be treated as 1D images with 3 channels.[32m [repeated 2x across cluster][0m
+[2m[36m(get_score pid=27153)[0m   self.image = skimage.color.rgb2gray(self.image)[32m [repeated 2x across cluster][0m
+[2m[36m(process_video_remote pid=25682)[0m [W NNPACK.cpp:64] Could not initialize NNPACK! Reason: Unsupported hardware.
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 1 cocaine, 4 other_weapons, 1 pistols, 864.6ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 32.2ms preprocess, 864.6ms inference, 4.2ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(process_video_remote pid=25682)[0m 
+[2m[36m(process_detection_remote pid=25670)[0m 2023-08-04 16:28:10.373 | WARNING  | watermark_detection.detect:process_detection:66 - DETECTED TEXTS: []
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 2 beers, 1 other_weapon, 629.1ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 6.0ms preprocess, 629.1ms inference, 2.3ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(process_video_remote pid=25682)[0m 
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 1 tobacco, 626.0ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 5.8ms preprocess, 626.0ms inference, 2.8ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(process_video_remote pid=25682)[0m 
+[2m[36m(pid=25683)[0m loading configuration file config.json from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/config.json
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 (no detections), 692.7ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 6.3ms preprocess, 692.7ms inference, 1.5ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(pid=25683)[0m Model config RobertaConfig {
+[2m[36m(pid=25683)[0m   "_name_or_path": "pysentimiento/bertweet-hate-speech",
+[2m[36m(pid=25683)[0m   "architectures": [
+[2m[36m(pid=25683)[0m     "RobertaForSequenceClassification"
+[2m[36m(pid=25683)[0m   ],
+[2m[36m(pid=25683)[0m   "attention_probs_dropout_prob": 0.1,
+[2m[36m(pid=25683)[0m   "bos_token_id": 0,
+[2m[36m(pid=25683)[0m   "classifier_dropout": null,
+[2m[36m(pid=25683)[0m   "eos_token_id": 2,
+[2m[36m(pid=25683)[0m   "gradient_checkpointing": false,
+[2m[36m(pid=25683)[0m   "hidden_act": "gelu",
+[2m[36m(pid=25683)[0m   "hidden_dropout_prob": 0.1,
+[2m[36m(pid=25683)[0m   "hidden_size": 768,
+[2m[36m(pid=25683)[0m   "id2label": {
+[2m[36m(pid=25683)[0m     "0": "hateful",
+[2m[36m(pid=25683)[0m     "1": "targeted",
+[2m[36m(pid=25683)[0m     "2": "aggressive"
+[2m[36m(pid=25683)[0m   },
+[2m[36m(pid=25683)[0m   "initializer_range": 0.02,
+[2m[36m(pid=25683)[0m   "intermediate_size": 3072,
+[2m[36m(pid=25683)[0m   "label2id": {
+[2m[36m(pid=25683)[0m     "aggressive": 2,
+[2m[36m(pid=25683)[0m     "hateful": 0,
+[2m[36m(pid=25683)[0m     "targeted": 1
+[2m[36m(pid=25683)[0m   },
+[2m[36m(pid=25683)[0m   "layer_norm_eps": 1e-05,
+[2m[36m(pid=25683)[0m   "max_position_embeddings": 130,
+[2m[36m(pid=25683)[0m   "model_type": "roberta",
+[2m[36m(pid=25683)[0m   "num_attention_heads": 12,
+[2m[36m(pid=25683)[0m   "num_hidden_layers": 12,
+[2m[36m(pid=25683)[0m   "pad_token_id": 1,
+[2m[36m(pid=25683)[0m   "position_embedding_type": "absolute",
+[2m[36m(pid=25683)[0m   "problem_type": "multi_label_classification",
+[2m[36m(pid=25683)[0m   "tokenizer_class": "BertweetTokenizer",
+[2m[36m(pid=25683)[0m   "torch_dtype": "float32",
+[2m[36m(pid=25683)[0m   "transformers_version": "4.25.1",
+[2m[36m(pid=25683)[0m   "type_vocab_size": 1,
+[2m[36m(pid=25683)[0m   "use_cache": true,
+[2m[36m(pid=25683)[0m   "vocab_size": 64001
+[2m[36m(pid=25683)[0m }
+[2m[36m(pid=25683)[0m loading weights file pytorch_model.bin from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/pytorch_model.bin
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 (no detections), 647.8ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 7.8ms preprocess, 647.8ms inference, 1.5ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 1 pistols, 639.7ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 6.2ms preprocess, 639.7ms inference, 2.8ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 1 pistols, 605.0ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 6.6ms preprocess, 605.0ms inference, 2.0ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(process_video_remote pid=25682)[0m [32m [repeated 4x across cluster][0m
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 1 cocaine, 494.3ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 6.0ms preprocess, 494.3ms inference, 1.5ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 1 cocaine, 417.4ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 4.5ms preprocess, 417.4ms inference, 1.5ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(pid=25683)[0m All model checkpoint weights were used when initializing RobertaForSequenceClassification.
+[2m[36m(pid=25683)[0m All the weights of RobertaForSequenceClassification were initialized from the model checkpoint at pysentimiento/bertweet-hate-speech.
+[2m[36m(pid=25683)[0m If your task is similar to the task the model of the checkpoint was trained on, you can already use RobertaForSequenceClassification for predictions without further training.
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 (no detections), 429.2ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 6.8ms preprocess, 429.2ms inference, 0.8ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(pid=25683)[0m loading file vocab.txt from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/vocab.txt
+[2m[36m(pid=25683)[0m loading file bpe.codes from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/bpe.codes
+[2m[36m(pid=25683)[0m loading file added_tokens.json from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/added_tokens.json
+[2m[36m(pid=25683)[0m loading file special_tokens_map.json from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/special_tokens_map.json
+[2m[36m(pid=25683)[0m loading file tokenizer_config.json from cache at /root/.cache/huggingface/hub/models--pysentimiento--bertweet-hate-speech/snapshots/d9925de199f48face0d7026f07c3b492c423bbc0/tokenizer_config.json
+[2m[36m(pid=25683)[0m Adding <mask> to the vocabulary
+[2m[36m(pid=25683)[0m PyTorch: setting up devices
+[2m[36m(pid=25683)[0m The default value for the training argument `--report_to` will change in v5 (from all installed integrations to none). In v5, you will need to use `--report_to all` to get the same behavior as now. You should start updating your code and make this info disappear :-).
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 (no detections), 483.3ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 4.5ms preprocess, 483.3ms inference, 0.9ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 1 other_weapon, 532.7ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 5.0ms preprocess, 532.7ms inference, 1.6ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 2 pistolss, 485.0ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 4.3ms preprocess, 485.0ms inference, 1.5ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 2 pistolss, 1 shotgun, 497.6ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 4.6ms preprocess, 497.6ms inference, 1.7ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(process_audio_remote pid=25683)[0m 2023-08-04 16:28:18.694 | INFO     | audio_audit.analysis:process_audio:242 - FILE UPLOADED SUCCESSFULLY, PROCESSING WITH TRANSCRIPTION
+[2m[36m(process_audio_remote pid=25683)[0m 2023-08-04 16:28:18.695 | WARNING  | audio_audit.analysis:process_audio:244 - S3 URI-->> s3://traceaudit/Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4
+[2m[36m(process_video_remote pid=25682)[0m 0: 640x480 1 other_weapon, 506.7ms
+[2m[36m(process_video_remote pid=25682)[0m Speed: 4.5ms preprocess, 506.7ms inference, 1.6ms postprocess per image at shape (1, 3, 640, 640)
+[2m[36m(process_audio_remote pid=25683)[0m 2023-08-04 16:28:30.048 | ERROR    | audio_audit.analysis:process_audio:294 - NO AUDIO FOUND
+[2m[36m(process_video_remote pid=25682)[0m [32m [repeated 9x across cluster][0m
+2023-08-04 16:28:53.885 | INFO     | __main__:create_thumbnails_video:277 - THUMBNAIL CREATED FOR FILENAME: Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4
+[2m[36m(quality_analysis_remote pid=25662)[0m There are 1719 frames to be analyzed
+[2m[36m(process_audio_remote pid=25683)[0m Waiting for my_joq_1691166498.695334. Current status is IN_PROGRESS.
+[2m[36m(process_audio_remote pid=25683)[0m Job my_joq_1691166498.695334 is FAILED.
+("VIDEO DETAILS: {'other_weapon': {'Timestamp': [0.0, 56.0, 4.0, 44.0]}, "
+ "'pistols': {'Timestamp': [0.0, 48.0, 20.0, 52.0, 24.0]}, 'cocaine': "
+ "{'Timestamp': [0.0, 32.0, 28.0]}, 'beer': {'Timestamp': [4.0]}, 'tobacco': "
+ "{'Timestamp': [8.0]}, 'shotgun': {'Timestamp': [52.0]}}")
+("VIDEO VIOLENCE DETAILS: {'violence': {'Timestamp': [0.0, 8.0, 12.0, 16.0, "
+ '28.0, 32.0, 36.0, 44.0, 56.0]}}')
+("VIDEO CELEBRITY DETAILS: {'Unknown': {'Timestamp': [0.0, 0.0, 0.0, 0.0, "
+ '2.333, 4.667, 7.0, 11.667, 14.0, 16.333, 16.333, 18.667, 21.0, 23.333, 28.0, '
+ '28.0, 28.0, 30.333, 32.667, 35.0, 35.0, 37.333, 39.667, 39.667, 44.333, '
+ "46.667, 49.0, 51.333, 51.333, 53.667, 53.667, 56.0]}, 'Sara Ali Khan': "
+ "{'Timestamp': [9.333, 11.667]}, 'Kriti Sanon': {'Timestamp': [21.0]}, "
+ "'Tabu': {'Timestamp': [25.667]}, 'Gaurav Chopra': {'Timestamp': [32.667]}, "
+ "'Kapil Dev': {'Timestamp': [32.667]}, 'Ashnoor Kaur': {'Timestamp': [35.0]}, "
+ "'Appurv Gupta': {'Timestamp': [35.0]}, 'Amit Shah': {'Timestamp': [37.333]}, "
+ "'Kareena Kapoor': {'Timestamp': [42.0, 42.0]}}")
+{'AUDIO_AUDIT': {'EMOTION_DETECTION': [],
+                 'HATE_SPEECH_DETECTION': [],
+                 'KEY_EMOTIONS': [],
+                 'LANGUAGE_CODE': '',
+                 'SEGMENT_DURATION': 6,
+                 'TRANSCRIPTION': '',
+                 'TRANSLATION': ''},
+ 'DETECTED_WATERMARKS': {'CONTENTS': []},
+ 'DateTime': '2023-08-04 16:28:53.892100',
+ 'PERSON_DETECTED': '-',
+ 'QUALITY_ANALYSIS': {'DISTORTION_SCORE': '33.57 %',
+                      'FRAME_RATE': '30 FPS',
+                      'HEIGHT': 720,
+                      'RESOLUTION': 'Video type: [SD] and Resolution: 720 x '
+                                    '540 Pixels',
+                      'WIDTH': 540},
+ 'SANITY_CHECKS': {'ACCEPTABLE_ASPECT_RATIO': 'True', 'DURATION': '57 Sec'},
+ 'TABLE_OF_CONTENTS': [{'DETAILS': 'other_weapon',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 0.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'other_weapon',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 56.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'other_weapon',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 4.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'other_weapon',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 44.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'pistols',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 0.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'pistols',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 48.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'pistols',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 20.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'pistols',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 52.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'pistols',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 24.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'cocaine',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 0.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'cocaine',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 32.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'cocaine',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 28.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'beer',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 4.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'tobacco',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 8.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'shotgun',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 52.0,
+                        'TYPE': 'OBJECT DETECTED'},
+                       {'DETAILS': 'violence',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 0.0,
+                        'TYPE': 'VIOLENCE DETECTED'},
+                       {'DETAILS': 'violence',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 8.0,
+                        'TYPE': 'VIOLENCE DETECTED'},
+                       {'DETAILS': 'violence',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 12.0,
+                        'TYPE': 'VIOLENCE DETECTED'},
+                       {'DETAILS': 'violence',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 16.0,
+                        'TYPE': 'VIOLENCE DETECTED'},
+                       {'DETAILS': 'violence',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 28.0,
+                        'TYPE': 'VIOLENCE DETECTED'},
+                       {'DETAILS': 'violence',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 32.0,
+                        'TYPE': 'VIOLENCE DETECTED'},
+                       {'DETAILS': 'violence',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 36.0,
+                        'TYPE': 'VIOLENCE DETECTED'},
+                       {'DETAILS': 'violence',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 44.0,
+                        'TYPE': 'VIOLENCE DETECTED'},
+                       {'DETAILS': 'violence',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 56.0,
+                        'TYPE': 'VIOLENCE DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 0.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 0.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 0.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 0.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 2.333,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 4.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 7.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 11.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 14.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 16.333,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 16.333,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 18.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 21.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 23.333,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 28.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 28.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 28.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 30.333,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 32.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 35.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 35.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 37.333,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 39.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 39.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 44.333,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 46.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 49.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 51.333,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 51.333,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 53.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 53.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Unknown',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 56.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Sara Ali Khan',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 9.333,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Sara Ali Khan',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 11.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Kriti Sanon',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 21.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Tabu',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 25.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Gaurav Chopra',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 32.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Kapil Dev',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 32.667,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Ashnoor Kaur',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 35.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Appurv Gupta',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 35.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Amit Shah',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 37.333,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Kareena Kapoor',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 42.0,
+                        'TYPE': 'CELEBRITY DETECTED'},
+                       {'DETAILS': 'Kareena Kapoor',
+                        'KEY': 'SCENE_OBJECT',
+                        'TIME': 42.0,
+                        'TYPE': 'CELEBRITY DETECTED'}],
+ 'THUMBNAIL_DIR': 'static/thumbnails_video/Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4/thumbnail.jpg',
+ 'VIDEO_AUDIT': {'KEY_SITUATIONS': ['other_weapon',
+                                    'pistols',
+                                    'cocaine',
+                                    'beer',
+                                    'tobacco',
+                                    'shotgun'],
+                 'beer': {'Timestamp': [4.0]},
+                 'cocaine': {'Timestamp': [0.0, 32.0, 28.0]},
+                 'other_weapon': {'Timestamp': [0.0, 56.0, 4.0, 44.0]},
+                 'pistols': {'Timestamp': [0.0, 48.0, 20.0, 52.0, 24.0]},
+                 'shotgun': {'Timestamp': [52.0]},
+                 'tobacco': {'Timestamp': [8.0]}},
+ 'VIDEO_CELEBRITY': {},
+ 'VIDEO_CELEBRITY_AUDIT': {'Amit Shah': {'Timestamp': [37.333]},
+                           'Appurv Gupta': {'Timestamp': [35.0]},
+                           'Ashnoor Kaur': {'Timestamp': [35.0]},
+                           'Gaurav Chopra': {'Timestamp': [32.667]},
+                           'KEY_SITUATIONS': ['Unknown',
+                                              'Sara Ali Khan',
+                                              'Kriti Sanon',
+                                              'Tabu',
+                                              'Gaurav Chopra',
+                                              'Kapil Dev',
+                                              'Ashnoor Kaur',
+                                              'Appurv Gupta',
+                                              'Amit Shah',
+                                              'Kareena Kapoor'],
+                           'Kapil Dev': {'Timestamp': [32.667]},
+                           'Kareena Kapoor': {'Timestamp': [42.0, 42.0]},
+                           'Kriti Sanon': {'Timestamp': [21.0]},
+                           'Sara Ali Khan': {'Timestamp': [9.333, 11.667]},
+                           'Tabu': {'Timestamp': [25.667]},
+                           'Unknown': {'Timestamp': [0.0,
+                                                     0.0,
+                                                     0.0,
+                                                     0.0,
+                                                     2.333,
+                                                     4.667,
+                                                     7.0,
+                                                     11.667,
+                                                     14.0,
+                                                     16.333,
+                                                     16.333,
+                                                     18.667,
+                                                     21.0,
+                                                     23.333,
+                                                     28.0,
+                                                     28.0,
+                                                     28.0,
+                                                     30.333,
+                                                     32.667,
+                                                     35.0,
+                                                     35.0,
+                                                     37.333,
+                                                     39.667,
+                                                     39.667,
+                                                     44.333,
+                                                     46.667,
+                                                     49.0,
+                                                     51.333,
+                                                     51.333,
+                                                     53.667,
+                                                     53.667,
+                                                     56.0]}},
+ 'VIDEO_DIR': 'static/thumbnails_video/Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4/Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4',
+ 'VIDEO_NUDITY': {},
+ 'VIDEO_NUDITY_AUDIT': {'KEY_SITUATIONS': []},
+ 'VIDEO_VIOLENCE': {},
+ 'VIDEO_VIOLENCE_AUDIT': {'KEY_SITUATIONS': ['violence'],
+                          'violence': {'Timestamp': [0.0,
+                                                     8.0,
+                                                     12.0,
+                                                     16.0,
+                                                     28.0,
+                                                     32.0,
+                                                     36.0,
+                                                     44.0,
+                                                     56.0]}}}
+2023-08-04 16:28:53,903 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2023-08-04 16:28:53,904 INFO sqlalchemy.engine.Engine SELECT videoproperties.name AS videoproperties_name, videoproperties.video_no AS videoproperties_video_no, videoproperties.url AS videoproperties_url, videoproperties.type AS videoproperties_type, videoproperties.resolution AS videoproperties_resolution, videoproperties.quality AS videoproperties_quality, videoproperties.frame_rate AS videoproperties_frame_rate, videoproperties.distortion AS videoproperties_distortion, videoproperties.watermark AS videoproperties_watermark, videoproperties.aspect_ratio AS videoproperties_aspect_ratio, videoproperties.duration AS videoproperties_duration, videoproperties.em_sadness AS videoproperties_em_sadness, videoproperties.em_others AS videoproperties_em_others, videoproperties.em_fear AS videoproperties_em_fear, videoproperties.em_disgust AS videoproperties_em_disgust, videoproperties.em_surprise AS videoproperties_em_surprise, videoproperties.em_joy AS videoproperties_em_joy, videoproperties.em_anger AS videoproperties_em_anger, videoproperties.ht_hateful AS videoproperties_ht_hateful, videoproperties.ht_targeted AS videoproperties_ht_targeted, videoproperties.ht_aggressive AS videoproperties_ht_aggressive, videoproperties.height AS videoproperties_height, videoproperties.width AS videoproperties_width, videoproperties.status AS videoproperties_status 
+FROM videoproperties 
+WHERE videoproperties.name = ?
+ LIMIT ? OFFSET ?
+2023-08-04 16:28:53,904 INFO sqlalchemy.engine.Engine [cached since 91.38s ago] ('Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4', 1, 0)
+2023-08-04 16:28:53,906 INFO sqlalchemy.engine.Engine UPDATE videoproperties SET status=? WHERE videoproperties.name = ?
+2023-08-04 16:28:53,906 INFO sqlalchemy.engine.Engine [cached since 91.38s ago] ('COMPLETED', 'Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4')
+2023-08-04 16:28:53,907 INFO sqlalchemy.engine.Engine COMMIT
+2023-08-04 16:28:53.917 | INFO     | __main__:fit:254 - PROCESING STATUS UPDATED IN DB FOR: Bollywood_Actresses_In_Sharara_Suit.Deepika_P_Aishwarya_R_Katrina_K_Aliaa_B_Kareena_KK_Sara_AK..mp4
+2023-08-04 16:28:53.969 | WARNING  | __main__:remove_artifacts:487 - REMOVAL OF ARTIFACTS DONE
+2023-08-04 16:28:53.969 | INFO     | __main__:process_videos:584 - ENTIRE BATCH CYCLE TOOK: 107.01735639572144 Secs

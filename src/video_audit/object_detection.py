@@ -74,6 +74,8 @@ def video_audit(video_path, save_path, model):
         pred_frame[obj_label]["Timestamp"] = list(pred_frame[obj_label]["Timestamp"])
 
     cap.release()
+    
     cv2.destroyAllWindows()
+    
 
     return pred_frame

@@ -7,7 +7,7 @@
         "WIDTH": 720
     },
     "DETECTED_WATERMARKS": {
-        "CONTENTS": "Takalak TakaTak ID: bindusatyan   bifiduSatyan nEttee XS   an Install MX TakaTak to earn up to  1 000 Bindusathyan"
+        "CONTENTS": "TakaTak ID: bindusatyan Takalak Bindusathyan Install MX TakaTak to earn up to  1 000   bifiduSatyan nEttee XS   an"
     },
     "SANITY_CHECKS": {
         "ACCEPTABLE_ASPECT_RATIO": "True",
@@ -38,6 +38,9 @@
             "other_weapon"
         ]
     },
+    "VIDEO_NUDITY": {},
+    "VIDEO_VIOLENCE": {},
+    "VIDEO_CELEBRITY": {},
     "TABLE_OF_CONTENTS": [
         {
             "TYPE": "OBJECT DETECTED",
@@ -50,9 +53,141 @@
             "TIME": 15.995633197278911,
             "DETAILS": "other_weapon",
             "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "VIOLENCE DETECTED",
+            "TIME": 15.995633197278911,
+            "DETAILS": "violence",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "CELEBRITY DETECTED",
+            "TIME": 0.0,
+            "DETAILS": "Ashnoor Kaur",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "CELEBRITY DETECTED",
+            "TIME": 0.0,
+            "DETAILS": "Gautam Gulati",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "CELEBRITY DETECTED",
+            "TIME": 0.0,
+            "DETAILS": "Ileana",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "CELEBRITY DETECTED",
+            "TIME": 2.999,
+            "DETAILS": "Rahul Gandhi",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "CELEBRITY DETECTED",
+            "TIME": 5.998,
+            "DETAILS": "Keerthy Suresh",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "CELEBRITY DETECTED",
+            "TIME": 8.998,
+            "DETAILS": "Samantha Ruth Prabhu",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "CELEBRITY DETECTED",
+            "TIME": 11.997,
+            "DETAILS": "Shreya Ghoshal",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "CELEBRITY DETECTED",
+            "TIME": 11.997,
+            "DETAILS": "Suresh Raina",
+            "KEY": "SCENE_OBJECT"
+        },
+        {
+            "TYPE": "CELEBRITY DETECTED",
+            "TIME": 14.996,
+            "DETAILS": "Kareena Kapoor",
+            "KEY": "SCENE_OBJECT"
         }
     ],
-    "PERSON_DETECTED": "Satya Nadella",
+    "PERSON_DETECTED": "-",
     "THUMBNAIL_DIR": "static/thumbnails_video/C031-031.mp4/thumbnail.jpg",
-    "VIDEO_DIR": "static/thumbnails_video/C031-031.mp4/C031-031.mp4"
+    "VIDEO_DIR": "static/thumbnails_video/C031-031.mp4/C031-031.mp4",
+    "DateTime": "2023-07-22 08:08:33.546848",
+    "VIDEO_NUDITY_AUDIT": {
+        "KEY_SITUATIONS": []
+    },
+    "VIDEO_VIOLENCE_AUDIT": {
+        "violence": {
+            "Timestamp": [
+                15.995633197278911
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "violence"
+        ]
+    },
+    "VIDEO_CELEBRITY_AUDIT": {
+        "Ashnoor Kaur": {
+            "Timestamp": [
+                0.0
+            ]
+        },
+        "Gautam Gulati": {
+            "Timestamp": [
+                0.0
+            ]
+        },
+        "Ileana": {
+            "Timestamp": [
+                0.0
+            ]
+        },
+        "Rahul Gandhi": {
+            "Timestamp": [
+                2.999
+            ]
+        },
+        "Keerthy Suresh": {
+            "Timestamp": [
+                5.998
+            ]
+        },
+        "Samantha Ruth Prabhu": {
+            "Timestamp": [
+                8.998
+            ]
+        },
+        "Shreya Ghoshal": {
+            "Timestamp": [
+                11.997
+            ]
+        },
+        "Suresh Raina": {
+            "Timestamp": [
+                11.997
+            ]
+        },
+        "Kareena Kapoor": {
+            "Timestamp": [
+                14.996
+            ]
+        },
+        "KEY_SITUATIONS": [
+            "Ashnoor Kaur",
+            "Gautam Gulati",
+            "Ileana",
+            "Rahul Gandhi",
+            "Keerthy Suresh",
+            "Samantha Ruth Prabhu",
+            "Shreya Ghoshal",
+            "Suresh Raina",
+            "Kareena Kapoor"
+        ]
+    }
 }
