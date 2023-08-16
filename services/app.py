@@ -146,7 +146,6 @@ def upload_video():
     url = request.form.get('url')
     type = request.form.get('type')
 
-    
     file = request.files.get('file')
     
     if not (video_no or url or file.filename):
